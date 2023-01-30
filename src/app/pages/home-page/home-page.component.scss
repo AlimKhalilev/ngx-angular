@@ -1,0 +1,41 @@
+.header {
+    position: relative;
+
+    // .header__banner
+
+    &__banner {
+        max-width: 100%;
+        width: 100%;
+        max-height: 240px;
+        object-fit: cover;
+    }
+
+    // .header__avatar
+
+    &__avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 6px solid var(--primary-dark-600);
+
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 50%);
+    }
+}
+
+
+.portfolio {
+    max-width: 1280px;
+    margin: 0 auto;
+
+    // .portfolio__cards
+
+    &__cards {
+        margin-top: 75px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 32px;
+    }
+}

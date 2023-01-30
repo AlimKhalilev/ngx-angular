@@ -1,0 +1,16 @@
+<div class="portfolio-card">
+    <div class="portfolio-card__header">
+        <h3 class="portfolio-card__title">
+            <a class="portfolio-card__link" [href]="data.link" target="_blank">{{ data.name }}</a>
+        </h3>
+        <span>{{ data.addDateTimestamp | numToDate }}</span>
+    </div>
+
+    <div class="portfolio-card__body">
+        <picture>
+            <source [srcset]="data.imgMinWebp" type="image/webp" />
+            <img class="portfolio-card__img" [src]="data.imgMin" />
+        </picture>
+        <p class="portfolio-card__description">{{ data.description }}</p>
+    </div>
+</div>

@@ -1,1 +1,12 @@
-<p>home-page works!</p>
+<header class="header">
+    <img class="header__banner" src="/assets/img/banner.png" alt="Баннер, а также шапка">
+    <img class="header__avatar" src="/assets/img/avatar.jpg" alt="Аватар">
+</header>
+
+<div class="portfolio">
+    <div class="portfolio__cards">
+        <ng-container *ngFor="let work of works$ | async">
+            <app-portfolio-card [data]="work"></app-portfolio-card>
+        </ng-container>
+    </div>
+</div>

@@ -1,14 +1,1 @@
 <p>portfolio-page works!</p>
-
-<ng-container *ngFor="let work of works$ | async">
-    <span>{{ work.name }}</span>
-    <p>{{ work.description }}</p>
-    <span>{{ work.addDateTimestamp | numToDate }}</span>
-    <a [href]="work.link">Ссылка</a>
-
-    <picture>
-        <source [srcset]="work.imgMinWebp" type="image/webp" />
-        <img [src]="work.imgMin" />
-    </picture>
-
-</ng-container>
