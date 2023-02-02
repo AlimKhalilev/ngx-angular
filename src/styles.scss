@@ -1,16 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'SolomonSans';
+    src: url('/assets/fonts/solomon_sans/SolomonSans-Regular.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'SolomonSans';
+    src: url('/assets/fonts/solomon_sans/SolomonSans-Medium.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'SolomonSans';
+    src: url('/assets/fonts/solomon_sans/SolomonSans-Bold.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 600;
+}
 
 :root {
     --saturation-factor: 1;
 
     --primary-dark-200: hsl(210, calc(var(--saturation-factor, 1) * 2.9%), 86.7%);
     --primary-dark-600: hsl(220, calc(var(--saturation-factor, 1) * 7.7%), 22.9%);
-    
+
     --text-normal: var(--primary-dark-200);
 }
 
-html, body {
+html,
+body {
     background-color: var(--primary-dark-600);
     margin: 0;
     padding: 0;
+    font-family: 'SolomonSans';
+    color: #dbdbdb;
+}
+
+a {
+    text-decoration: none;
+    color: #f4f4f4;
+    font-weight: 500;
+    border-bottom: 1px solid;
 }
