@@ -1,0 +1,22 @@
+.ngx-tabs {
+
+    // .ngx-tabs__list
+
+    &__list {
+        display: flex;
+    }
+
+    // .ngx-tabs__tab
+
+    &__tab {
+        padding: 4px;
+        background-color: var(--gray-600);
+        cursor: pointer;
+    }
+
+    // .ngx-tabs__content
+
+    &__content {
+
+    }
+}

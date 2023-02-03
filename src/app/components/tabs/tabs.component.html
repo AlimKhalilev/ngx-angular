@@ -1,0 +1,10 @@
+<div class="ngx-tabs">
+    <ul class="ngx-tabs__list">
+        <li class="ngx-tabs__tab" *ngFor="let tab of tabs" [class.customTabs__tab--active]="tab.active" (click)="selectTab(tab)">
+            {{ tab.name }}
+        </li>
+    </ul>
+    <div class="ngx-tabs__content">
+        <ng-content></ng-content>
+    </div>
+</div>
