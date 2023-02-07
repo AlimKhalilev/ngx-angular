@@ -10,8 +10,8 @@
 
     &__tab {
         padding: 4px;
-        background-color: var(--gray-600);
         cursor: pointer;
+        border: 1px solid var(--gray-600);
     }
 
     // .ngx-tabs__content

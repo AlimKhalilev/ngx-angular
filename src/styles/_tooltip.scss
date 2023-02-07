@@ -1,0 +1,88 @@
+.mat-tooltip-panel, .mat-mdc-tooltip-panel {
+    .mat-tooltip, .mat-mdc-tooltip {
+        // .font-basic
+        font-family: 'Segoe UI';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+
+        padding: 8px;
+        margin: 2px;
+        overflow: initial;
+        min-height: 18px;
+        color: var(--white);
+        background-color: var(--color-tooltip);
+        border: none;
+        border-radius: 7px;
+        box-shadow: none;
+        filter: var(--shadow-tooltip);
+    
+        &--spaceMin {
+            margin: 2px;
+        }
+
+        &::after {
+            width: 0;
+            height: 0;
+            content: "";
+            position: absolute;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-bottom: 7px solid var(--color-tooltip);
+        }
+    }
+
+    .mdc-tooltip__surface {
+        background-color: inherit;
+        color: inherit;
+        padding: 0;
+        min-height: 20px;
+        line-height: 20px;
+    }
+
+    // тултип под
+    &-below {
+        .mdc-tooltip, .mat-tooltip {
+            overflow: initial;
+
+            &:after {
+                top: -7px;
+                right: calc(50% - 7px);
+                transform: rotate(0);
+            }
+        }
+    }
+
+    // тултип над
+    &-above {
+        .mdc-tooltip, .mat-tooltip {
+            &:after {
+                bottom: -7px;
+                right: calc(50% - 7px);
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    // тултип справа
+    &-right {
+        .mdc-tooltip, .mat-tooltip {
+            &:after {
+                left: -10px;
+                top: calc(50% - 5px);
+                transform: rotate(270deg);
+            }
+        }
+    }
+
+    // тултип слева
+    &-left {
+        .mdc-tooltip, .mat-tooltip {
+            &:after {
+                right: -10px;
+                top: calc(50% - 5px);
+                transform: rotate(90deg);
+            }
+        }
+    }
+}

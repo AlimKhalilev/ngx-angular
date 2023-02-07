@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomIconService } from './services/custom-icon.service';
 
 
 @Component({
@@ -8,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-    constructor() {
-        
+    constructor(private customIconService: CustomIconService) {
+        this.customIconService.registerIcons();
     }
 
     ngOnInit(): void {

@@ -1,0 +1,231 @@
+:host {
+    display: flex;
+}
+
+.ngx-button {
+    --bg-color: transparent;
+    --bg-color-hover: var(--gray-5);
+    --bg-color-pressed: var(--gray-10);
+    --bg-color-focused: var(--gray-10);
+    --bg-color-disabled: transparent;
+
+    --border-color: transparent;
+    --border-color-hover: transparent;
+    --border-color-pressed: transparent;
+    --border-color-focused: var(--gray-10);
+    --border-color-disabled: transparent;
+
+    --text-color: var(--gray-700);
+    --text-color-hover: var(--gray-700);
+    --text-color-pressed: var(--gray-700);
+    --text-color-focused: var(--gray-700);
+    --text-color-disabled: var(--gray-350);
+
+    --outline-color: transparent;
+    --transition: 0.3s ease-in-out;
+
+    font-family: "Segoe UI", sans-serif;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    padding: 0 2px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    
+    background-color: transparent;
+    border: 1px solid var(--outline-color);
+    //box-shadow: 0 0 0 1px var(--outline-color) inset; // артефактит в браузере
+
+    // .ngx-button--text
+    &--text {
+
+    }
+
+    // .ngx-button--text-color
+    &--text-color {
+        --text-color: var(--teal-700);
+        --text-color-hover: var(--teal-800);
+        --text-color-pressed: var(--teal-900);
+        --text-color-focused: var(--teal-700);
+        --text-color-disabled: var(--gray-350);
+    }
+
+    // .ngx-button--secondary
+    &--secondary {
+        --bg-color: var(--white);
+
+        --border-color: var(--gray-200);
+        --border-color-hover: var(--gray-300);
+        --border-color-pressed: var(--gray-250);
+        --border-color-focused: var(--gray-200);
+        --border-color-disabled: var(--gray-350);
+    }
+
+    // .ngx-button--primary
+    &--primary {
+        --border-color: transparent;
+        --border-color-hover: transparent;
+        --border-color-pressed: transparent;
+        --border-color-focused: transparent;
+        --border-color-disabled: transparent;
+
+        --bg-color: var(--teal-700);
+        --bg-color-hover: var(--teal-800);
+        --bg-color-pressed: var(--teal-900);
+        --bg-color-focused: var(--teal-700);
+        --bg-color-disabled: var(--gray-100);
+
+        --text-color: var(--white);
+        --text-color-hover: var(--white);
+        --text-color-pressed: var(--white);
+        --text-color-focused: var(--white);
+        --text-color-disabled: var(--gray-350);
+    }
+
+    // .ngx-button--danger
+    &--danger {
+        --border-color: transparent;
+        --border-color-hover: transparent;
+        --border-color-pressed: transparent;
+        --border-color-focused: transparent;
+        --border-color-disabled: transparent;
+
+        --bg-color: var(--alert-red);
+        --bg-color-hover: var(--alert-red-active);
+        --bg-color-pressed: var(--alert-red-hover);
+        --bg-color-focused: var(--alert-red-hover);
+        --bg-color-disabled: var(--gray-100);
+
+        --text-color: var(--white);
+        --text-color-hover: var(--white);
+        --text-color-pressed: var(--white);
+        --text-color-focused: var(--white);
+        --text-color-disabled: var(--gray-350);
+    }
+
+    // .ngx-button--small, .ngx-button--small-close
+    &--small, &--small-close {
+        height: 24px;
+        padding: 0;
+
+        .ngx-button__container {
+            height: 22px;
+            padding: 0 2px;
+            border-radius: 3px;
+        }
+
+        .ngx-button__icon {
+            min-width: 16px;
+            max-width: 16px;
+            height: 16px;
+        }
+    }
+
+    // .ngx-button--small-close, .ngx-button--tile-close
+    &--small-close, &--tile-close {
+        --bg-color: transparent;
+        --bg-color-hover: var(--alert-red-hover);
+        --bg-color-pressed: var(--alert-red-active);
+        --bg-color-focused: var(--alert-red-hover);
+        --bg-color-disabled: transparent;
+
+        --text-color: var(--gray-500);
+        --text-color-hover: var(--white);
+        --text-color-pressed: var(--white);
+        --text-color-focused: var(--white);
+        --text-color-disabled: var(--gray-350);
+    }
+
+    // .ngx-button--tile, .ngx-button--tile-close
+    &--tile, &--tile-close {
+        box-shadow: none;
+        border: none;
+        height: 32px;
+        padding: 0;
+        border-radius: 0;
+
+        .ngx-button__container {
+            border-radius: 0;
+            height: 32px;
+            padding: 0 11px;
+        }
+    }
+
+    // hover
+    &:hover {
+        --bg-color: var(--bg-color-hover);
+        --border-color: var(--border-color-hover);
+        --text-color: var(--text-color-hover);
+    }
+
+    // pressed
+    &:active {
+        --bg-color: var(--bg-color-pressed);
+        --border-color: var(--border-color-pressed);
+        --text-color: var(--text-color-pressed);
+    }
+
+    // focus
+    &:focus:not(:active) {
+        --outline-color: var(--gray-600);
+    }
+
+    // disabled
+    &:disabled {
+        user-select: none;
+        pointer-events: none;
+        
+        --bg-color: var(--bg-color-disabled);
+        --text-color: var(--text-color-disabled);
+    }
+
+    // .ngx-button__container
+
+    &__container {
+        display: flex;
+        height: 34px;
+        padding: 0 11px;
+        transition: var(--transition);
+        border-radius: 4px;
+
+        background-color: var(--bg-color);
+        border: 1px solid var(--border-color);
+        //box-shadow: 0 0 0 1px var(--border-color) inset; // артефактит в браузере
+
+        &--iconOnly {
+            padding: 0 6px;
+        }
+    }
+
+    // .ngx-button__content
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    // .ngx-button__icon
+
+    &__icon {
+        transition: var(--transition);
+        display: flex;
+        color: var(--text-color);
+
+        &--reverse {
+            transform: rotate(180deg);
+        }
+    }
+
+    // .ngx-button__text
+
+    &__text {
+        transition: var(--transition);
+        font-weight: 400;
+        font-size: 14px;
+        color: var(--text-color);
+    }
+}

@@ -1,0 +1,23 @@
+<label 
+    class="ngx-checkbox"
+    [class.ngx-checkbox--checked]="checked"
+    [class.ngx-checkbox--indeterminate]="indeterminate"
+    [matTooltip]="tooltip ? tooltip : ''"
+    [matTooltipDisabled]="!tooltip"
+>
+    <input 
+        class="ngx-checkbox__input visually-hidden" 
+        [class.indeterminate]="indeterminate"
+        type="checkbox" 
+        [disabled]="disabled ? disabled : false" 
+        [ngModel]="checked"
+        (ngModelChange)="changeModel($event)"
+    >
+    <div class="ngx-checkbox__container">
+        <div class="ngx-checkbox__box">
+            <mat-icon class="ngx-checkbox__icon icon-20" [class.visible]="checked && !indeterminate" svgIcon="ngx-checkmark-20"></mat-icon>
+            <mat-icon class="ngx-checkbox__icon icon-20" [class.visible]="indeterminate" svgIcon="ngx-dash-20"></mat-icon>
+        </div>
+        <span class="ngx-checkbox__text font-basic" *ngIf="text">{{ text }}</span>
+    </div>
+</label>

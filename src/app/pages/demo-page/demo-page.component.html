@@ -1,10 +1,258 @@
-<p>demo-page works!</p>
+<section class="demo">
+    <div class="demo__inner">
+        <div class="demo__item">
+            <select-box [(ngModel)]="selectBoxValue"></select-box>
+            <p>Значение: {{ selectBoxValue }}</p>
+        </div>
+        <div class="demo__item">
+            <ngx-tabs>
+                <ngx-tab name="Вкладка 1">Контент 1</ngx-tab>
+                <ngx-tab name="Вкладка 2">Контент 2</ngx-tab>
+                <ngx-tab name="Вкладка 3">Контент 3</ngx-tab>
+            </ngx-tabs>
+        </div>
+        <div class="demo__item">
+            <app-accordion [openState]="false" name="Наименование">
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+            </app-accordion>
 
-<select-box [(ngModel)]="selectBoxValue"></select-box>
-<p>Значение: {{ selectBoxValue }}</p>
+            <app-accordion [openState]="false" name="Наименование">
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+            </app-accordion>
 
-<ngx-tabs>
-    <ngx-tab name="Вкладка 1">Контент 1</ngx-tab>
-    <ngx-tab name="Вкладка 2">Контент 2</ngx-tab>
-    <ngx-tab name="Вкладка 3">Контент 3</ngx-tab>
-</ngx-tabs>
+            <app-accordion [openState]="false" name="Наименование">
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+                <div>12345</div>
+            </app-accordion>
+        </div>
+
+        <div class="demo__item">
+            <h2 class="demo__title">Ngx Buttons</h2>
+            <div class="demo__content">
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Icon Button</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button icon="ngx-search-20" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button icon="ngx-search-20" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Icon Border Button</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="secondary" icon="ngx-search-20" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="secondary" icon="ngx-search-20" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Icon+Text Button</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button icon="ngx-search-20" text="Action" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button icon="ngx-search-20" text="Action" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Text Button</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button text="Action" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button text="Action" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Text Color Button</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="text-color" text="Action" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="text-color" text="Action" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Text Base Color Button</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="primary" text="Action" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="primary" text="Action" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Danger Color Button</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="danger" text="Delete" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="danger" text="Delete" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Icon+Text Color Button</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="primary" text="Action" icon="ngx-search-20" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="primary" text="Action" icon="ngx-search-20" [disabled]="true" (onClick)="buttonClicked()">
+                        </ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Border Button</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="secondary" text="Action" tooltip="Подсказка" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="secondary" text="Action" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Icon Button Small</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="small" icon="ngx-close-16" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="small" icon="ngx-close-16" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Icon Button Small Close</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="small-close" icon="ngx-close-16" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="small-close" icon="ngx-close-16" [disabled]="true" (onClick)="buttonClicked()">
+                        </ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Icon Button Tile</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="tile" icon="ngx-close-20" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="tile" icon="ngx-close-20" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Icon Button Tile Close</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="tile-close" icon="ngx-close-20" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="tile-close" icon="ngx-close-20" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Icon Reverse Button</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button icon="ngx-chevron-20" [iconReverse]="true" (onClick)="buttonClicked()"> </ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button icon="ngx-chevron-20" [iconReverse]="true" [disabled]="true" (onClick)="buttonClicked()">
+                        </ngx-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo__item">
+            <h2 class="demo__title">Ngx Checkbox</h2>
+            <div class="demo__content">
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Checkbox</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-checkbox text="Проверка" [indeterminate]="isIndeterminate" [checked]="true"></ngx-checkbox>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-checkbox text="Проверка" [disabled]="true"></ngx-checkbox>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="primary" text="set indedeterminate" (onClick)="isIndeterminate = !isIndeterminate"></ngx-button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

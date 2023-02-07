@@ -1,0 +1,11 @@
+<div class="accordion" [class.accordion--shown]="openState" #accordion>
+    <div class="accordion__header" (click)="changeAccordionState()">
+        <h3 class="accordion__title font-head-14">{{ name }}</h3>
+        <mat-icon class="accordion__chevron icon-20" svgIcon="ngx-chevron-20"></mat-icon>
+    </div>
+    <div class="accordion__body" #accordionBody>
+        <div class="accordion__content">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

@@ -1,24 +1,74 @@
-:root {
-    --saturation-factor: 1;
-
-    --primary-dark-200: hsl(210, calc(var(--saturation-factor, 1) * 2.9%), 86.7%);
-    --primary-dark-600: hsl(220, calc(var(--saturation-factor, 1) * 7.7%), 22.9%);
-
-    --text-normal: var(--primary-dark-200);
-}
-
 html,
 body {
-    background-color: var(--primary-dark-600);
+    background-color: var(--white);
     margin: 0;
     padding: 0;
-    font-family: 'SolomonSans';
-    color: #dbdbdb;
+    font-family: 'Segoe UI';
+    color: var(--gray-700);
 }
 
-a {
-    text-decoration: none;
-    color: #f4f4f4;
-    font-weight: 500;
-    border-bottom: 1px solid;
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+
+    // Avoid browsers rendering the focus ring in some cases.
+    outline: 0;
+
+    // Avoid some cases where the browser will still render the native controls (see #9049).
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    clip: rect(0 0 0 0);
+}
+
+mat-icon.mat-icon {
+    min-width: 16px;
+    max-width: 16px;
+    height: 16px;
+
+    &.icon-12 {
+        min-width: 12px;
+        max-width: 12px;
+        height: 12px;
+    }
+
+    &.icon-16 {
+        min-width: 16px;
+        max-width: 16px;
+        height: 16px;
+    }
+
+    &.icon-20 {
+        min-width: 20px;
+        max-width: 20px;
+        height: 20px;
+    }
+
+    &.icon-24 {
+        min-width: 24px;
+        max-width: 24px;
+        height: 24px;
+    }
+
+    &.icon-32 {
+        min-width: 32px;
+        max-width: 32px;
+        height: 32px;
+    }
+
+    &.icon-36 {
+        min-width: 36px;
+        max-width: 36px;
+        height: 36px;
+    }
+
+    &.icon-48 {
+        min-width: 48px;
+        max-width: 48px;
+        height: 48px;
+    }
 }
