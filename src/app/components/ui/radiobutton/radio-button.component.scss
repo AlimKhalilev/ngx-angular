@@ -1,0 +1,31 @@
+.ngx-checkbox {
+    --bg-color: var(--white);
+    --bg-color-hover: var(--gray-5);
+    --bg-color-pressed: var(--gray-10);
+    --bg-color-focused: var(--white);
+    --bg-color-disabled: var(--gray-100);
+
+    --border-color: var(--gray-350);
+    --border-color-hover: var(--gray-350);
+    --border-color-pressed: var(--gray-350);
+    --border-color-focused: var(--gray-350);
+    --border-color-disabled: var(--gray-250);
+
+    --text-color: var(--gray-600);
+    --text-color-disabled: var(--gray-350);
+
+    // .ngx-checkbox--checked
+    &--checked {
+        --bg-color: var(--teal-700);
+        --bg-color-hover: var(--teal-900);
+        --bg-color-pressed: var(--teal-1000);
+        --bg-color-focused: var(--teal-700);
+        --bg-color-disabled: var(--gray-350);
+    
+        --border-color: var(--teal-700);
+        --border-color-hover: var(--teal-800);
+        --border-color-pressed: var(--teal-1000);
+        --border-color-focused: var(--teal-700);
+        --border-color-disabled: var(--gray-350);
+    }
+}

@@ -2,20 +2,21 @@ import { Component, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-	selector: 'ngx-checkbox',
-	templateUrl: './checkbox.component.html',
-	styleUrls: ["./checkbox.component.scss"],
+	selector: 'ngx-radio-button',
+	templateUrl: './radio-button.component.html',
+	styleUrls: ["../checkbox/checkbox.component.scss", "./radio-button.component.scss"],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => NgxCheckboxComponent),
+            useExisting: forwardRef(() => NgxRadioButtonComponent),
             multi: true
         }
     ]
 })
-export class NgxCheckboxComponent {
-	/** Статус неопределенности чекбокса (в группе) (прим. 'Выбрать все') */
-	@Input() indeterminate!: boolean;
+export class NgxRadioButtonComponent {
+
+    /** Значение текущей радио кнопки */
+	@Input() value: string | undefined;
 
 	/** Статус неактивного чекбокса */
 	@Input() disabled: boolean | undefined;
@@ -23,8 +24,8 @@ export class NgxCheckboxComponent {
 	/** Всплывающая подсказка чекбокса */
 	@Input() tooltip: string | undefined;
 
-    /** Содержит текущее значение (модель) чекбокса */
-    model: boolean = false;
+    /** Содержит текущее значение (модель) радиокнопки */
+    model: string = '';
 
     /** Вызывается, когда модель была изменена */
     onChange: (_: any) => void = (_: any) => {};
@@ -36,10 +37,6 @@ export class NgxCheckboxComponent {
 
     /** Метод, который вызывается при обновлении модели */
     updateChanges() {
-        // если статус неопределенности в момент изменения чекбокса - вырубаем этот статус
-        if (this.indeterminate) {
-            this.indeterminate = false;
-        }
         this.onChange(this.model);
     }
 
@@ -47,7 +44,7 @@ export class NgxCheckboxComponent {
      * Записывает изначальное значение в поле.
      * @param model значение
      */
-    writeValue(model: boolean): void {
+    writeValue(model: string): void {
         this.model = model;
         this.onChange(this.model);
     }

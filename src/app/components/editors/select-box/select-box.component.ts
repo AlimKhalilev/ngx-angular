@@ -31,12 +31,12 @@ export class SelectBoxComponent implements ControlValueAccessor {
     }
 
     /**
-     * Записывает новое значение в поле.
+     * Записывает изначальное значение в поле.
      * @param value значение
      */
     writeValue(value: string): void {
         this.value = value;
-        this.updateChanges();
+        this.onChange(this.value);
     }
 
     /**

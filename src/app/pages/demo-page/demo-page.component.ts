@@ -7,7 +7,13 @@ import { Component } from '@angular/core';
 })
 export class DemoPageComponent {
     selectBoxValue: string = 'Тест';
-    isIndeterminate: boolean = false;
+
+    checkBoxDisabled: boolean = true;
+    checkBoxValue: boolean = false;
+    isIndeterminate: boolean = true;
+
+    radioButtonValue: string = '';
+    radioButtonList: string[] = ['blue', 'yellow', 'red'];
 
     buttonClicked() {
         console.log('Кликнули на кнопку');

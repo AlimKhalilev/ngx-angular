@@ -12,21 +12,8 @@
             </ngx-tabs>
         </div>
         <div class="demo__item">
-            <app-accordion [openState]="false" name="Наименование">
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-            </app-accordion>
 
             <app-accordion [openState]="false" name="Наименование">
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
                 <div>12345</div>
                 <div>12345</div>
                 <div>12345</div>
@@ -38,23 +25,19 @@
             </app-accordion>
 
             <app-accordion [openState]="false" name="Наименование">
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
-                <div>12345</div>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio iste tempora soluta quae molestiae quia nobis ullam excepturi explicabo. 
+                    Doloremque ipsa beatae dolor asperiores saepe! Placeat, fugit numquam atque consectetur eligendi vero cumque eum ipsum soluta adipisci 
+                    nesciunt? Enim, magni. Nobis exercitationem voluptatem dolorum similique, dolore iusto accusamus possimus! Ut qui cupiditate quos incidunt
+                     veritatis id perspiciatis libero rerum aut, obcaecati harum ex odit laudantium praesentium assumenda? Autem labore possimus sunt qui et 
+                     voluptates ad veniam odio dolore perferendis magnam sint, commodi recusandae pariatur corporis consequatur alias perspiciatis ea 
+                     quibusdam. Modi numquam reprehenderit asperiores assumenda quas, rerum quasi fugiat ducimus repudiandae similique soluta cupiditate, 
+                     facilis distinctio laboriosam. Dolores ab quae dolor illum aperiam sunt optio laboriosam atque nemo laborum. Aliquid asperiores, 
+                     excepturi ut repudiandae totam magni reprehenderit earum quibusdam iste. Aliquid commodi error nostrum sapiente corporis placeat 
+                     nisi saepe quos maxime consequuntur magni earum culpa ab numquam provident, nesciunt omnis reiciendis neque. Aspernatur culpa ad
+                      necessitatibus! Aut ducimus omnis natus officia ullam commodi sed, magni impedit. Labore velit deleniti quos tempora, illo 
+                      laboriosam ad nemo sed odio dignissimos quibusdam deserunt consequuntur dolores inventore iste rerum cum maxime aliquid earum ea? 
+                      Numquam consectetur sequi ipsum! Pariatur consequatur quibusdam quos perferendis molestias?
+                </div>
             </app-accordion>
         </div>
 
@@ -242,17 +225,47 @@
                         <h3 class="demo__fieldTitle">Checkbox</h3>
                     </div>
                     <div class="demo__col">
-                        <ngx-checkbox text="Проверка" [indeterminate]="isIndeterminate" [checked]="true"></ngx-checkbox>
+                        <ngx-checkbox [(ngModel)]="checkBoxValue" [indeterminate]="isIndeterminate">Проверка</ngx-checkbox>
+                        {{ checkBoxValue }}
                     </div>
                     <div class="demo__col">
-                        <ngx-checkbox text="Проверка" [disabled]="true"></ngx-checkbox>
+                        <ngx-checkbox [disabled]="true">Я выключен</ngx-checkbox>
                     </div>
                     <div class="demo__col">
-                        <ngx-button type="primary" text="set indedeterminate" (onClick)="isIndeterminate = !isIndeterminate"></ngx-button>
+                        <ngx-button type="primary" text="change indedeterminate" (onClick)="isIndeterminate = !isIndeterminate"></ngx-button>
+                        {{ isIndeterminate }}
+                    </div>
+                    <div class="demo__col">
+                        <ngx-checkbox [(ngModel)]="checkBoxDisabled" [disabled]="true">Я выключен и отмечен</ngx-checkbox>
                     </div>
                 </div>
 
             </div>
         </div>
+
+        <div class="demo__item">
+            <h2 class="demo__title">Ngx RadioButton</h2>
+            <div class="demo__content">
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">RadioButton</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ng-container *ngFor="let color of radioButtonList">
+                            <ngx-radio-button [(ngModel)]="radioButtonValue" [value]="color">{{ color }}</ngx-radio-button>
+                        </ng-container>
+                        {{ radioButtonValue }}
+                    </div>
+                    <div class="demo__col">
+                        <ngx-radio-button [disabled]="true">Я выключен</ngx-radio-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-radio-button [disabled]="true" [(ngModel)]="radioButtonValue" [value]="radioButtonValue">Я выключен и отмечен</ngx-radio-button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </section>

@@ -1,0 +1,23 @@
+<label 
+    class="ngx-checkbox"
+    [class.ngx-checkbox--checked]="model === value"
+    [matTooltip]="tooltip ? tooltip : ''"
+    [matTooltipDisabled]="!tooltip"
+>
+    <input 
+        class="ngx-checkbox__input visually-hidden"
+        type="radio" 
+        [disabled]="disabled ? disabled : false" 
+        [value]="value"
+        [(ngModel)]="model" 
+        (ngModelChange)="updateChanges()"
+    >
+    <div class="ngx-checkbox__container">
+        <div class="ngx-checkbox__box ngx-checkbox__box--circle">
+            <div class="ngx-checkbox__icon" [class.visible]="model === value"></div>
+        </div>
+        <span class="ngx-checkbox__text font-basic">
+            <ng-content></ng-content>
+        </span>
+    </div>
+</label>
