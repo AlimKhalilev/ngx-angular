@@ -1,0 +1,120 @@
+.ngx-textbox {
+    --bg-color: var(--white);
+    --bg-color-hover: var(--gray-25);
+    --bg-color-disabled: var(--gray-100);
+
+    --text-color: var(--gray-350);
+    --text-color-visible: var(--gray-600);
+    --text-color-focused: var(--gray-700);
+
+    --btn-clear-opacity: 0;
+    --btn-clear-opacity-visible: 1;
+
+    --btn-clear-pointer: none;
+    --btn-clear-pointer-visible: initial;
+
+    --line-color: rgba(0, 0, 0, 0.2);
+    --line-color-focused: var(--teal-800);
+
+    --border-color: rgba(0, 0, 0, 0.059);
+    --transition: 0.3s ease-in-out;
+
+    
+    // hover
+    &:hover {
+        --bg-color: var(--bg-color-hover);
+    }
+
+    // .ngx-textbox__container
+
+    &__container {
+        position: relative;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    // .ngx-textbox__input
+
+    &__input {
+        background-color: var(--bg-color);
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
+        border-radius: 4px;
+        margin: 0;
+        padding: 6px 38px 6px 12px;
+        outline: none;
+        transition: var(--transition);
+        width: 100%;
+
+        // когда поле не пустое
+        &.inputNotEmpty, &.inputNotEmpty ~ .ngx-textbox__content {
+            &:not(:disabled) {
+                --text-color: var(--text-color-visible);
+            }
+        }
+
+        // focus && active
+        &:focus, &:focus ~ .ngx-textbox__content {
+            &:not(:disabled) {
+                --bg-color: var(--bg-color);
+                --line-color: var(--line-color-focused);
+                --text-color: var(--text-color-focused);
+            }
+        }
+
+        // disabled
+        &:disabled, &:disabled ~ .ngx-textbox__content {
+            --bg-color: var(--bg-color-disabled);
+        }
+
+        // когда поле не disabled, в фокусе и когда оно не пустое - показываем кнопку очистки
+        &:focus, &.inputNotEmpty {
+            &:not(:disabled) {
+                ~ .ngx-textbox__content {
+                    --btn-clear-pointer: var(--btn-clear-pointer-visible);
+                    --btn-clear-opacity: var(--btn-clear-opacity-visible);
+                }
+            }
+        }
+
+        &.inputHasIcon {
+            padding-left: 38px;
+        }
+
+    }
+
+    // .ngx-textbox__action
+
+    &__action {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: var(--transition);
+        opacity: var(--btn-clear-opacity);
+        pointer-events: var(--btn-clear-pointer);
+    }
+
+    // .ngx-textbox__line
+
+    &__line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: var(--line-color);
+        transition: var(--transition);
+    }
+
+    // .ngx-textbox__icon
+
+    &__icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: var(--transition);
+        color: var(--text-color);
+    }
+}

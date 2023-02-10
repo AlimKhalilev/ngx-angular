@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SelectBoxModule } from './select-box/select-box.module';
+import { NgxTextBoxModule } from './textbox/textbox.module';
+import { NgxCheckboxModule } from './checkbox/checkbox.module';
+import { NgxRadioButtonModule } from './radiobutton/radio-button.module';
 
 @NgModule({
     declarations: [],
     imports: [CommonModule],
-    exports: [SelectBoxModule]
+    exports: [NgxTextBoxModule, NgxCheckboxModule, NgxRadioButtonModule]
 })
 export class EditorsModule {}

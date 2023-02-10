@@ -1,30 +1,36 @@
 import { Component, forwardRef, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-	selector: 'ngx-checkbox',
-	templateUrl: './checkbox.component.html',
-	styleUrls: ["./checkbox.component.scss"],
+    selector: 'ngx-textbox',
+    templateUrl: './textbox.component.html',
+    styleUrls: ['./textbox.component.scss'],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => NgxCheckboxComponent),
+            useExisting: forwardRef(() => NgxTextBoxComponent),
             multi: true
         }
     ]
 })
-export class NgxCheckboxComponent {
-	/** Статус неопределенности чекбокса (в группе) (прим. 'Выбрать все') */
-	@Input() indeterminate!: boolean;
+export class NgxTextBoxComponent implements ControlValueAccessor {
+    /** Статус неактивной кнопки */
+	@Input() disabled!: boolean;
 
-	/** Статус неактивного чекбокса */
-	@Input() disabled: boolean | undefined;
+    /** Опциональная ширина кнопки */
+	@Input() width!: number;
 
-	/** Всплывающая подсказка чекбокса */
-	@Input() tooltip: string | undefined;
+	/** Всплывающая подсказка кнопки */
+	@Input() tooltip!: string;
 
-    /** Содержит текущее значение (модель) чекбокса */
-    model: boolean = false;
+	/** Placeholder input элемента */
+	@Input() placeholder!: string;
+
+	/** Опциональная иконка в начале инпута */
+	@Input() iconStart!: string;
+
+    /** Содержит текущее значение поля (работает как ngModel, а также как и props) */
+    @Input() value: string = '';
 
     /** Вызывается, когда модель была изменена */
     onChange: (_: any) => void = (_: any) => {};
@@ -36,20 +42,16 @@ export class NgxCheckboxComponent {
 
     /** Метод, который вызывается при обновлении модели */
     updateChanges() {
-        // если статус неопределенности в момент изменения чекбокса - вырубаем этот статус
-        if (this.indeterminate) {
-            this.indeterminate = false;
-        }
-        this.onChange(this.model);
+        this.onChange(this.value);
     }
 
     /**
      * Записывает изначальное значение в поле.
-     * @param model значение
+     * @param value значение
      */
-    writeValue(model: boolean): void {
-        this.model = model;
-        this.onChange(this.model);
+    writeValue(value: string): void {
+        this.value = value;
+        this.onChange(this.value);
     }
 
     /**
@@ -67,6 +69,4 @@ export class NgxCheckboxComponent {
     registerOnTouched(fn: any): void {
         this.onTouched = fn;
     }
-
 }
-

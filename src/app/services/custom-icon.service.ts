@@ -69,5 +69,9 @@ export class CustomIconService {
 			'ngx-dash-20',
 			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/20/ngx-dash-20.svg')
 		) 
+        this.matIconRegistry.addSvgIcon(
+			'ngx-line-arrow-20',
+			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/20/ngx-line-arrow-20.svg')
+		) 
 	}
 }

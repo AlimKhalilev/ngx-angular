@@ -24,7 +24,7 @@ export class NgxButtonComponent implements OnInit {
 	@Input() disabled!: boolean;
 
 	/** Опциональная ширина кнопки */
-	@Input() width!: string;
+	@Input() width!: number;
 
 	/** Всплывающая подсказка кнопки */
 	@Input() tooltip!: string;

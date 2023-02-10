@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NumToDatePipe } from './num-to-date.pipe';
+import { SafePipe } from './safe.pipe';
+import { PluralDeclensionPipe } from './plural-declension.pipe';
 
 @NgModule({
-    declarations: [NumToDatePipe],
+    declarations: [SafePipe, PluralDeclensionPipe],
     imports: [CommonModule],
-    exports: [NumToDatePipe]
+    exports: [SafePipe, PluralDeclensionPipe]
 })
 export class PipesModule {}

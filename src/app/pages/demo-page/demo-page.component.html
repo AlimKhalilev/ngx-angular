@@ -1,10 +1,6 @@
 <section class="demo">
     <div class="demo__inner">
         <div class="demo__item">
-            <select-box [(ngModel)]="selectBoxValue"></select-box>
-            <p>Значение: {{ selectBoxValue }}</p>
-        </div>
-        <div class="demo__item">
             <ngx-tabs>
                 <ngx-tab name="Вкладка 1">Контент 1</ngx-tab>
                 <ngx-tab name="Вкладка 2">Контент 2</ngx-tab>
@@ -73,10 +69,10 @@
                         <h3 class="demo__fieldTitle">Icon+Text Button</h3>
                     </div>
                     <div class="demo__col">
-                        <ngx-button icon="ngx-search-20" text="Action" (onClick)="buttonClicked()"> </ngx-button>
+                        <ngx-button icon="ngx-search-20" (onClick)="buttonClicked()">Action</ngx-button>
                     </div>
                     <div class="demo__col">
-                        <ngx-button icon="ngx-search-20" text="Action" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                        <ngx-button icon="ngx-search-20" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
                     </div>
                 </div>
 
@@ -85,10 +81,10 @@
                         <h3 class="demo__fieldTitle">Text Button</h3>
                     </div>
                     <div class="demo__col">
-                        <ngx-button text="Action" (onClick)="buttonClicked()"> </ngx-button>
+                        <ngx-button (onClick)="buttonClicked()">Action</ngx-button>
                     </div>
                     <div class="demo__col">
-                        <ngx-button text="Action" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                        <ngx-button [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
                     </div>
                 </div>
 
@@ -97,10 +93,10 @@
                         <h3 class="demo__fieldTitle">Text Color Button</h3>
                     </div>
                     <div class="demo__col">
-                        <ngx-button type="text-color" text="Action" (onClick)="buttonClicked()"> </ngx-button>
+                        <ngx-button type="text-color" (onClick)="buttonClicked()">Action</ngx-button>
                     </div>
                     <div class="demo__col">
-                        <ngx-button type="text-color" text="Action" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                        <ngx-button type="text-color" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
                     </div>
                 </div>
 
@@ -109,10 +105,10 @@
                         <h3 class="demo__fieldTitle">Text Base Color Button</h3>
                     </div>
                     <div class="demo__col">
-                        <ngx-button type="primary" text="Action" (onClick)="buttonClicked()"> </ngx-button>
+                        <ngx-button type="primary" (onClick)="buttonClicked()">Action</ngx-button>
                     </div>
                     <div class="demo__col">
-                        <ngx-button type="primary" text="Action" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                        <ngx-button type="primary" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
                     </div>
                 </div>
 
@@ -121,10 +117,10 @@
                         <h3 class="demo__fieldTitle">Danger Color Button</h3>
                     </div>
                     <div class="demo__col">
-                        <ngx-button type="danger" text="Delete" (onClick)="buttonClicked()"> </ngx-button>
+                        <ngx-button type="danger" (onClick)="buttonClicked()">Delete</ngx-button>
                     </div>
                     <div class="demo__col">
-                        <ngx-button type="danger" text="Delete" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                        <ngx-button type="danger" [disabled]="true" (onClick)="buttonClicked()">Delete</ngx-button>
                     </div>
                 </div>
 
@@ -133,11 +129,22 @@
                         <h3 class="demo__fieldTitle">Icon+Text Color Button</h3>
                     </div>
                     <div class="demo__col">
-                        <ngx-button type="primary" text="Action" icon="ngx-search-20" (onClick)="buttonClicked()"> </ngx-button>
+                        <ngx-button type="primary" icon="ngx-search-20" (onClick)="buttonClicked()">Action</ngx-button>
                     </div>
                     <div class="demo__col">
-                        <ngx-button type="primary" text="Action" icon="ngx-search-20" [disabled]="true" (onClick)="buttonClicked()">
-                        </ngx-button>
+                        <ngx-button type="primary" icon="ngx-search-20" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Icon+Text Color Button Width</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="primary" [width]="200"  icon="ngx-search-20" (onClick)="buttonClicked()">Action</ngx-button>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="primary" [width]="200" icon="ngx-search-20" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
                     </div>
                 </div>
 
@@ -146,10 +153,10 @@
                         <h3 class="demo__fieldTitle">Border Button</h3>
                     </div>
                     <div class="demo__col">
-                        <ngx-button type="secondary" text="Action" tooltip="Подсказка" (onClick)="buttonClicked()"> </ngx-button>
+                        <ngx-button type="secondary" tooltip="Подсказка" (onClick)="buttonClicked()">Action</ngx-button>
                     </div>
                     <div class="demo__col">
-                        <ngx-button type="secondary" text="Action" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+                        <ngx-button type="secondary" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
                     </div>
                 </div>
 
@@ -218,6 +225,70 @@
         </div>
 
         <div class="demo__item">
+            <h2 class="demo__title">Ngx TextBox</h2>
+            <div class="demo__content">
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">TextBox</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-textbox [(ngModel)]="textBoxValue"></ngx-textbox>
+                    </div>
+                    <div class="demo__col">
+                        <p>Значение: {{ textBoxValue }}</p>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">TextBox disabled</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-textbox [disabled]="true" [(ngModel)]="textBoxValue"></ngx-textbox>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">TextBox placeholder</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-textbox placeholder="Введите текст"></ngx-textbox>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">TextBox custom width</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-textbox [width]="250" [(ngModel)]="textBoxValue"></ngx-textbox>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">TextBox icon start</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-textbox iconStart="ngx-search-20"></ngx-textbox>
+                    </div>
+                </div>
+
+                
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">TextBox simple value</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-textbox iconStart="ngx-search-20" value="Дефолтное значени"></ngx-textbox>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="demo__item">
             <h2 class="demo__title">Ngx Checkbox</h2>
             <div class="demo__content">
                 <div class="demo__row">
@@ -226,20 +297,38 @@
                     </div>
                     <div class="demo__col">
                         <ngx-checkbox [(ngModel)]="checkBoxValue" [indeterminate]="isIndeterminate">Проверка</ngx-checkbox>
+                    </div>
+                    <div class="demo__col">
                         {{ checkBoxValue }}
+                    </div>
+                    <div class="demo__col">
+                        <ngx-button type="primary" (onClick)="isIndeterminate = !isIndeterminate">indeterminate: {{ isIndeterminate }}</ngx-button>
+                    </div>
+                </div>
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Checkbox disabled</h3>
                     </div>
                     <div class="demo__col">
                         <ngx-checkbox [disabled]="true">Я выключен</ngx-checkbox>
                     </div>
-                    <div class="demo__col">
-                        <ngx-button type="primary" text="change indedeterminate" (onClick)="isIndeterminate = !isIndeterminate"></ngx-button>
-                        {{ isIndeterminate }}
+                </div>
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Checkbox disabled checked</h3>
                     </div>
                     <div class="demo__col">
                         <ngx-checkbox [(ngModel)]="checkBoxDisabled" [disabled]="true">Я выключен и отмечен</ngx-checkbox>
                     </div>
                 </div>
-
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Checkbox checked basic value</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-checkbox [checked]="true">Я включен базово (не через модель)</ngx-checkbox>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -254,10 +343,37 @@
                         <ng-container *ngFor="let color of radioButtonList">
                             <ngx-radio-button [(ngModel)]="radioButtonValue" [value]="color">{{ color }}</ngx-radio-button>
                         </ng-container>
+                    </div>
+                    <div class="demo__col">
                         {{ radioButtonValue }}
+                    </div>
+                </div>
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">RadioButton another</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ng-container *ngFor="let color of radioButtonNewList">
+                            <ngx-radio-button [(ngModel)]="radioButtonNewValue" [value]="color">{{ color }}</ngx-radio-button>
+                        </ng-container>
+                    </div>
+                    <div class="demo__col">
+                        {{ radioButtonNewValue }}
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">RadioButton disabled</h3>
                     </div>
                     <div class="demo__col">
                         <ngx-radio-button [disabled]="true">Я выключен</ngx-radio-button>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">RadioButton disabled checked</h3>
                     </div>
                     <div class="demo__col">
                         <ngx-radio-button [disabled]="true" [(ngModel)]="radioButtonValue" [value]="radioButtonValue">Я выключен и отмечен</ngx-radio-button>

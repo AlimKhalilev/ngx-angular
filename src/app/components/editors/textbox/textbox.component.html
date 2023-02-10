@@ -1,0 +1,21 @@
+<div class="ngx-textbox" [matTooltip]="tooltip ? tooltip : ''" [matTooltipDisabled]="!tooltip" [style.width.px]="width ? width : null">
+    <div class="ngx-textbox__container">
+        <input
+            class="ngx-textbox__input font-basic"
+            [class.inputNotEmpty]="value !== ''"
+            [class.inputHasIcon]="iconStart"
+            type="text"
+            [(ngModel)]="value"
+            (ngModelChange)="updateChanges()"
+            [placeholder]="placeholder ? placeholder : ''"
+            [disabled]="disabled ? disabled : false"
+        />
+        <div class="ngx-textbox__content">
+            <ng-container *ngIf="iconStart">
+                <mat-icon class="ngx-textbox__icon icon-20" [svgIcon]="iconStart"></mat-icon>
+            </ng-container>
+            <ngx-button class="ngx-textbox__action" type="small" icon="ngx-close-16" (onClick)="writeValue('')"></ngx-button>
+            <div class="ngx-textbox__line"></div>
+        </div>
+    </div>
+</div>

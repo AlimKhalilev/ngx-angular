@@ -1,21 +1,30 @@
-import { Component, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'select-box',
-    templateUrl: './select-box.component.html',
-    styleUrls: ['./select-box.component.scss'],
+	selector: 'ngx-checkbox',
+	templateUrl: './checkbox.component.html',
+	styleUrls: ["./checkbox.component.scss"],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => SelectBoxComponent),
+            useExisting: forwardRef(() => NgxCheckboxComponent),
             multi: true
         }
     ]
 })
-export class SelectBoxComponent implements ControlValueAccessor {
-    /** Содержит текущее значение поля */
-    value: string = '';
+export class NgxCheckboxComponent {
+	/** Статус неопределенности чекбокса (в группе) (прим. 'Выбрать все') */
+	@Input() indeterminate!: boolean;
+
+	/** Статус неактивного чекбокса */
+	@Input() disabled: boolean | undefined;
+
+	/** Всплывающая подсказка чекбокса */
+	@Input() tooltip: string | undefined;
+
+    /** Содержит текущее значение (модель) чекбокса (также принимает props 'checked') */
+    @Input('checked') model: boolean = false;
 
     /** Вызывается, когда модель была изменена */
     onChange: (_: any) => void = (_: any) => {};
@@ -27,16 +36,20 @@ export class SelectBoxComponent implements ControlValueAccessor {
 
     /** Метод, который вызывается при обновлении модели */
     updateChanges() {
-        this.onChange(this.value);
+        // если статус неопределенности в момент изменения чекбокса - вырубаем этот статус
+        if (this.indeterminate) {
+            this.indeterminate = false;
+        }
+        this.onChange(this.model);
     }
 
     /**
      * Записывает изначальное значение в поле.
-     * @param value значение
+     * @param model значение
      */
-    writeValue(value: string): void {
-        this.value = value;
-        this.onChange(this.value);
+    writeValue(model: boolean): void {
+        this.model = model;
+        this.onChange(this.model);
     }
 
     /**
@@ -54,4 +67,6 @@ export class SelectBoxComponent implements ControlValueAccessor {
     registerOnTouched(fn: any): void {
         this.onTouched = fn;
     }
+
 }
+

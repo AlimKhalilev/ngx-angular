@@ -105,8 +105,25 @@
         --text-color-disabled: var(--gray-350);
     }
 
+    // .ngx-button--small-close, .ngx-button--tile-close
+    &--small-close, &--tile-close {
+        --bg-color: transparent;
+        --bg-color-hover: var(--alert-red-hover);
+        --bg-color-pressed: var(--alert-red-active);
+        --bg-color-focused: var(--alert-red-hover);
+        --bg-color-disabled: transparent;
+
+        --text-color: var(--gray-500);
+        --text-color-hover: var(--white);
+        --text-color-pressed: var(--white);
+        --text-color-focused: var(--white);
+        --text-color-disabled: var(--gray-350);
+    }
+
     // .ngx-button--small, .ngx-button--small-close
     &--small, &--small-close {
+        --outline-color: var(--bg-color);
+
         height: 24px;
         padding: 0;
 
@@ -121,21 +138,6 @@
             max-width: 16px;
             height: 16px;
         }
-    }
-
-    // .ngx-button--small-close, .ngx-button--tile-close
-    &--small-close, &--tile-close {
-        --bg-color: transparent;
-        --bg-color-hover: var(--alert-red-hover);
-        --bg-color-pressed: var(--alert-red-active);
-        --bg-color-focused: var(--alert-red-hover);
-        --bg-color-disabled: transparent;
-
-        --text-color: var(--gray-500);
-        --text-color-hover: var(--white);
-        --text-color-pressed: var(--white);
-        --text-color-focused: var(--white);
-        --text-color-disabled: var(--gray-350);
     }
 
     // .ngx-button--tile, .ngx-button--tile-close
@@ -185,6 +187,7 @@
 
     &__container {
         display: flex;
+        justify-content: center;
         height: 34px;
         padding: 0 11px;
         transition: var(--transition);
@@ -227,5 +230,9 @@
         font-weight: 400;
         font-size: 14px;
         color: var(--text-color);
+
+        &:empty {
+            display: none;
+        }
     }
 }

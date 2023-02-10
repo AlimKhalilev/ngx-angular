@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./demo-page.component.scss']
 })
 export class DemoPageComponent {
-    selectBoxValue: string = 'Тест';
+    textBoxValue: string = 'Тест';
 
     checkBoxDisabled: boolean = true;
     checkBoxValue: boolean = false;
@@ -14,6 +14,9 @@ export class DemoPageComponent {
 
     radioButtonValue: string = '';
     radioButtonList: string[] = ['blue', 'yellow', 'red'];
+
+    radioButtonNewValue: string = '';
+    radioButtonNewList: string[] = ['blue', 'yellow', 'red'];
 
     buttonClicked() {
         console.log('Кликнули на кнопку');
