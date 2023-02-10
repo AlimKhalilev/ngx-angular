@@ -21,4 +21,8 @@ export class DemoPageComponent {
     buttonClicked() {
         console.log('Кликнули на кнопку');
     }
+
+    textBoxBtnClick() {
+        console.log('кликнули в текстинпуте');
+    }
 }

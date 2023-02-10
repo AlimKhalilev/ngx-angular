@@ -21,6 +21,10 @@ export class CustomIconService {
 			'ngx-close-16',
 			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/16/ngx-close-16.svg')
 		) 
+        this.matIconRegistry.addSvgIcon(
+			'ngx-arrow-right-16',
+			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/16/ngx-arrow-right-16.svg')
+		) 
 
 
         // 20
@@ -68,10 +72,6 @@ export class CustomIconService {
         this.matIconRegistry.addSvgIcon(
 			'ngx-dash-20',
 			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/20/ngx-dash-20.svg')
-		) 
-        this.matIconRegistry.addSvgIcon(
-			'ngx-line-arrow-20',
-			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/20/ngx-line-arrow-20.svg')
-		) 
+		)
 	}
 }

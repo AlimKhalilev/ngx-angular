@@ -1,7 +1,14 @@
 <div class="ngx-tabs">
     <ul class="ngx-tabs__list">
-        <li class="ngx-tabs__tab" *ngFor="let tab of tabs" [class.customTabs__tab--active]="tab.active" (click)="selectTab(tab)">
-            {{ tab.name }}
+        <li
+            class="ngx-tabs__tab font-basic"
+            *ngFor="let tab of tabs"
+            [class.ngx-tabs__tab--active]="tab.active"
+            [class.ngx-tabs__tab--marked]="tab.marked"
+            [class.ngx-tabs__tab--disabled]="tab.disabled"
+            (click)="selectTab(tab)"
+        >
+            <span class="ngx-tabs__text">{{ tab.caption }}</span>
         </li>
     </ul>
     <div class="ngx-tabs__content">

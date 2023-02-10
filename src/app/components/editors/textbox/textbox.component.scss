@@ -91,8 +91,13 @@
         top: 50%;
         transform: translateY(-50%);
         transition: var(--transition);
-        opacity: var(--btn-clear-opacity);
-        pointer-events: var(--btn-clear-pointer);
+
+        // .ngx-textbox__action--clear
+
+        &--clear {
+            opacity: var(--btn-clear-opacity);
+            pointer-events: var(--btn-clear-pointer);
+        }
     }
 
     // .ngx-textbox__line

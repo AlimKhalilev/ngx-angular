@@ -1,12 +1,6 @@
 <section class="demo">
     <div class="demo__inner">
-        <div class="demo__item">
-            <ngx-tabs>
-                <ngx-tab name="Вкладка 1">Контент 1</ngx-tab>
-                <ngx-tab name="Вкладка 2">Контент 2</ngx-tab>
-                <ngx-tab name="Вкладка 3">Контент 3</ngx-tab>
-            </ngx-tabs>
-        </div>
+
         <div class="demo__item">
 
             <app-accordion [openState]="false" name="Наименование">
@@ -35,6 +29,21 @@
                       Numquam consectetur sequi ipsum! Pariatur consequatur quibusdam quos perferendis molestias?
                 </div>
             </app-accordion>
+        </div>
+
+        <div class="demo__item">
+            <h2 class="demo__title">Ngx Tabs</h2>
+            <div class="demo__content">
+                <div class="demo__row">
+                    <ngx-tabs>
+                        <ngx-tab caption="Вкладка 1">Контент 1</ngx-tab>
+                        <ngx-tab caption="Вкладка 2">Контент 2</ngx-tab>
+                        <ngx-tab caption="Вкладка 3">Контент 3</ngx-tab>
+                        <ngx-tab caption="Отмечена" [marked]="true">Контент 4</ngx-tab>
+                        <ngx-tab caption="Выключена" [disabled]="true">Контент 6</ngx-tab>
+                    </ngx-tabs>
+                </div>
+            </div>
         </div>
 
         <div class="demo__item">
@@ -262,7 +271,7 @@
                         <h3 class="demo__fieldTitle">TextBox custom width</h3>
                     </div>
                     <div class="demo__col">
-                        <ngx-textbox [width]="250" [(ngModel)]="textBoxValue"></ngx-textbox>
+                        <ngx-textbox [width]="350" [(ngModel)]="textBoxValue"></ngx-textbox>
                     </div>
                 </div>
 
@@ -271,17 +280,25 @@
                         <h3 class="demo__fieldTitle">TextBox icon start</h3>
                     </div>
                     <div class="demo__col">
-                        <ngx-textbox iconStart="ngx-search-20"></ngx-textbox>
+                        <ngx-textbox placeholder="Найти что-то" iconStart="ngx-search-20"></ngx-textbox>
                     </div>
                 </div>
-
                 
                 <div class="demo__row">
                     <div class="demo__col demo__col--field">
                         <h3 class="demo__fieldTitle">TextBox simple value</h3>
                     </div>
                     <div class="demo__col">
-                        <ngx-textbox iconStart="ngx-search-20" value="Дефолтное значени"></ngx-textbox>
+                        <ngx-textbox iconStart="ngx-search-20" value="Дефолтное значение"></ngx-textbox>
+                    </div>
+                </div>
+
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">TextBox custom button</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-textbox btnIcon="ngx-arrow-right-16" (onBtnClick)="textBoxBtnClick()"></ngx-textbox>
                     </div>
                 </div>
 

@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -28,6 +28,12 @@ export class NgxTextBoxComponent implements ControlValueAccessor {
 
 	/** Опциональная иконка в начале инпута */
 	@Input() iconStart!: string;
+
+    /** Иконка для кастомной кнопки */
+	@Input() btnIcon!: string;
+
+    /** Событие клика на кастомную кнопку */
+	@Output() onBtnClick = new EventEmitter();
 
     /** Содержит текущее значение поля (работает как ngModel, а также как и props) */
     @Input() value: string = '';

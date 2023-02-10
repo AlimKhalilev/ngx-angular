@@ -1,22 +1,107 @@
+:host {
+    max-width: 100%;
+}
+
 .ngx-tabs {
 
     // .ngx-tabs__list
 
     &__list {
         display: flex;
+        overflow-y: auto;
     }
 
     // .ngx-tabs__tab
 
     &__tab {
-        padding: 4px;
+        --bg-color: transparent;
+        --bg-color-hover: var(--gray-2);
+        --bg-color-disabled: transparent;
+    
+        --text-color: var(--gray-450);
+        --text-color-hover: var(--gray-550);
+        --text-color-disabled: var(--gray-350);
+
+        --line-color: var(--teal-600);
+        --line-color-disabled: var(--gray-400);
+
+        --marked-color: var(--teal-700);
+        --transition: 0.3s ease-in-out;
+
+        position: relative;
+        background-color: var(--bg-color);
+        padding: 10px 8px;
+        color: var(--text-color);
+        border-radius: 8px 8px 0px 0px;
         cursor: pointer;
-        border: 1px solid var(--gray-600);
+        transition: var(--transition);
+        white-space: nowrap;
+
+        &:hover {
+            --bg-color: var(--bg-color-hover);
+            --text-color: var(--text-color-hover);
+        }
+
+        // .ngx-tabs__tab--active
+
+        &--active {
+            --text-color: var(--gray-700);
+            --text-color-hover: var(--gray-800);
+
+            &::after {
+                content: '';
+                position: absolute;
+                height: 3px;
+                background-color: var(--line-color);
+                bottom: 0;
+                left: 0;
+                width: calc(100% - 16px);
+                left: 8px;
+                border-radius: 20px;
+            }
+        }
+
+        // .ngx-tabs__tab--marked
+
+        &--marked {
+            padding-right: 20px;
+
+            &::before {
+                content: "";
+                position: absolute;
+                background-color: var(--marked-color);
+                width: 8px;
+                height: 8px;
+                top: 10px;
+                right: 8px;
+                border-radius: 50%;
+            }
+
+            &::after {
+                width: calc(100% - 28px);
+            }
+        }
+
+        // .ngx-tabs__tab--disabled
+
+        &--disabled {
+            --bg-color: var(--bg-color-disabled);
+            --text-color: var(--text-color-disabled);
+            --line-color: var(--line-color-disabled);
+
+            pointer-events: none;
+        }
     }
 
     // .ngx-tabs__content
 
     &__content {
+
+    }
+
+    // .ngx-tabs__text
+
+    &__text {
 
     }
 }
