@@ -1,1 +1,42 @@
-<p>tree-view works!</p>
+<button (click)="toggleAllItems()">toggle All</button>
+
+<div class="ngx-tree-view">
+    <div class="ngx-tree-view__container ngx-tree-view__container--parent">
+        <ng-container *ngTemplateOutlet="recursiveTreeViewTpl; context: { dataSource: dataSource, lvl: 0 }"></ng-container>
+
+        <ng-template #recursiveTreeViewTpl let-dataSource="dataSource" let-lvl="lvl">
+            <ng-container *ngFor="let item of dataSource; let index = index">
+                <div class="ngx-tree-view__container">
+                    <div
+                        #itemRef
+                        class="ngx-tree-view__item"
+                        [class.ngx-tree-view__item--expanded]="item.expanded"
+                        [class.ngx-tree-view__item--selected]="item.selected"
+                        [class.ngx-tree-view__item--last]="item.id === inlineDataSource.length - 1"
+                        [attr.style]="'--lvl:' + lvl"
+                        (click)="onSelectItem(item)"
+                    >
+                        <div 
+                            class="ngx-tree-view__chevron"                                 
+                            [class.ngx-tree-view__chevron--expanded]="item.expanded"
+                            [class.ngx-tree-view__chevron--visible]="item.children && item.children.length"
+                            (click)="onExpandItem(item, $event)"
+                        >
+                            <mat-icon
+                                class="icon-12"
+                                svgIcon="ngx-chevron-12"
+                            ></mat-icon>
+                        </div>
+                        <div class="ngx-tree-view__content">
+                            <mat-icon *ngIf="listHasSomeKey(dataSource, 'icon')" class="ngx-tree-view__icon icon-20" [svgIcon]="item.icon"></mat-icon>
+                            <span class="ngx-tree-view__caption font-basic" [matTooltip]="item.tooltip" [attr.data-id]="item.id">{{ item.caption }}</span>
+                        </div>
+                    </div>
+                    <div class="ngx-tree-view__group" [style.height.px]="item.expanded ? null : 0" [@slideToggle]="item.expanded" *ngIf="item.children && item.children.length">
+                        <ng-container *ngTemplateOutlet="recursiveTreeViewTpl; context: { dataSource: item.children, lvl: lvl + 1 }"></ng-container>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-template>
+    </div>
+</div>

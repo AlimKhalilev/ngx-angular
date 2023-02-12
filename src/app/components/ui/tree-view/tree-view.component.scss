@@ -1,0 +1,118 @@
+:host {
+    max-width: 100%;
+}
+
+.ngx-tree-view {
+    --padding-left: 8px;
+    --padding-step: 16px;
+    --space-beetween-items: 4px;
+
+    --bg-color: transparent;
+    --bg-color-hover: var(--gray-5);
+    --bg-color-selected: var(--gray-10);
+
+    --chevron-color: var(--gray-450);
+    --icon-color: var(--gray-700);
+    --text-color: var(--gray-700);
+
+    --transition: 0.3s ease-in-out;
+
+    // .ngx-tree-view__container
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    // .ngx-tree-view__group
+
+    &__group {
+
+    }
+
+    // .ngx-tree-view__item
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        padding: 4px 8px 4px 0px;
+        border-radius: 4px;
+        background-color: var(--bg-color);
+        padding-left: calc(var(--padding-left) + (var(--padding-step) * var(--lvl)));
+        transition: var(--transition);
+        margin-bottom: var(--space-beetween-items);
+        max-width: 100%;
+
+        &:hover {
+            --bg-color: var(--bg-color-hover);
+        }
+
+        // .ngx-tree-view__item--selected
+
+        &--selected, &--selected:hover {
+            --bg-color: var(--bg-color-selected);
+        }
+
+        // .ngx-tree-view__item--expanded
+
+        &--expanded {
+
+        }
+
+        // .ngx-tree-view__item--last
+
+        &--last {
+            margin-bottom: 0;
+        }
+
+    }
+
+    // .ngx-tree-view__chevron
+
+    &__chevron {
+        transition: var(--transition);
+        color: var(--chevron-color);
+        transform: rotate(-90deg);
+        opacity: 0;
+
+        // .ngx-tree-view__expanded
+
+        &--expanded {
+            transform: rotate(0deg);
+        }
+
+        // .ngx-tree-view__content--visible
+
+        &--visible {
+            opacity: 1;
+        }
+    }
+
+    // .ngx-tree-view__content
+
+    &__content {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    // .ngx-tree-view__icon
+
+    &__icon {
+        color: var(--icon-color);
+    }
+
+    // .ngx-tree-view__caption
+
+    &__caption {
+        color: var(--text-color);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

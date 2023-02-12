@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TreeViewComponent } from './tree-view.component';
+import { NgxTreeViewComponent } from './tree-view.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
-    declarations: [TreeViewComponent],
-    imports: [CommonModule],
-    exports: [TreeViewComponent]
+    declarations: [NgxTreeViewComponent],
+    imports: [CommonModule, MatIconModule, MatTooltipModule],
+    exports: [NgxTreeViewComponent]
 })
-export class TreeViewModule {}
+export class NgxTreeViewModule {}

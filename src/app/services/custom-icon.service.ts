@@ -15,6 +15,14 @@ export class CustomIconService {
 
     /** Регистрация кастомных иконок */
 	registerIcons() {
+        // 12
+
+        this.matIconRegistry.addSvgIcon(
+            'ngx-chevron-12',
+            this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/12/ngx-chevron-12.svg')
+        ) 
+
+
         // 16
 
         this.matIconRegistry.addSvgIcon(
