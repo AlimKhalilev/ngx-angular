@@ -1,16 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Subject } from 'rxjs';
 import { slideToggleAnimation } from 'src/app/animations/slide-toggle.animation';
-
-export interface INgxTreeView {
-    id?: number,
-    caption: string,
-    icon: string,
-    expanded?: boolean,
-    selected?: boolean,
-    tooltip?: string,
-    children?: INgxTreeView[],
-    onClick?: () => void
-}
+import { IMenuItem } from 'src/app/data/menu/menu-item';
 
 @Component({
     selector: 'ngx-tree-view',
@@ -24,16 +15,19 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
     @ViewChildren('itemRef') itemRef!: QueryList<ElementRef<HTMLDivElement>>;
     
     /** Ресурс данных для компонента treeView */
-	@Input() dataSource!: INgxTreeView[];
+	@Input() dataSource!: IMenuItem[];
 
     /** Список датасурса в один уровень */
-    inlineDataSource: INgxTreeView[] = [];
+    inlineDataSource: IMenuItem[] = [];
 
     /** Ссылка на объект, который в данный момент выделен */
-    selectedItem!: INgxTreeView;
+    selectedItem!: IMenuItem;
 
     /** Уникальный идентификатор объекта списка */
     uniqueId: number = 0;
+
+    /** Модель строки фильтра */
+    filterStr: string = '';
 
     constructor(private cd: ChangeDetectorRef) {}
 
@@ -46,63 +40,100 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
 
     ngOnInit(): void {
         this.convertRecursiveListToInline(this.dataSource);
-        console.log(this.inlineDataSource);
+        //console.log(this.inlineDataSource);
     }
 
-    private convertRecursiveListToInline(list: INgxTreeView[]): void {
+    private convertRecursiveListToInline(list: IMenuItem[], parent?: IMenuItem): void {
         list.forEach(item => {
             /** Изначальная инициализация незаполненных ключей */
-            item.id = this.uniqueId++;
+            item.posId = this.uniqueId++;
             item.expanded = item.expanded ? true : false;
+            item.visible = true;
+            item.toolTip = '';
+            item.parent = parent;
 
             if (item.selected) {
                 this.selectedItem = item;
             }
 
             this.inlineDataSource.push(item);
-            if (item.children && item.children.length) {
-                this.convertRecursiveListToInline(item.children);
+            if (item.items && item.items.length) {
+                this.convertRecursiveListToInline(item.items, item);
             }
         });
     }
 
     /** Событие клика на элемент (выбор элемента) */
-    public onSelectItem(item: INgxTreeView) {
+    public onSelectItem(item: IMenuItem) {
         this.selectedItem.selected = false;
         this.selectedItem = item;
         this.selectedItem.selected = true;
     }
 
     /** Событие клика на chevron (раскрытие списка) */
-    public onExpandItem(item: INgxTreeView, e: Event) {
+    public onExpandItem(item: IMenuItem, e: Event) {
         e.stopPropagation();
         item.expanded = !item.expanded;
     }
 
     /** Возвращает наличие в списке хоть одного элемента по ключу */
-    public listHasSomeKey(list: INgxTreeView[], key: 'icon'): boolean {
+    public listHasSomeKey(list: IMenuItem[], key: 'pictureData'): boolean {
         return list.some(item => item[key]);
     }
 
     /** Метод заполняющий тултип там, где у текста text-overlow: ellipsis; */
-    private fillTooltip(elRef: ElementRef<HTMLDivElement>) {
+    private fillTooltip(elRef: ElementRef<HTMLDivElement>): void {
         let el = elRef.nativeElement.querySelector('.ngx-tree-view__caption');
         if (el !== null) {
             if (((el as HTMLElement).offsetWidth < (el as HTMLElement).scrollWidth)) {
                 let id = (el as HTMLElement).dataset['id'];
                 if (id) {
-                    this.inlineDataSource[+id].tooltip = this.inlineDataSource[+id].caption;
+                    this.inlineDataSource[+id].toolTip = this.inlineDataSource[+id].caption;
                 }
             }
         }
     }
 
+    /** Метод добавляющие префикс base64 пути для картинки */
+    public getPictureBase64(src: string): string {
+        return `data:image/jpg;base64,${src}`;
+    }
+
     /** Метод скрывающий/раскрывающий все элементы списка */
-    public toggleAllItems() {
+    public toggleAllItems(): void {
+        let expandCount = 0;
+        let collapseCount = 0;
+
+        this.inlineDataSource.forEach(e => e.expanded ? expandCount++ : collapseCount++);
         this.inlineDataSource = this.inlineDataSource.map(e => {
-            e.expanded = !e.expanded;
+            e.expanded = (collapseCount >= expandCount);
             return e;
         });
+    }
+
+    public onFilterChange(): void {
+        this.inlineDataSource = this.inlineDataSource.map(e => {
+            if (this.filterStr) {
+                e.expanded = true;
+            }
+            if (e.caption.toLocaleLowerCase().includes(this.filterStr.toLocaleLowerCase())) {
+                this.changeItemVisible(e);
+            }
+            else {
+                //console.log(e.posId, false);
+                e.visible = false;
+            }
+            return e;
+        });
+    }
+
+    private changeItemVisible(item: IMenuItem) {
+        item.visible = true;
+        //console.log(item.posId, true);
+        
+        if (item.parent) {
+            this.changeItemVisible(item.parent);
+        }
     }
 
 }
