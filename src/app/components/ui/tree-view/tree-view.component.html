@@ -1,51 +1,53 @@
 <div class="ngx-tree-view">
-    <div class="ngx-tree-view__search">
+    <div *ngIf="hasFilter" class="ngx-tree-view__search">
         <ngx-textbox iconStart="ngx-search-20" [(ngModel)]="filterStr" (ngModelChange)="onFilterChange()"></ngx-textbox>
     </div>
 
-    <div class="ngx-tree-view__container ngx-tree-view__container--parent">
-        <ng-container *ngTemplateOutlet="recursiveTreeViewTpl; context: { dataSource: dataSource, lvl: 0 }"></ng-container>
-
-        <ng-template #recursiveTreeViewTpl let-dataSource="dataSource" let-lvl="lvl">
-            <ng-container *ngFor="let item of dataSource; let index = index">
-                <div class="ngx-tree-view__container">
-                    <div
-                        #itemRef
-                        *ngIf="item.visible"
-                        class="ngx-tree-view__item"
-                        [class.ngx-tree-view__item--expanded]="item.expanded"
-                        [class.ngx-tree-view__item--selected]="item.selected"
-                        [class.ngx-tree-view__item--last]="item.id === inlineDataSource.length - 1"
-                        [attr.style]="'--lvl:' + lvl"
-                        (click)="onSelectItem(item)"
-                    >
+    <div class="ngx-tree-view__wrapper">
+        <div class="ngx-tree-view__container">
+            <ng-container *ngTemplateOutlet="recursiveTreeViewTpl; context: { dataSource: dataSource, lvl: 0 }"></ng-container>
+    
+            <ng-template #recursiveTreeViewTpl let-dataSource="dataSource" let-lvl="lvl">
+                <ng-container *ngFor="let item of dataSource; let index = index">
+                    <div class="ngx-tree-view__container">
                         <div
-                            class="ngx-tree-view__chevron"
-                            [class.ngx-tree-view__chevron--expanded]="item.expanded"
-                            [class.ngx-tree-view__chevron--visible]="item.items && item.items.length"
-                            (click)="onExpandItem(item, $event)"
+                            *ngIf="item.visible"
+                            class="ngx-tree-view__item"
+                            [class.ngx-tree-view__item--expanded]="item.expanded"
+                            [class.ngx-tree-view__item--selected]="item.selected"
+                            [class.ngx-tree-view__item--last]="item.id === inlineDataSource.length - 1"
+                            [attr.style]="'--lvl:' + lvl"
+                            (click)="onSelectItem(item)"
                         >
-                            <mat-icon class="icon-12" svgIcon="ngx-chevron-12"></mat-icon>
-                        </div>
-                        <div class="ngx-tree-view__content">
-                            <div class="ngx-tree-view__picture" *ngIf="listHasSomeKey(dataSource, 'pictureData')">
-                                <img *ngIf="item.pictureData" [src]="getPictureBase64(item.pictureData)" alt="" />
+                            <div
+                                class="ngx-tree-view__chevron"
+                                [class.ngx-tree-view__chevron--expanded]="item.expanded"
+                                [class.ngx-tree-view__chevron--visible]="item.items && item.items.length"
+                                (click)="onExpandItem(item, $event)"
+                            >
+                                <mat-icon class="icon-12" svgIcon="ngx-chevron-12"></mat-icon>
                             </div>
-                            <span class="ngx-tree-view__caption font-basic" [matTooltip]="item.toolTip" [attr.data-id]="item.posId">{{
-                                item.caption
-                            }}</span>
+                            <div class="ngx-tree-view__content">
+                                <div class="ngx-tree-view__picture" *ngIf="listHasSomeKey(dataSource, 'pictureData')">
+                                    <img *ngIf="item.pictureData" [src]="getPictureBase64(item.pictureData)" alt="" />
+                                </div>
+                                <span #captionRef class="ngx-tree-view__caption font-basic" [matTooltip]="item.toolTip" [attr.data-id]="item.posId">
+                                    {{ item.caption }}
+                                </span>
+                            </div>
+                        </div>
+                        <div
+                            class="ngx-tree-view__group"
+                            [style.height.px]="item.expanded ? null : 0"
+                            [@slideToggle]="item.expanded"
+                            *ngIf="item.items && item.items.length"
+                        >
+                            <ng-container *ngTemplateOutlet="recursiveTreeViewTpl; context: { dataSource: item.items, lvl: lvl + 1 }"></ng-container>
                         </div>
                     </div>
-                    <div
-                        class="ngx-tree-view__group"
-                        [style.height.px]="item.expanded ? null : 0"
-                        [@slideToggle]="item.expanded"
-                        *ngIf="item.items && item.items.length"
-                    >
-                        <ng-container *ngTemplateOutlet="recursiveTreeViewTpl; context: { dataSource: item.items, lvl: lvl + 1 }"></ng-container>
-                    </div>
-                </div>
-            </ng-container>
-        </ng-template>
+                </ng-container>
+            </ng-template>
+        </div>
     </div>
+
 </div>

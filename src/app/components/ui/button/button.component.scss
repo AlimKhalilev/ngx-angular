@@ -21,6 +21,9 @@
     --text-color-focused: var(--gray-700);
     --text-color-disabled: var(--gray-350);
 
+    --chevron-color: var(--gray-500);
+    --chevron-color-disabled: var(--gray-350);
+
     --outline-color: transparent;
     --transition: 0.3s ease-in-out;
 
@@ -181,6 +184,7 @@
         
         --bg-color: var(--bg-color-disabled);
         --text-color: var(--text-color-disabled);
+        --chevron-color: var(--chevron-color-disabled);
     }
 
     // .ngx-button__container
@@ -234,5 +238,12 @@
         &:empty {
             display: none;
         }
+    }
+
+    // .ngx-button__chevron
+
+    &__chevron {
+        margin-left: 2px;
+        color: var(--chevron-color);
     }
 }

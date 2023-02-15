@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
 import { Subject } from 'rxjs';
 import { slideToggleAnimation } from 'src/app/animations/slide-toggle.animation';
 import { IMenuItem } from 'src/app/data/menu/menu-item';
@@ -11,11 +11,17 @@ import { IMenuItem } from 'src/app/data/menu/menu-item';
 })
 export class NgxTreeViewComponent implements OnInit, AfterViewInit {
 
-    /** Ссылка на список DOM элементов пунктов списка дерева */
-    @ViewChildren('itemRef') itemRef!: QueryList<ElementRef<HTMLDivElement>>;
+    /** Ссылка на список DOM элементов заголовков элемента */
+    @ViewChildren('captionRef') captionRef!: QueryList<ElementRef<HTMLDivElement>>;
     
     /** Ресурс данных для компонента treeView */
 	@Input() dataSource!: IMenuItem[];
+
+    /** Флаг возможности фильтрации treeView */
+	@Input() hasFilter: boolean = false;
+
+    /** Событие выбора элемента из списка */
+	@Output() onSelect = new EventEmitter<IMenuItem>();
 
     /** Список датасурса в один уровень */
     inlineDataSource: IMenuItem[] = [];
@@ -29,10 +35,13 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
     /** Модель строки фильтра */
     filterStr: string = '';
 
+    /** Модель строки фильтра (предыдущее значение) */
+    filterStrPrev: string = '';
+
     constructor(private cd: ChangeDetectorRef) {}
 
     ngAfterViewInit(): void {
-        this.itemRef.toArray().forEach((elRef, i) => {
+        this.captionRef.toArray().forEach((elRef, i) => {
             this.fillTooltip(elRef);
         });
         this.cd.detectChanges();
@@ -50,7 +59,10 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
             item.expanded = item.expanded ? true : false;
             item.visible = true;
             item.toolTip = '';
-            item.parent = parent;
+            
+            if (this.hasFilter) {
+                item.parent = parent;
+            }
 
             if (item.selected) {
                 this.selectedItem = item;
@@ -68,6 +80,7 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
         this.selectedItem.selected = false;
         this.selectedItem = item;
         this.selectedItem.selected = true;
+        this.onSelect.emit(this.selectedItem);
     }
 
     /** Событие клика на chevron (раскрытие списка) */
@@ -83,13 +96,10 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
 
     /** Метод заполняющий тултип там, где у текста text-overlow: ellipsis; */
     private fillTooltip(elRef: ElementRef<HTMLDivElement>): void {
-        let el = elRef.nativeElement.querySelector('.ngx-tree-view__caption');
-        if (el !== null) {
-            if (((el as HTMLElement).offsetWidth < (el as HTMLElement).scrollWidth)) {
-                let id = (el as HTMLElement).dataset['id'];
-                if (id) {
-                    this.inlineDataSource[+id].toolTip = this.inlineDataSource[+id].caption;
-                }
+        if ((elRef.nativeElement.offsetWidth < elRef.nativeElement.scrollWidth)) {
+            let id = elRef.nativeElement.dataset['id'];
+            if (id) {
+                this.inlineDataSource[+id].toolTip = this.inlineDataSource[+id].caption;
             }
         }
     }
@@ -111,25 +121,24 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
         });
     }
 
-    public onFilterChange(): void {
-        this.inlineDataSource = this.inlineDataSource.map(e => {
-            if (this.filterStr) {
-                e.expanded = true;
-            }
-            if (e.caption.toLocaleLowerCase().includes(this.filterStr.toLocaleLowerCase())) {
-                this.changeItemVisible(e);
-            }
-            else {
-                //console.log(e.posId, false);
+    /** Метод срабатывания фильтра списка, когда меняем значения инпута фильтра */
+    public onFilterChange(): void {        
+        if (this.filterStr !== this.filterStrPrev) {
+            this.inlineDataSource = this.inlineDataSource.map(e => {
                 e.visible = false;
-            }
-            return e;
-        });
+                if (e.caption.toLocaleLowerCase().includes(this.filterStr.toLocaleLowerCase())) {
+                    this.changeItemVisible(e);
+                }
+                return e;
+            });
+        }
+        this.filterStrPrev = this.filterStr;
     }
 
+    /** Рекурсивно изменяет видимость элемента у текущего элемента и у родителя */
     private changeItemVisible(item: IMenuItem) {
         item.visible = true;
-        //console.log(item.posId, true);
+        item.expanded = true;
         
         if (item.parent) {
             this.changeItemVisible(item.parent);

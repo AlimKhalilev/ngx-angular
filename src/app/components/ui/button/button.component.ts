@@ -12,22 +12,28 @@ export class NgxButtonComponent implements OnInit {
 	@Input() type: 'text' | 'text-color' | 'secondary' | 'primary' | 'danger' | 'small' | 'small-close' | 'tile' | 'tile-close' = 'text';
 
 	/** Иконка кнопки (список из matIcon или кастомные через matIconRegistry) */
-	@Input() icon!: string;
+	@Input() icon: string = '';
+
+    /** Цвет иконки кнопки (передается название цветов из _theme.scss) */
+	@Input() iconColor: string = '';
 
 	/** Флаг перевернутой иконки */
 	@Input() iconReverse: boolean = false;
 
 	/** Текст кнопки */
-	@Input() text!: string;
+	@Input() text: string = '';
 
 	/** Статус неактивной кнопки */
-	@Input() disabled!: boolean;
+	@Input() disabled: boolean = false;
 
 	/** Опциональная ширина кнопки */
 	@Input() width!: number;
 
+    /** Флаг кнопки с стрелкой (шевроном) */
+	@Input() chevron: boolean = false;
+
 	/** Всплывающая подсказка кнопки */
-	@Input() tooltip!: string;
+	@Input() tooltip: string = '';
 
 	/** Событие клика на кнопку */
 	@Output() onClick = new EventEmitter();

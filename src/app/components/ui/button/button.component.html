@@ -6,14 +6,29 @@
     [matTooltipDisabled]="!tooltip"
 >
     <!-- отнимаем 6 так как есть внешний невидимый отступ -->
-    <div class="ngx-button__container" [style.width.px]="width ? width - 6 : null" [class.ngx-button__container--iconOnly]="icon && !textRef.hasChildNodes()">
+    <div
+        class="ngx-button__container"
+        [style.width.px]="width ? width - 6 : null"
+        [class.ngx-button__container--iconOnly]="icon && !textRef.hasChildNodes()"
+    >
         <div class="ngx-button__content">
-            <mat-icon *ngIf="icon" [svgIcon]="icon" class="ngx-button__icon icon-20" [class.ngx-button__icon--reverse]="iconReverse">
-                {{ icon }}
+            <mat-icon
+                *ngIf="icon"
+                [attr.style]="iconColor ? '--text-color: var(--' + iconColor + ');' : null"
+                [svgIcon]="icon"
+                class="ngx-button__icon icon-20"
+                [class.ngx-button__icon--reverse]="iconReverse"
+            >
             </mat-icon>
             <span class="ngx-button__text" #textRef>
                 <ng-content></ng-content>
             </span>
+            <mat-icon
+                *ngIf="chevron"
+                svgIcon="ngx-chevron-16"
+                class="ngx-button__chevron icon-16"
+            >
+            </mat-icon>
         </div>
     </div>
 </button>

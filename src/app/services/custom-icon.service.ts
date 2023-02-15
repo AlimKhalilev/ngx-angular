@@ -26,12 +26,24 @@ export class CustomIconService {
         // 16
 
         this.matIconRegistry.addSvgIcon(
-			'ngx-close-16',
-			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/16/ngx-close-16.svg')
+			'ngx-dismiss-16',
+			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/16/ngx-dismiss-16.svg')
 		) 
         this.matIconRegistry.addSvgIcon(
 			'ngx-arrow-right-16',
 			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/16/ngx-arrow-right-16.svg')
+		) 
+        this.matIconRegistry.addSvgIcon(
+			'ngx-chevron-16',
+			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/16/ngx-chevron-16.svg')
+		) 
+        this.matIconRegistry.addSvgIcon(
+			'ngx-star-16',
+			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/16/ngx-star-16.svg')
+		) 
+        this.matIconRegistry.addSvgIcon(
+			'ngx-star-fill-16',
+			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/16/ngx-star-fill-16.svg')
 		) 
 
 

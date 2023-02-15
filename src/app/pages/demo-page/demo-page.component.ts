@@ -35,5 +35,9 @@ export class DemoPageComponent {
         this.treeViewRef.toggleAllItems();
     }
 
+    treeViewSelectItem(item: IMenuItem) {
+        console.log(item);
+    }
+
     treeViewDataSource: IMenuItem[] = MenuDataSource;
 }

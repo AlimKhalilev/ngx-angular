@@ -18,10 +18,20 @@
 
     --transition: 0.3s ease-in-out;
 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
     // .ngx-tree-view__search
 
     &__search {
         margin-bottom: 12px;
+    }
+
+    // .ngx-tree-view__wrapper
+
+    &__wrapper {
+        overflow-y: auto;
     }
 
     // .ngx-tree-view__container
