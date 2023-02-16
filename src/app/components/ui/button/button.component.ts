@@ -20,9 +20,6 @@ export class NgxButtonComponent implements OnInit {
 	/** Флаг перевернутой иконки */
 	@Input() iconReverse: boolean = false;
 
-	/** Текст кнопки */
-	@Input() text: string = '';
-
 	/** Статус неактивной кнопки */
 	@Input() disabled: boolean = false;
 

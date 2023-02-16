@@ -4,10 +4,12 @@ import { TabsModule } from './tabs/tabs.module';
 import { AccordionModule } from './accordion/accordion.module';
 import { NgxTreeViewModule } from './tree-view/tree-view.module';
 import { NgxButtonModule } from './button/button.module';
+import { NgxListItemModule } from './list-item/list-item.module';
+import { NgxContextMenuModule } from './context-menu/context-menu.module';
 
 @NgModule({
     declarations: [],
     imports: [CommonModule],
-    exports: [TabsModule, AccordionModule, NgxTreeViewModule, NgxButtonModule]
+    exports: [TabsModule, AccordionModule, NgxTreeViewModule, NgxButtonModule, NgxListItemModule, NgxContextMenuModule]
 })
 export class UiModule {}

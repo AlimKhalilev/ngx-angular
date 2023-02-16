@@ -23,6 +23,38 @@ export class DemoPageComponent {
     radioButtonNewValue: string = '';
     radioButtonNewList: string[] = ['blue', 'yellow', 'red'];
 
+    contextMenuData = [
+        {
+            text: 'Заглушка 1',
+            icon: 'ngx-search-20',
+            bordered: false,
+            children: []
+        },
+        {
+            text: 'Заглушка 2',
+            icon: 'ngx-search-20',
+            bordered: false,
+            children: []
+        },
+        {
+            text: 'Заглушка 3',
+            icon: 'ngx-search-20',
+            bordered: false,
+            children: [
+                {
+                    text: 'Заглушка 1 - 1',
+                    icon: 'ngx-search-20',
+                    bordered: false,
+                },
+                {
+                    text: 'Заглушка 2 - 1',
+                    icon: 'ngx-search-20',
+                    bordered: false,
+                },
+            ]
+        }
+    ]
+
     buttonClicked() {
         console.log('Кликнули на кнопку');
     }

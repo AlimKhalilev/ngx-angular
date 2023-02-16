@@ -1,0 +1,49 @@
+<div 
+    *ngIf="rightClickOpen" 
+    [matContextMenuTriggerFor]="childMenu" 
+    class="sherp-ui-dropdown-menu" 
+    (click)="onDropdownButtonClick($event)"
+	(menuOpened)="onMenuOpened()"
+	(menuClosed)="onMenuClosed()"
+    role="button"
+>
+    <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+</div>
+
+<div 
+    *ngIf="!rightClickOpen" 
+    [matMenuTriggerFor]="childMenu" 
+    class="sherp-ui-dropdown-menu" 
+    (click)="onDropdownButtonClick($event)"
+    (menuOpened)="onMenuOpened()"
+	(menuClosed)="onMenuClosed()"
+    role="button"
+>
+    <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+</div>
+
+<ng-template #contentTpl>
+    <ng-content></ng-content>
+</ng-template>
+
+<mat-menu 
+	class="ngx-context-mat-menu" 
+	#childMenu="matMenu" 
+	[overlapTrigger]="false" 
+	backdropClass="ngx-context-mat-menu-backdrop"
+>
+	<ng-container *ngFor="let child of items">
+        <ng-container *ngIf="child.children && child.children.length > 0">
+            <div mat-menu-item [matMenuTriggerFor]="menu.childMenu">
+                <ngx-list-item [text]="child.text" [chevron]="true"></ngx-list-item>
+            </div>
+            <ngx-context-menu #menu [items]="child.children"></ngx-context-menu>
+        </ng-container>
+
+        <ng-container *ngIf="!child.children || child.children.length === 0">
+            <div mat-menu-item>
+                <ngx-list-item [text]="child.text"></ngx-list-item>
+            </div>
+        </ng-container>
+	</ng-container>
+</mat-menu>

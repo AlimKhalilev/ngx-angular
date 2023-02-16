@@ -1,0 +1,10 @@
+<button class="ngx-list-item" [disabled]="disabled ? disabled : false" [matTooltip]="tooltip ? tooltip : ''" [matTooltipDisabled]="!tooltip">
+    <div class="ngx-list-item__container">
+        <div class="ngx-list-item__content">
+            <mat-icon *ngIf="icon" class="ngx-list-item__icon icon-20" [svgIcon]="icon"></mat-icon>
+            <span class="ngx-list-item__text font-basic">{{ text }}</span>
+            <span *ngIf="shortcut" class="ngx-list-item__shortcut font-basic">{{ shortcut }}</span>
+        </div>
+        <mat-icon *ngIf="chevron" class="ngx-list-item__chevron icon-16" svgIcon="ngx-chevron-16"></mat-icon>
+    </div>
+</button>
