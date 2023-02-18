@@ -1,0 +1,43 @@
+.ngx-context-mat-menu {
+    box-shadow: var(--shadow-flyout);
+    --mdc-shape-medium: 7px; // border-radius
+
+    .ngx-context-mat-menu {
+        margin: 4px
+    }
+
+    .mat-mdc-menu-content {
+        padding: 0;
+        border-radius: 7px;
+        background-color: var(--gray-50);
+        border: 1px solid var(--gray-200);
+
+        .mat-mdc-menu-item {
+            padding: 0;
+            min-height: unset;
+
+            &.border-bottom {
+                border-bottom: 1px solid var(--gray-5);
+            }
+
+            .mat-mdc-menu-submenu-icon {
+                display: none;
+            }
+
+            .mat-icon {
+                margin-right: 0;
+            }
+
+            .mdc-list-item__primary-text {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.cdk-overlay-connected-position-bounding-box ~ 
+.cdk-overlay-connected-position-bounding-box {
+    .ngx-context-mat-menu {
+        margin-left: 4px;
+    }
+}

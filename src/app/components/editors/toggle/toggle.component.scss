@@ -1,0 +1,133 @@
+.ngx-toggle {
+    --bg-color: var(--white);
+    --bg-color-hover: var(--gray-50);
+    --bg-color-pressed: var(--gray-100);
+    --bg-color-focused: var(--white);
+    --bg-color-disabled: var(--gray-50);
+
+    --border-color: var(--gray-450);
+    --border-color-hover: var(--gray-500);
+    --border-color-pressed: var(--gray-550);
+    --border-color-focused: var(--gray-450);
+    --border-color-disabled: var(--gray-350);
+
+    --circle-color: var(--border-color);
+    --circle-color-disabled: var(--gray-350);
+
+    --text-color: var(--gray-600);
+    --text-color-disabled: var(--gray-350);
+
+    --outline-color: transparent;
+    --transition: 0.3s ease-in-out;
+
+    // .ngx-toggle--checked
+    &--checked {
+        --bg-color: var(--teal-700);
+        --bg-color-hover: var(--teal-800);
+        --bg-color-pressed: var(--teal-900);
+        --bg-color-focused: var(--teal-700);
+        --bg-color-disabled: var(--gray-350);
+    
+        --border-color: var(--teal-700);
+        --border-color-hover: var(--teal-800);
+        --border-color-pressed: var(--teal-900);
+        --border-color-focused: var(--teal-700);
+        --border-color-disabled: var(--gray-350);
+
+        --circle-color: var(--white);
+        --circle-color-disabled: var(--gray-150);
+
+        .ngx-toggle__circle {
+            transform: translateX(20px);
+        }
+    }
+
+    // hover
+    &:hover {
+        --bg-color: var(--bg-color-hover);
+        --border-color: var(--border-color-hover);
+        --text-color: var(--text-color-hover);
+    }
+
+    // .ngx-toggle__input
+    &__input {
+
+        // pressed
+        &:active {
+            ~.ngx-toggle__container {
+                --bg-color: var(--bg-color-pressed);
+                --border-color: var(--border-color-pressed);
+                --text-color: var(--text-color-pressed);
+            }
+        }
+
+        // focus
+        &:focus:not(:active) {
+            ~.ngx-toggle__container {
+                --outline-color: var(--gray-600);
+            }
+        }
+
+        // disabled
+        &:disabled {
+            ~.ngx-toggle__container {
+                user-select: none;
+                pointer-events: none;
+                
+                --bg-color: var(--bg-color-disabled);
+                --border-color: var(--border-color-disabled);
+                --text-color: var(--text-color-disabled);
+                --circle-color: var(--circle-color-disabled);
+            }
+        }
+    }
+
+    // .ngx-toggle__container
+
+    &__container {
+        display: flex;
+        align-items: center;
+
+        padding: 6px;
+        border: 1px solid var(--outline-color);
+        border-radius: 4px;
+        transition: var(--transition);
+
+        &--onlyBox {
+            padding: 2px 3px;
+        }
+    }
+
+    // .ngx-toggle__text
+
+    &__text {
+        color: var(--text-color);
+
+        &:not(:empty) {
+            margin-right: 8px;
+        }
+    }
+
+    // .ngx-toggle__box
+
+    &__box {
+        background-color: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        padding: 3px;
+        width: 40px;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+    // .ngx-toggle__circle
+
+    &__circle {
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        background-color: var(--circle-color);
+        transition: var(--transition);
+    }
+
+}

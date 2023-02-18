@@ -364,10 +364,20 @@
             <div class="demo__content">
                 <div class="demo__row">
                     <div class="demo__col demo__col--field">
-                        <h3 class="demo__fieldTitle">Text</h3>
+                        <h3 class="demo__fieldTitle">On Click</h3>
                     </div>
                     <div class="demo__col">
                         <ngx-context-menu [items]="contextMenuData">
+                            <ngx-button type="secondary" [chevron]="true">Action</ngx-button>
+                        </ngx-context-menu>
+                    </div>
+                </div>
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">On Right Click</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-context-menu [items]="contextMenuData" [rightClickOpen]="true">
                             <ngx-button type="secondary" [chevron]="true">Action</ngx-button>
                         </ngx-context-menu>
                     </div>
@@ -486,6 +496,50 @@
                     </div>
                     <div class="demo__col">
                         <ngx-checkbox [checked]="true">Я включен базово (не через модель)</ngx-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo__item">
+            <h2 class="demo__title">Ngx Toggle</h2>
+            <div class="demo__content">
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Toggle</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-toggle [(ngModel)]="toggleValue"></ngx-toggle>
+                    </div>
+                    <div class="demo__col">
+                        {{ toggleValue }}
+                    </div>
+                </div>
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Toggle with value</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-toggle [(ngModel)]="toggleValue">Уведомления</ngx-toggle>
+                    </div>
+                    <div class="demo__col">
+                        {{ toggleValue }}
+                    </div>
+                </div>
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Toggle with value checked disabled</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-toggle [checked]="true" [disabled]="true">Уведомления</ngx-toggle>
+                    </div>
+                </div>
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Toggle with value unchecked disabled</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-toggle [checked]="false" [disabled]="true">Уведомления</ngx-toggle>
                     </div>
                 </div>
             </div>

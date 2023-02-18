@@ -1,0 +1,22 @@
+<label 
+    class="ngx-toggle"
+    [class.ngx-toggle--checked]="model"
+    [matTooltip]="tooltip ? tooltip : ''"
+    [matTooltipDisabled]="!tooltip"
+>
+    <input 
+        class="ngx-toggle__input visually-hidden" 
+        type="checkbox" 
+        [disabled]="disabled ? disabled : false" 
+        [(ngModel)]="model" 
+        (ngModelChange)="updateChanges()"
+    >
+    <div class="ngx-toggle__container" [class.ngx-toggle__container--onlyBox]="!textRef.hasChildNodes()">
+        <span class="ngx-toggle__text font-basic" #textRef>
+            <ng-content></ng-content>
+        </span>
+        <div class="ngx-toggle__box">
+            <div class="ngx-toggle__circle"></div>
+        </div>
+    </div>
+</label>

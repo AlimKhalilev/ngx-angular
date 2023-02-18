@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { INgxContextMenu } from 'src/app/components/ui/context-menu/context-menu.component';
 import { NgxTreeViewComponent } from 'src/app/components/ui/tree-view/tree-view.component';
 import { IMenuItem } from 'src/app/data/menu/menu-item';
 import { MenuDataSource } from './demo-page.data';
@@ -17,39 +18,44 @@ export class DemoPageComponent {
     checkBoxValue: boolean = false;
     isIndeterminate: boolean = true;
 
+    toggleDisabled: boolean = true;
+    toggleValue: boolean = false;
+
     radioButtonValue: string = '';
     radioButtonList: string[] = ['blue', 'yellow', 'red'];
 
     radioButtonNewValue: string = '';
     radioButtonNewList: string[] = ['blue', 'yellow', 'red'];
 
-    contextMenuData = [
+    contextMenuData: INgxContextMenu[] = [
         {
             text: 'Заглушка 1',
-            icon: 'ngx-search-20',
-            bordered: false,
+            icon: 'ngx-notepad-edit-20',
+            borderBottom: true,
             children: []
         },
         {
             text: 'Заглушка 2',
-            icon: 'ngx-search-20',
-            bordered: false,
+            shortcut: 'Shift+F11',
             children: []
         },
         {
             text: 'Заглушка 3',
+            icon: 'ngx-table-settings-20',
+            shortcut: 'Shift+F11',
+            children: []
+        },
+        {
+            text: 'Заглушка 4',
             icon: 'ngx-search-20',
-            bordered: false,
             children: [
                 {
-                    text: 'Заглушка 1 - 1',
-                    icon: 'ngx-search-20',
-                    bordered: false,
+                    text: 'Заглушка 4 - 1',
+                    icon: 'ngx-copy-20',
                 },
                 {
-                    text: 'Заглушка 2 - 1',
-                    icon: 'ngx-search-20',
-                    bordered: false,
+                    text: 'Заглушка 4 - 2',
+                    icon: 'ngx-add-circle-20',
                 },
             ]
         }

@@ -42,6 +42,20 @@
             --text-color: var(--text-color-hover);
         }
 
+        &::after {
+            content: '';
+            position: absolute;
+            height: 3px;
+            background-color: var(--line-color);
+            bottom: 0;
+            left: 0;
+            width: calc(100% - 16px);
+            left: 8px;
+            border-radius: 20px;
+            transition: var(--transition);
+            opacity: 0;
+        }
+
         // .ngx-tabs__tab--active
 
         &--active {
@@ -49,15 +63,7 @@
             --text-color-hover: var(--gray-800);
 
             &::after {
-                content: '';
-                position: absolute;
-                height: 3px;
-                background-color: var(--line-color);
-                bottom: 0;
-                left: 0;
-                width: calc(100% - 16px);
-                left: 8px;
-                border-radius: 20px;
+                opacity: 1;
             }
         }
 

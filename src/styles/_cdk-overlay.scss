@@ -144,3 +144,8 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
     // block scrolling on a page that doesn't have a scrollbar in the first place.
     overflow-y: scroll;
 }
+
+// Скрыть зону для попапа, которая добавляется внизу страницы
+.cdk-describedby-message-container {
+    display: none;
+}
