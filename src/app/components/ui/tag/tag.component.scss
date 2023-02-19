@@ -1,0 +1,63 @@
+:host {
+    display: inline-flex;
+}
+
+.ngx-tag {
+    --bg-color: var(--teal-700);
+    --bg-color-hover: var(--teal-900);
+    --bg-color-pressed: var(--teal-1000);
+
+    --text-color: var(--white);
+    --transition: 0.3s ease-in-out;
+
+    position: relative;
+    margin: 4px;
+
+    // .ngx-tag__container
+
+    &__container {
+        background-color: var(--bg-color);
+        transition: var(--transition);
+        padding: 1px 32px 3px 8px;
+        border-radius: 2px;
+
+        &:hover {
+            background-color: var(--bg-color-hover);
+        }
+    }
+
+    // .ngx-tag__close
+
+    &__close {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+        cursor: pointer;
+        color: var(--white);
+
+        position: absolute;
+        top: 2px;
+        right: 2px;
+
+        // hover
+        &:hover {
+            ~.ngx-tag__container {
+                background-color: var(--bg-color-hover);
+            }
+        }
+
+        // pressed
+        &:active {
+            ~.ngx-tag__container {
+                background-color: var(--bg-color-pressed);
+            }
+        }
+    }
+
+    // .ngx-tag__text
+
+    &__text {
+        color: var(--text-color);
+    }
+}

@@ -29,6 +29,9 @@ export class NgxButtonComponent implements OnInit {
     /** Флаг кнопки с стрелкой (шевроном) */
 	@Input() chevron: boolean = false;
 
+    /** Флаг перевернутой стрелки (шеврона) */
+	@Input() chevronReverse: boolean = false;
+
 	/** Всплывающая подсказка кнопки */
 	@Input() tooltip: string = '';
 

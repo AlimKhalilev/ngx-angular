@@ -26,6 +26,9 @@ export class NgxTextBoxComponent implements ControlValueAccessor {
 	/** Placeholder input элемента */
 	@Input() placeholder!: string;
 
+	/** Type input элемента */
+	@Input() type: 'text' | 'email' | 'number' | 'tel' | 'search' | 'url' = 'text';
+
 	/** Опциональная иконка в начале инпута */
 	@Input() iconStart!: string;
 

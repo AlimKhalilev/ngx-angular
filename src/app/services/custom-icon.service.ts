@@ -92,6 +92,10 @@ export class CustomIconService {
 			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/20/ngx-delete-20.svg')
 		)
         this.matIconRegistry.addSvgIcon(
+			'ngx-dismiss-20',
+			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/20/ngx-dismiss-20.svg')
+		)
+        this.matIconRegistry.addSvgIcon(
 			'ngx-full-screen-20',
 			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/20/ngx-full-screen-20.svg')
 		)

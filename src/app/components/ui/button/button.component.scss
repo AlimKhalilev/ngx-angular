@@ -223,7 +223,19 @@
         color: var(--text-color);
 
         &--reverse {
-            transform: rotate(180deg);
+            transform: rotate(-180deg);
+        }
+    }
+
+    // .ngx-button__chevron
+
+    &__chevron {
+        transition: var(--transition);
+        margin-left: 2px;
+        color: var(--chevron-color);
+
+        &--reverse {
+            transform: rotate(-180deg);
         }
     }
 
@@ -238,12 +250,5 @@
         &:empty {
             display: none;
         }
-    }
-
-    // .ngx-button__chevron
-
-    &__chevron {
-        margin-left: 2px;
-        color: var(--chevron-color);
     }
 }

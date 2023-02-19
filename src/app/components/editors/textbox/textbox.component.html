@@ -4,7 +4,7 @@
             class="ngx-textbox__input font-basic"
             [class.inputNotEmpty]="value !== ''"
             [class.inputHasIcon]="iconStart"
-            type="text"
+            [type]="type"
             [(ngModel)]="value"
             (ngModelChange)="updateChanges()"
             [placeholder]="placeholder ? placeholder : ''"

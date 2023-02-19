@@ -1,0 +1,10 @@
+<div class="ngx-tag">
+    <button class="ngx-tag__close" (click)="onClose.emit()">
+        <mat-icon class="icon-20" svgIcon="ngx-dismiss-20"></mat-icon>
+    </button>
+    <div class="ngx-tag__container">
+        <span class="ngx-tag__text font-basic">
+            <ng-content></ng-content>
+        </span>
+    </div>
+</div>

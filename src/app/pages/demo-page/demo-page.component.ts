@@ -21,6 +21,11 @@ export class DemoPageComponent {
     toggleDisabled: boolean = true;
     toggleValue: boolean = false;
 
+    isTagShown: boolean = true;
+
+    dropdownClickStatus: boolean = false;
+    dropdownRightClickStatus: boolean = false;
+
     radioButtonValue: string = '';
     radioButtonList: string[] = ['blue', 'yellow', 'red'];
 

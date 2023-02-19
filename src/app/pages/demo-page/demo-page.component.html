@@ -294,6 +294,28 @@
         </div>
 
         <div class="demo__item">
+            <h2 class="demo__title">Ngx Tag</h2>
+            <div class="demo__content">
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Basic</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-tag>Tag</ngx-tag>
+                    </div>
+                </div>
+                <div class="demo__row">
+                    <div class="demo__col demo__col--field">
+                        <h3 class="demo__fieldTitle">Basic with close functionality</h3>
+                    </div>
+                    <div class="demo__col">
+                        <ngx-tag *ngIf="isTagShown" (onClose)="isTagShown = false;">Tag</ngx-tag>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo__item">
             <h2 class="demo__title">Ngx List Item</h2>
             <div class="demo__content">
                 <div class="demo__row">
@@ -367,8 +389,8 @@
                         <h3 class="demo__fieldTitle">On Click</h3>
                     </div>
                     <div class="demo__col">
-                        <ngx-context-menu [items]="contextMenuData">
-                            <ngx-button type="secondary" [chevron]="true">Action</ngx-button>
+                        <ngx-context-menu [items]="contextMenuData" (onChangeState)="dropdownClickStatus = $event">
+                            <ngx-button type="secondary" [chevron]="true" [chevronReverse]="dropdownClickStatus">Action</ngx-button>
                         </ngx-context-menu>
                     </div>
                 </div>
@@ -377,8 +399,8 @@
                         <h3 class="demo__fieldTitle">On Right Click</h3>
                     </div>
                     <div class="demo__col">
-                        <ngx-context-menu [items]="contextMenuData" [rightClickOpen]="true">
-                            <ngx-button type="secondary" [chevron]="true">Action</ngx-button>
+                        <ngx-context-menu [items]="contextMenuData" (onChangeState)="dropdownRightClickStatus = $event" [rightClickOpen]="true">
+                            <ngx-button type="secondary" [chevron]="true" [chevronReverse]="dropdownRightClickStatus">Action</ngx-button>
                         </ngx-context-menu>
                     </div>
                 </div>

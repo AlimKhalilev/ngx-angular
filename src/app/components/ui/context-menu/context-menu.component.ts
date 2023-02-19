@@ -21,7 +21,7 @@ export class NgxContextMenuComponent {
 	@Input() rightClickOpen: boolean = false;
 
     /** Событие открытия, либо закрытия контекстного меню (true - открыто, false - закрыто) */
-	@Output() contextMenuOpenCloseEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+	@Output() onChangeState: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     /** Получаем ссылку на меню для его повторного открытия по рекурсии */
 	@ViewChild('childMenu', { static: true }) public childMenu: any;
@@ -41,12 +41,12 @@ export class NgxContextMenuComponent {
 
 	/** Событие закрытия контекстного меню */
 	onMenuClosed() {
-		this.contextMenuOpenCloseEvent.emit(false);
+		this.onChangeState.emit(false);
 	}
 
 	/** Событие открытия контекстного меню */
 	onMenuOpened() {
-		this.contextMenuOpenCloseEvent.emit(true);
+		this.onChangeState.emit(true);
 	}
 
     onDropdownButtonClick(e: any) {
