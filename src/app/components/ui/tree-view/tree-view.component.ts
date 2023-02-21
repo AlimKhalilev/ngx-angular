@@ -89,9 +89,26 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
         item.expanded = !item.expanded;
     }
 
-    /** Возвращает наличие в списке хоть одного элемента по ключу */
-    public listHasSomeKey(list: IMenuItem[], key: 'pictureData'): boolean {
-        return list.some(item => item[key]);
+    /** Возвращает наличие в списке хотя-бы одной картинки (ссылки или base64) */
+    public listHasSomePicture(list: IMenuItem[]): boolean {
+        return list.some(item => item.pictureData || item.pictureKey);
+    }
+
+    /** Метод получения ресурса для картинка (ссылка или base64) */
+    public getPictureSrc(item: IMenuItem): string {
+        let src = '';
+        if (item.pictureData) {
+            try {
+                window.atob(item.pictureData);
+                src = `data:image/jpg;base64,${item.pictureData}`;
+            } catch(e) {
+                src = '';
+            }
+        }
+        if (item.pictureKey) {
+            src = item.pictureKey;
+        }
+        return src;
     }
 
     /** Метод заполняющий тултип там, где у текста text-overlow: ellipsis; */
@@ -102,11 +119,6 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
                 this.inlineDataSource[+id].toolTip = this.inlineDataSource[+id].caption;
             }
         }
-    }
-
-    /** Метод добавляющие префикс base64 пути для картинки */
-    public getPictureBase64(src: string): string {
-        return `data:image/jpg;base64,${src}`;
     }
 
     /** Метод скрывающий/раскрывающий все элементы списка */

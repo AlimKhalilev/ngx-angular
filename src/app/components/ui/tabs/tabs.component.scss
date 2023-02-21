@@ -9,6 +9,9 @@
     &__list {
         display: flex;
         overflow-y: auto;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
     }
 
     // .ngx-tabs__tab

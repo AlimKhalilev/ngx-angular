@@ -116,6 +116,14 @@ export class CustomIconService {
 			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/20/ngx-search-20.svg')
 		) 
         this.matIconRegistry.addSvgIcon(
+			'ngx-star-20',
+			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/16/ngx-star-20.svg')
+		) 
+        this.matIconRegistry.addSvgIcon(
+			'ngx-star-fill-20',
+			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/16/ngx-star-fill-20.svg')
+		) 
+        this.matIconRegistry.addSvgIcon(
 			'ngx-table-settings-20',
 			this.sanitize.bypassSecurityTrustResourceUrl('assets/ngx-icons/20/ngx-table-settings-20.svg')
 		)

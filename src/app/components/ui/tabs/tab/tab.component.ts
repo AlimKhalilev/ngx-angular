@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
     templateUrl: './tab.component.html',
     styleUrls: ['./tab.component.scss']
 })
-export default class TabComponent {
+export class NgxTabComponent {
     /** Заголовок таба */
     @Input() caption: string = '';
 

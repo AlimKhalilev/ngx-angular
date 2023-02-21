@@ -7,11 +7,19 @@
     --bg-color-hover: var(--teal-900);
     --bg-color-pressed: var(--teal-1000);
 
+    --close-color: rgba(255, 255, 255, 0.7);
+    --close-color-active: var(--white);
+
     --text-color: var(--white);
     --transition: 0.3s ease-in-out;
 
     position: relative;
     margin: 4px;
+
+    &:hover {
+        --bg-color: var(--bg-color-hover);
+        --close-color: var(--close-color-active);
+    }
 
     // .ngx-tag__container
 
@@ -20,10 +28,6 @@
         transition: var(--transition);
         padding: 1px 32px 3px 8px;
         border-radius: 2px;
-
-        &:hover {
-            background-color: var(--bg-color-hover);
-        }
     }
 
     // .ngx-tag__close
@@ -34,23 +38,17 @@
         outline: none;
         padding: 0;
         cursor: pointer;
-        color: var(--white);
+        color: var(--close-color);
+        transition: var(--transition);
 
         position: absolute;
         top: 2px;
         right: 2px;
 
-        // hover
-        &:hover {
-            ~.ngx-tag__container {
-                background-color: var(--bg-color-hover);
-            }
-        }
-
         // pressed
         &:active {
             ~.ngx-tag__container {
-                background-color: var(--bg-color-pressed);
+                --bg-color: var(--bg-color-pressed);
             }
         }
     }

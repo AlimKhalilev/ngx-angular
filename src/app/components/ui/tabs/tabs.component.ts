@@ -1,13 +1,12 @@
 import { Component, ContentChildren, QueryList, AfterContentInit, Input } from '@angular/core';
-import TabComponent from './tab/tab.component';
-
+import { NgxTabComponent } from './tab/tab.component';
 @Component({
     selector: 'ngx-tabs',
     templateUrl: './tabs.component.html',
     styleUrls: ['./tabs.component.scss']
 })
-export default class TabsComponent implements AfterContentInit {
-    @ContentChildren(TabComponent) tabs!: QueryList<TabComponent>;
+export class NgxTabsComponent implements AfterContentInit {
+    @ContentChildren(NgxTabComponent) tabs!: QueryList<NgxTabComponent>;
 
     constructor() {}
 
@@ -18,7 +17,7 @@ export default class TabsComponent implements AfterContentInit {
         }
     }
 
-    selectTab(tab: TabComponent | undefined) {
+    selectTab(tab: NgxTabComponent | undefined) {
         this.tabs?.toArray().forEach((tab) => (tab.active = false));
         if (tab) {
             tab.active = true;
