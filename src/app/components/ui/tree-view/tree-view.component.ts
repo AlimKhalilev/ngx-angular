@@ -95,21 +95,34 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
     }
 
     /** Метод получения ресурса для картинка (ссылка или base64) */
-    public getPictureSrc(item: IMenuItem): string {
+    public getPictureSrc(path: string): string {
         let src = '';
-        if (item.pictureData) {
+        if (path) {
             try {
-                window.atob(item.pictureData);
-                src = `data:image/jpg;base64,${item.pictureData}`;
+                window.atob(path);
+                src = `data:image/jpg;base64,${path}`;
             } catch(e) {
-                src = '';
+                src = path;
             }
-        }
-        if (item.pictureKey) {
-            src = item.pictureKey;
         }
         return src;
     }
+
+    // public getPictureSrc(item: IMenuItem): string {
+    //     let src = '';
+    //     if (item.pictureData) {
+    //         try {
+    //             window.atob(item.pictureData);
+    //             src = `data:image/jpg;base64,${item.pictureData}`;
+    //         } catch(e) {
+    //             src = '';
+    //         }
+    //     }
+    //     if (item.pictureKey) {
+    //         src = item.pictureKey;
+    //     }
+    //     return src;
+    // }
 
     /** Метод заполняющий тултип там, где у текста text-overlow: ellipsis; */
     private fillTooltip(elRef: ElementRef<HTMLDivElement>): void {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ContentChild, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { INgxListItem } from '../list-item/list-item.component';
 
 /** Интерфейс входных данных компонента контекстного меню */
@@ -14,6 +14,7 @@ export interface INgxContextMenu extends INgxListItem {
     styleUrls: ['./context-menu.component.scss']
 })
 export class NgxContextMenuComponent {
+
     /** Входные параметры элементов в меню */
 	@Input() items!: INgxContextMenu[];
 
@@ -25,6 +26,9 @@ export class NgxContextMenuComponent {
 
     /** Получаем ссылку на меню для его повторного открытия по рекурсии */
 	@ViewChild('childMenu', { static: true }) public childMenu: any;
+
+    /** Элемент триггер, на который вешается клик на открытие меню  */
+	@ContentChild("menuTriggerEl", {read: ElementRef<HTMLDivElement>}) menuTriggerEl!: ElementRef<HTMLDivElement>;
 
     constructor() {}
 
@@ -46,8 +50,17 @@ export class NgxContextMenuComponent {
 
 	/** Событие открытия контекстного меню */
 	onMenuOpened() {
+        this.setContextMenuMinWidth();
 		this.onChangeState.emit(true);
 	}
+
+    /** Метод устанавливающий минимальную ширину контекстного меню относительно элемента, который открывает меню */
+    setContextMenuMinWidth() {
+        let overlayBox = document.querySelector(".ngx-context-mat-menu-backdrop + .cdk-overlay-connected-position-bounding-box .ngx-context-mat-menu");
+        if (this.menuTriggerEl?.nativeElement && overlayBox !== null) {
+            overlayBox.setAttribute("style", `min-width: ${this.menuTriggerEl?.nativeElement.offsetWidth}px;`);
+        }
+    }
 
     onDropdownButtonClick(e: any) {
 

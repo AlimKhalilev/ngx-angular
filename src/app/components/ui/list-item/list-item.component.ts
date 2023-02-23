@@ -5,6 +5,7 @@ export interface INgxListItem {
     text: string;
     shortcut?: string;
     icon?: string;
+    picture?: string;
     chevron?: boolean;
     disabled?: boolean;
     tooltip?: string;
@@ -29,6 +30,9 @@ export class NgxListItemComponent implements OnInit {
     /** Иконка пункта списка (список из matIcon или кастомные через matIconRegistry) */
     @Input() icon: string = '';
 
+    /** Картинка пункта списка (src) */
+    @Input() picture: string = '';
+
     /** Флаг пункта списка с стрелкой (шевроном) */
     @Input() chevron: boolean = false;
 
@@ -44,8 +48,23 @@ export class NgxListItemComponent implements OnInit {
         this.text = this.params?.text ?? this.text;
         this.shortcut = this.params?.shortcut ?? this.shortcut;
         this.icon = this.params?.icon ?? this.icon;
+        this.picture = this.params?.picture ?? this.picture;
         this.chevron = this.params?.chevron ?? this.chevron;
         this.disabled = this.params?.disabled ?? this.disabled;
         this.tooltip = this.params?.tooltip ?? this.tooltip;
+    }
+
+    /** Метод получения ресурса для картинка (ссылка или base64) */
+    public getPictureSrc(path: string): string {
+        let src = '';
+        if (path) {
+            try {
+                window.atob(path);
+                src = `data:image/jpg;base64,${path}`;
+            } catch(e) {
+                src = path;
+            }
+        }
+        return src;
     }
 }

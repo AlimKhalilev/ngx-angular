@@ -35,9 +35,11 @@
     }
 }
 
-.cdk-overlay-connected-position-bounding-box ~ 
-.cdk-overlay-connected-position-bounding-box {
-    .ngx-context-mat-menu {
-        margin-left: 4px;
+.ngx-context-mat-menu-backdrop + .cdk-overlay-connected-position-bounding-box {
+
+    ~ .cdk-overlay-connected-position-bounding-box {
+        .ngx-context-mat-menu {
+            margin-left: 4px;
+        }
     }
 }

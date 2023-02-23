@@ -1,6 +1,9 @@
 <button class="ngx-list-item" [disabled]="disabled ? disabled : false" [matTooltip]="tooltip ? tooltip : ''" [matTooltipDisabled]="!tooltip">
     <div class="ngx-list-item__container">
         <div class="ngx-list-item__content">
+            <div *ngIf="picture" class="ngx-list-item__picture">
+                <img [src]="getPictureSrc(picture)" alt="Иконка списка">
+            </div>
             <mat-icon *ngIf="icon" class="ngx-list-item__icon icon-20" [svgIcon]="icon"></mat-icon>
             <span class="ngx-list-item__text font-basic">{{ text }}</span>
             <span *ngIf="shortcut" class="ngx-list-item__shortcut font-basic">{{ shortcut }}</span>

@@ -25,6 +25,7 @@ export class DemoPageComponent {
 
     dropdownClickStatus: boolean = false;
     dropdownRightClickStatus: boolean = false;
+    dropdownLongClickStatus: boolean = false;
 
     radioButtonValue: string = '';
     radioButtonList: string[] = ['blue', 'yellow', 'red'];
