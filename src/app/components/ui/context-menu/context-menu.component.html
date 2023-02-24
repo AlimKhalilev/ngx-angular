@@ -1,7 +1,7 @@
 <div 
     *ngIf="rightClickOpen" 
     [matContextMenuTriggerFor]="childMenu" 
-    class="sherp-ui-dropdown-menu" 
+    class="ngx-context-mat-dropdown" 
     (click)="onDropdownButtonClick($event)"
 	(menuOpened)="onMenuOpened()"
 	(menuClosed)="onMenuClosed()"
@@ -13,7 +13,7 @@
 <div 
     *ngIf="!rightClickOpen" 
     [matMenuTriggerFor]="childMenu" 
-    class="sherp-ui-dropdown-menu" 
+    class="ngx-context-mat-dropdown" 
     (click)="onDropdownButtonClick($event)"
     (menuOpened)="onMenuOpened()"
 	(menuClosed)="onMenuClosed()"

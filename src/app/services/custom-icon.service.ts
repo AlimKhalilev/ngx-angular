@@ -18,7 +18,7 @@ export class CustomIconService {
         // Пустышка (для прозрачной иконки)
         this.matIconRegistry.addSvgIcon('ngx-dummy', fromPath('assets/ngx-icons/ngx-dummy.svg'));
 
-        // Остальной список иконок по размерам
+        // Основной список иконок по размерам
         [
             'ngx-chevron-12',
 

@@ -1,0 +1,29 @@
+<div class="ngx-tile-view">
+    <ng-container *ngFor="let item of dataSource; let index = index">
+        <div *ngIf="item.visible" class="ngx-tile-view__card">
+            <div 
+                class="ngx-tile-view__content" 
+                [class.ngx-tile-view__content--selected]="item.selected"
+                [class.ngx-tile-view__content--alone]="!item.items || !item.items.length"
+                (click)="onSelectItem(item)"
+            >
+                <div *ngIf="item.pictureData || item.pictureKey" class="ngx-tile-view__picture">
+                    <img [src]="getPictureSrc(item.pictureData || item.pictureKey)" alt="Иконка" />
+                </div>
+                <span #captionRef class="ngx-tile-view__caption font-head-14" [matTooltip]="item.toolTip ?? ''" [attr.data-id]="item.posId">{{ item.caption }}</span>
+            </div>
+            <ng-container *ngIf="item.items && item.items.length">
+                <ngx-context-menu 
+                    class="ngx-tile-view__dropdown" 
+                    [class.ngx-tile-view__dropdown--expanded]="item.expanded"
+                    [items]="contextMenuData"
+                    (onChangeState)="onExpandItem(item, $event)"
+                >
+                    <div class="ngx-tile-view__chevron">
+                        <mat-icon class="icon-12" svgIcon="ngx-chevron-12"></mat-icon>
+                    </div>
+                </ngx-context-menu>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>

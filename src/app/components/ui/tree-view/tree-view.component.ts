@@ -1,5 +1,4 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
-import { Subject } from 'rxjs';
 import { slideToggleAnimation } from 'src/app/animations/slide-toggle.animation';
 import { IMenuItem } from 'src/app/data/menu/menu-item';
 
@@ -77,7 +76,9 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
 
     /** Событие клика на элемент (выбор элемента) */
     public onSelectItem(item: IMenuItem) {
-        this.selectedItem.selected = false;
+        if (this.selectedItem) {
+            this.selectedItem.selected = false;
+        }
         this.selectedItem = item;
         this.selectedItem.selected = true;
         this.onSelect.emit(this.selectedItem);
@@ -107,22 +108,6 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
         }
         return src;
     }
-
-    // public getPictureSrc(item: IMenuItem): string {
-    //     let src = '';
-    //     if (item.pictureData) {
-    //         try {
-    //             window.atob(item.pictureData);
-    //             src = `data:image/jpg;base64,${item.pictureData}`;
-    //         } catch(e) {
-    //             src = '';
-    //         }
-    //     }
-    //     if (item.pictureKey) {
-    //         src = item.pictureKey;
-    //     }
-    //     return src;
-    // }
 
     /** Метод заполняющий тултип там, где у текста text-overlow: ellipsis; */
     private fillTooltip(elRef: ElementRef<HTMLDivElement>): void {

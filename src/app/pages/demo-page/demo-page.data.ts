@@ -2890,7 +2890,7 @@ export const MenuDataSource2: IMenuItem[] = [
     }
 ];
 
-export const MenuDataSourceTabs: IMenuItem[] = [
+export const MenuDataSourceTile: IMenuItem[] = [
     {
       "id": "ddfb8117-89c3-4b6e-bf5b-dd725e456c6b",
       "menuId": "70b6b495-6f58-4adc-85a3-de546b01bfcf",
@@ -2906,7 +2906,7 @@ export const MenuDataSourceTabs: IMenuItem[] = [
       "visibleCondition": null,
       "enableCondition": null,
       "pictureId": null,
-      "pictureData": null,
+      "pictureData": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAF/SURBVHgBpVPbbcIwFL3XTf67QbNB0w0SFoB+8pAKE5ROEJig2QBQAvmFBQpsABOUbsAvJNg9dgGFkA9Qj2TJvu/HMVMBXhR5xFxl5hop5RzFK7xXUoj+ol7f5O357DgYPLJl9eD8pphDodTwq9X6Mbrx2KXDwUWQgB8epnK36y86ne05gHG27bnJst9/nJRX1cGObDuAk6fS1D/b+VEUenH8STfCj+NhZTIx9paXJA5lWZXS9KVoWEmSQErpLprN17wc2buo5BvzmgkhZYCee2VlyyxbkpSjolzbot1QDxuzUi4u69JahdjibMpU2MiIlaoJ3HWJKypH9XiuYNbJ7Aj6JwSibCpx/ER3wnADBNMzmErmNt0PV+kAoOsMw+gaklxjezyX2TXxiAKsvv8nAInQxoBuRJ54lpEgkgKVNbvyPC/NbNshrs/w8bXs4jMZnuMXamKhtfVpvdA5wrLakL+j76FOePGZClkcHUgPCUrXCLEpPWwWYjpvNJZ5+1/X37oLLz868QAAAABJRU5ErkJggg==",
       "pictureKey": null,
       "frameId": "76d5c4b6-6169-4a24-aad5-53b82b252a51",
       "frameType": 0,
@@ -3142,7 +3142,7 @@ export const MenuDataSourceTabs: IMenuItem[] = [
       "type": 0,
       "parentId": null,
       "code": "06",
-      "caption": "Характеристики системного блока",
+      "caption": "Характеристики системного блока и даже нескольких",
       "description": null,
       "newGroup": false,
       "toolTip": null,
@@ -3151,7 +3151,7 @@ export const MenuDataSourceTabs: IMenuItem[] = [
       "visibleCondition": "'[IdEqType]' = '3'",
       "enableCondition": null,
       "pictureId": null,
-      "pictureData": null,
+      "pictureData": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAF/SURBVHgBpVPbbcIwFL3XTf67QbNB0w0SFoB+8pAKE5ROEJig2QBQAvmFBQpsABOUbsAvJNg9dgGFkA9Qj2TJvu/HMVMBXhR5xFxl5hop5RzFK7xXUoj+ol7f5O357DgYPLJl9eD8pphDodTwq9X6Mbrx2KXDwUWQgB8epnK36y86ne05gHG27bnJst9/nJRX1cGObDuAk6fS1D/b+VEUenH8STfCj+NhZTIx9paXJA5lWZXS9KVoWEmSQErpLprN17wc2buo5BvzmgkhZYCee2VlyyxbkpSjolzbot1QDxuzUi4u69JahdjibMpU2MiIlaoJ3HWJKypH9XiuYNbJ7Aj6JwSibCpx/ER3wnADBNMzmErmNt0PV+kAoOsMw+gaklxjezyX2TXxiAKsvv8nAInQxoBuRJ54lpEgkgKVNbvyPC/NbNshrs/w8bXs4jMZnuMXamKhtfVpvdA5wrLakL+j76FOePGZClkcHUgPCUrXCLEpPWwWYjpvNJZ5+1/X37oLLz868QAAAABJRU5ErkJggg==",
       "pictureKey": null,
       "frameId": "9266b3e3-196a-41bd-a68b-eb47146309f8",
       "frameType": 0,

@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { INgxContextMenu } from 'src/app/components/ui/context-menu/context-menu.component';
 import { NgxTreeViewComponent } from 'src/app/components/ui/tree-view/tree-view.component';
 import { IMenuItem } from 'src/app/data/menu/menu-item';
-import { MenuDataSource, MenuDataSource2 } from './demo-page.data';
+import { MenuDataSource, MenuDataSource2, MenuDataSourceTile } from './demo-page.data';
 
 @Component({
     selector: 'app-demo-page',
@@ -35,6 +35,7 @@ export class DemoPageComponent {
 
     treeViewDataSource: IMenuItem[] = MenuDataSource;
     treeViewDataSource2: IMenuItem[] = MenuDataSource2;
+    treeViewDataSourceTile: IMenuItem[] = MenuDataSourceTile;
 
     contextMenuData: INgxContextMenu[] = [
         {
