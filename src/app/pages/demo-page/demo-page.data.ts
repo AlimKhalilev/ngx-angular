@@ -1,4 +1,4 @@
-import { IMenuItem } from "src/app/data/menu/menu-item";
+import { IMenuItem } from "src/app/interfaces/menu/menu-item";
 
 export const MenuDataSource: IMenuItem[] = [
     {

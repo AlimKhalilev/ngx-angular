@@ -8,7 +8,7 @@
                 (click)="onSelectItem(item)"
             >
                 <div *ngIf="item.pictureData || item.pictureKey" class="ngx-tile-view__picture">
-                    <img [src]="getPictureSrc(item.pictureData || item.pictureKey)" alt="Иконка" />
+                    <img [src]="utilsService.getPictureSrc(item.pictureData || item.pictureKey)" alt="Иконка" />
                 </div>
                 <span #el class="ngx-tile-view__caption font-head-14" [matTooltip]="(el.scrollWidth > el.clientWidth) ? el.innerText : ''">
                     {{ item.caption }}

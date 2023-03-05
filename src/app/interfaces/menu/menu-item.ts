@@ -1,4 +1,5 @@
-import { INgxContextMenu } from "src/app/components/ui/context-menu/context-menu.component";
+import { INgxContextMenu } from "../context-menu/context-menu";
+import { MenuItemType } from "./menu-item-type";
 
 /**
  * Пункт меню.
@@ -87,23 +88,6 @@ export interface IMenuItem {
     posId?: number
     parent?: IMenuItem
     contextMenuData?: INgxContextMenu[]
-}
-
-/**
- * Тип пункта меню.
- */
-export const enum MenuItemType {
-	/** Пункт меню-иерархии. */
-	TreeView = 0,
-
-	/** Пункт меню-списка. */
-	ItemList = 1,
-
-	/** Гиперссылка. */
-	Link = 2,
-
-	/** Описание. */
-	Description = 3,
 }
 
 /**

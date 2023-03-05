@@ -1,13 +1,5 @@
 import { Component, ContentChild, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { INgxListItem } from '../list-item/list-item.component';
-
-/** Интерфейс входных данных компонента контекстного меню */
-export interface INgxContextMenu extends INgxListItem {
-    borderBottom?: boolean;
-    onClick?: () => void;
-    children?: INgxContextMenu[];
-    data?: any
-}
+import { INgxContextMenu } from 'src/app/interfaces/context-menu/context-menu';
 
 @Component({
     selector: 'ngx-context-menu',

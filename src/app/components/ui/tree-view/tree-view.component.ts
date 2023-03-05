@@ -1,6 +1,7 @@
 import { AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { slideToggleAnimation } from 'src/app/animations/slide-toggle.animation';
-import { IMenuItem } from 'src/app/data/menu/menu-item';
+import { IMenuItem } from 'src/app/interfaces/menu/menu-item';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
     selector: 'ngx-tree-view',
@@ -35,7 +36,7 @@ export class NgxTreeViewComponent implements OnInit, AfterViewChecked {
     /** Модель строки фильтра (предыдущее значение) */
     filterStrPrev: string = '';
 
-    constructor(private cd: ChangeDetectorRef) {}
+    constructor(private cd: ChangeDetectorRef, public utilsService: UtilsService) {}
 
     ngOnInit(): void {
         this.convertRecursiveListToInline(this.dataSource);
@@ -92,20 +93,6 @@ export class NgxTreeViewComponent implements OnInit, AfterViewChecked {
     /** Возвращает наличие в списке хотя-бы одной картинки (ссылки или base64) */
     public listHasSomePicture(list: IMenuItem[]): boolean {
         return list.some(item => item.pictureData || item.pictureKey);
-    }
-
-    /** Метод получения ресурса для картинка (ссылка или base64) */
-    public getPictureSrc(path: string): string {
-        let src = '';
-        if (path) {
-            try {
-                window.atob(path);
-                src = `data:image/jpg;base64,${path}`;
-            } catch(e) {
-                src = path;
-            }
-        }
-        return src;
     }
 
     /** Метод скрывающий/раскрывающий все элементы списка */

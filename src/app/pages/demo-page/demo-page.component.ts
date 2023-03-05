@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { INgxContextMenu } from 'src/app/components/ui/context-menu/context-menu.component';
 import { NgxTreeViewComponent } from 'src/app/components/ui/tree-view/tree-view.component';
-import { IMenuItem } from 'src/app/data/menu/menu-item';
+import { INgxContextMenu } from 'src/app/interfaces/context-menu/context-menu';
+import { IMenuItem } from 'src/app/interfaces/menu/menu-item';
 import { MenuDataSource, MenuDataSource2, MenuDataSourceTile } from './demo-page.data';
 
 @Component({

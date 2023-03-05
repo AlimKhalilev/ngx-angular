@@ -8,7 +8,7 @@
     <div class="ngx-list-item__container">
         <div class="ngx-list-item__content">
             <div *ngIf="picture" class="ngx-list-item__picture">
-                <img [src]="getPictureSrc(picture)" alt="Иконка списка" />
+                <img [src]="utilsService.getPictureSrc(picture)" alt="Иконка списка" />
             </div>
             <mat-icon *ngIf="icon" class="ngx-list-item__icon icon-20" [svgIcon]="icon"></mat-icon>
             <span #el class="ngx-list-item__text text-overflow font-basic" [matTooltip]="(el.scrollWidth > el.clientWidth) ? el.innerText : ''">

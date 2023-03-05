@@ -1,15 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
-/** Интерфейс входных данных компонента пункта списка */
-export interface INgxListItem {
-    text: string;
-    shortcut?: string;
-    icon?: string;
-    picture?: string;
-    chevron?: boolean;
-    disabled?: boolean;
-    tooltip?: string;
-}
+import { INgxListItem } from 'src/app/interfaces/list-item/list-item';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
     selector: 'ngx-list-item',
@@ -45,6 +36,10 @@ export class NgxListItemComponent implements OnInit {
     /** Событие клика на пункт списка */
 	@Output() onClick = new EventEmitter();
 
+    constructor(public utilsService: UtilsService) {
+
+    }
+
     ngOnInit(): void {
         /** Опциональная инициализация через params interface */
 
@@ -55,19 +50,5 @@ export class NgxListItemComponent implements OnInit {
         this.chevron = this.params?.chevron ?? this.chevron;
         this.disabled = this.params?.disabled ?? this.disabled;
         this.tooltip = this.params?.tooltip ?? this.tooltip;
-    }
-
-    /** Метод получения ресурса для картинка (ссылка или base64) */
-    public getPictureSrc(path: string): string {
-        let src = '';
-        if (path) {
-            try {
-                window.atob(path);
-                src = `data:image/jpg;base64,${path}`;
-            } catch(e) {
-                src = path;
-            }
-        }
-        return src;
     }
 }
