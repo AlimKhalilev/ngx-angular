@@ -10,14 +10,17 @@
                 <div *ngIf="item.pictureData || item.pictureKey" class="ngx-tile-view__picture">
                     <img [src]="getPictureSrc(item.pictureData || item.pictureKey)" alt="Иконка" />
                 </div>
-                <span #captionRef class="ngx-tile-view__caption font-head-14" [matTooltip]="item.toolTip ?? ''" [attr.data-id]="item.posId">{{ item.caption }}</span>
+                <span #el class="ngx-tile-view__caption font-head-14" [matTooltip]="(el.scrollWidth > el.clientWidth) ? el.innerText : ''">
+                    {{ item.caption }}
+                </span>
             </div>
-            <ng-container *ngIf="item.items && item.items.length">
+            <ng-container *ngIf="item.items && item.items.length && item.contextMenuData">
                 <ngx-context-menu 
                     class="ngx-tile-view__dropdown" 
                     [class.ngx-tile-view__dropdown--expanded]="item.expanded"
-                    [items]="contextMenuData"
+                    [items]="item.contextMenuData"
                     (onChangeState)="onExpandItem(item, $event)"
+                    (onItemClick)="onSelect.emit($event.data)"
                 >
                     <div class="ngx-tile-view__chevron">
                         <mat-icon class="icon-12" svgIcon="ngx-chevron-12"></mat-icon>

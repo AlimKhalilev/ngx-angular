@@ -1,3 +1,5 @@
+import { INgxContextMenu } from "src/app/components/ui/context-menu/context-menu.component";
+
 /**
  * Пункт меню.
  */
@@ -84,6 +86,7 @@ export interface IMenuItem {
     permissions?: string | null;
     posId?: number
     parent?: IMenuItem
+    contextMenuData?: INgxContextMenu[]
 }
 
 /**

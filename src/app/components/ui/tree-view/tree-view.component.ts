@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { slideToggleAnimation } from 'src/app/animations/slide-toggle.animation';
 import { IMenuItem } from 'src/app/data/menu/menu-item';
 
@@ -6,12 +6,10 @@ import { IMenuItem } from 'src/app/data/menu/menu-item';
     selector: 'ngx-tree-view',
     templateUrl: './tree-view.component.html',
     styleUrls: ['./tree-view.component.scss'],
-    animations: [slideToggleAnimation]
+    animations: [slideToggleAnimation],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgxTreeViewComponent implements OnInit, AfterViewInit {
-
-    /** Ссылка на список DOM элементов заголовков элемента */
-    @ViewChildren('captionRef') captionRef!: QueryList<ElementRef<HTMLDivElement>>;
+export class NgxTreeViewComponent implements OnInit, AfterViewChecked {
     
     /** Ресурс данных для компонента treeView */
 	@Input() dataSource!: IMenuItem[];
@@ -39,25 +37,26 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
 
     constructor(private cd: ChangeDetectorRef) {}
 
-    ngAfterViewInit(): void {
-        this.captionRef.toArray().forEach((elRef, i) => {
-            this.fillTooltip(elRef);
-        });
-        this.cd.detectChanges();
-    }
-
     ngOnInit(): void {
         this.convertRecursiveListToInline(this.dataSource);
         //console.log(this.inlineDataSource);
     }
 
+    ngAfterViewChecked(): void {
+        /** 
+            Для избежания Error: NG0100: ExpressionChangedAfterItHasBeenCheckedError, 
+            и чтобы tooltip отображался у всех компонентов при наведении 
+        */
+        setTimeout(() => {
+            this.cd.markForCheck();
+        }, 10);
+    }
+
     private convertRecursiveListToInline(list: IMenuItem[], parent?: IMenuItem): void {
         list.forEach(item => {
             /** Изначальная инициализация незаполненных ключей */
-            item.posId = this.uniqueId++;
             item.expanded = item.expanded ? true : false;
             item.visible = true;
-            item.toolTip = '';
             
             if (this.hasFilter) {
                 item.parent = parent;
@@ -109,16 +108,6 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
         return src;
     }
 
-    /** Метод заполняющий тултип там, где у текста text-overlow: ellipsis; */
-    private fillTooltip(elRef: ElementRef<HTMLDivElement>): void {
-        if ((elRef.nativeElement.offsetWidth < elRef.nativeElement.scrollWidth)) {
-            let id = elRef.nativeElement.dataset['id'];
-            if (id) {
-                this.inlineDataSource[+id].toolTip = this.inlineDataSource[+id].caption;
-            }
-        }
-    }
-
     /** Метод скрывающий/раскрывающий все элементы списка */
     public toggleAllItems(): void {
         let expandCount = 0;
@@ -129,6 +118,8 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
             e.expanded = (collapseCount >= expandCount);
             return e;
         });
+
+        this.cd.markForCheck();
     }
 
     /** Метод срабатывания фильтра списка, когда меняем значения инпута фильтра */
@@ -154,5 +145,4 @@ export class NgxTreeViewComponent implements OnInit, AfterViewInit {
             this.changeItemVisible(item.parent);
         }
     }
-
 }

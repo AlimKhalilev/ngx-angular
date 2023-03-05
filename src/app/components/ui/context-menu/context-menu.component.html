@@ -33,17 +33,17 @@
     overlayPanelClass="ngx-context-mat-menu-overlay"
 	backdropClass="ngx-context-mat-menu-backdrop"
 >
-	<ng-container *ngFor="let item of fillIconSpace(items)">
+	<ng-container *ngFor="let item of fillIconSpace(items); let index = index">
         <ng-container *ngIf="item.children && item.children.length > 0">
             <div mat-menu-item [matMenuTriggerFor]="menu.childMenu" [class.border-bottom]="item.borderBottom">
-                <ngx-list-item [params]="item" [chevron]="true"></ngx-list-item>
+                <ngx-list-item (onClick)="onListItemClick(item)" [params]="item" [chevron]="true"></ngx-list-item>
             </div>
-            <ngx-context-menu #menu [items]="item.children"></ngx-context-menu>
+            <ngx-context-menu (onItemClick)="onItemClick.emit($event)" #menu [items]="item.children"></ngx-context-menu>
         </ng-container>
 
         <ng-container *ngIf="!item.children || item.children.length === 0">
             <div mat-menu-item [class.border-bottom]="item.borderBottom">
-                <ngx-list-item [params]="item"></ngx-list-item>
+                <ngx-list-item (onClick)="onListItemClick(item)" [params]="item"></ngx-list-item>
             </div>
         </ng-container>
 	</ng-container>

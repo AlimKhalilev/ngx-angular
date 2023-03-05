@@ -31,7 +31,7 @@
                                 <div class="ngx-tree-view__picture" *ngIf="listHasSomePicture(dataSource)">
                                     <img *ngIf="item.pictureData || item.pictureKey" [src]="getPictureSrc(item.pictureData || item.pictureKey)" alt="Иконка древовидного списка"/>
                                 </div>
-                                <span #captionRef class="ngx-tree-view__caption font-basic" [matTooltip]="item.toolTip ?? ''" [attr.data-id]="item.posId">
+                                <span #el class="ngx-tree-view__caption text-overflow font-basic" [matTooltip]="(el.scrollWidth > el.clientWidth) ? el.innerText : ''">
                                     {{ item.caption }}
                                 </span>
                             </div>

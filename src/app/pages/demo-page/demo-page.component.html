@@ -66,7 +66,7 @@
             <h2 class="demo__title">Ngx Tile View</h2>
             <div class="demo__content">
                 <div class="demo__row" style="max-width: 250px;">
-                    <ngx-tile-view [dataSource]="treeViewDataSourceTile"></ngx-tile-view>
+                    <ngx-tile-view [dataSource]="treeViewDataSourceTile" (onSelect)="treeViewSelectItem($event)"></ngx-tile-view>
                 </div>
             </div>
         </div>

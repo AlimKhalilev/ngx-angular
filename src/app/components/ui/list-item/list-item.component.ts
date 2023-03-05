@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 /** Интерфейс входных данных компонента пункта списка */
 export interface INgxListItem {
@@ -41,6 +41,9 @@ export class NgxListItemComponent implements OnInit {
 
     /** Всплывающая подсказка пункта списка */
     @Input() tooltip: string = '';
+
+    /** Событие клика на пункт списка */
+	@Output() onClick = new EventEmitter();
 
     ngOnInit(): void {
         /** Опциональная инициализация через params interface */

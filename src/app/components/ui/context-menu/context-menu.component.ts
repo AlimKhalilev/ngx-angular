@@ -6,6 +6,7 @@ export interface INgxContextMenu extends INgxListItem {
     borderBottom?: boolean;
     onClick?: () => void;
     children?: INgxContextMenu[];
+    data?: any
 }
 
 @Component({
@@ -14,6 +15,12 @@ export interface INgxContextMenu extends INgxListItem {
     styleUrls: ['./context-menu.component.scss']
 })
 export class NgxContextMenuComponent {
+
+    /** Получаем ссылку на меню для его повторного открытия по рекурсии */
+	@ViewChild('childMenu', { static: true }) public childMenu: any;
+
+    /** Элемент триггер, на который вешается клик на открытие меню  */
+	@ContentChild("menuTriggerEl", {read: ElementRef<HTMLDivElement>}) menuTriggerEl!: ElementRef<HTMLDivElement>;
 
     /** Входные параметры элементов в меню */
 	@Input() items!: INgxContextMenu[];
@@ -24,11 +31,8 @@ export class NgxContextMenuComponent {
     /** Событие открытия, либо закрытия контекстного меню (true - открыто, false - закрыто) */
 	@Output() onChangeState: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    /** Получаем ссылку на меню для его повторного открытия по рекурсии */
-	@ViewChild('childMenu', { static: true }) public childMenu: any;
-
-    /** Элемент триггер, на который вешается клик на открытие меню  */
-	@ContentChild("menuTriggerEl", {read: ElementRef<HTMLDivElement>}) menuTriggerEl!: ElementRef<HTMLDivElement>;
+    /** Событие клика на пункт списка */
+	@Output() onItemClick: EventEmitter<INgxContextMenu> = new EventEmitter<INgxContextMenu>();
 
     constructor() {}
 
@@ -62,8 +66,14 @@ export class NgxContextMenuComponent {
         }
     }
 
+    /** Событие на клик родительского элемента, который активирует открытие списка контекстного меню */
     onDropdownButtonClick(e: any) {
 
+    }
+
+    /** Событие клика на элемент пункта списка */
+    onListItemClick(item: INgxContextMenu) {
+        this.onItemClick.emit(item);
     }
 
 }
