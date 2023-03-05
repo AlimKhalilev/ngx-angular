@@ -24,10 +24,12 @@
     // .ngx-tag__container
 
     &__container {
+        display: flex;
         background-color: var(--bg-color);
         transition: var(--transition);
         padding: 1px 32px 3px 8px;
         border-radius: 2px;
+        max-width: 200px;
     }
 
     // .ngx-tag__close
