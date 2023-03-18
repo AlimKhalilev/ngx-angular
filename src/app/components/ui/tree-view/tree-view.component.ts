@@ -21,6 +21,9 @@ export class NgxTreeViewComponent implements OnInit, AfterViewChecked {
     /** Событие выбора элемента из списка */
 	@Output() onSelect = new EventEmitter<IMenuItem>();
 
+    /** Флаг того, что шаблон компонента был проверен единожды */
+    isViewCheckedOnce: boolean = false;
+
     /** Список датасурса в один уровень */
     inlineDataSource: IMenuItem[] = [];
 
@@ -46,11 +49,14 @@ export class NgxTreeViewComponent implements OnInit, AfterViewChecked {
     ngAfterViewChecked(): void {
         /** 
             Для избежания Error: NG0100: ExpressionChangedAfterItHasBeenCheckedError, 
-            и чтобы tooltip отображался у всех компонентов при наведении 
+            чтобы tooltip отображался у всех компонентов при наведении,
+            а флаг, чтобы не markForCheck не вызывался бесконечно
         */
-        setTimeout(() => {
-            this.cd.markForCheck();
-        }, 10);
+
+        if (!this.isViewCheckedOnce) {
+            setTimeout(() => this.cd.markForCheck(), 200);
+            this.isViewCheckedOnce = true;
+        }
     }
 
     private convertRecursiveListToInline(list: IMenuItem[], parent?: IMenuItem): void {

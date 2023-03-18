@@ -14,6 +14,12 @@ export class NgxTileViewComponent implements OnInit, AfterViewChecked {
     /** Ресурс данных для компонента tileView */
     @Input() dataSource!: IMenuItem[];
 
+    /** Событие выбора элемента из списка */
+    @Output() onSelect = new EventEmitter<IMenuItem>();
+
+    /** Флаг того, что шаблон компонента был проверен единожды */
+    isViewCheckedOnce: boolean = false;
+
     /** Список датасурса в один уровень */
     inlineDataSource: IMenuItem[] = [];
 
@@ -22,9 +28,6 @@ export class NgxTileViewComponent implements OnInit, AfterViewChecked {
 
     /** Уникальный идентификатор объекта списка */
     uniqueId: number = 0;
-
-    /** Событие выбора элемента из списка */
-    @Output() onSelect = new EventEmitter<IMenuItem>();
 
     constructor(private cd: ChangeDetectorRef, public utilsService: UtilsService) {}
 
@@ -35,11 +38,14 @@ export class NgxTileViewComponent implements OnInit, AfterViewChecked {
     ngAfterViewChecked(): void {
         /** 
             Для избежания Error: NG0100: ExpressionChangedAfterItHasBeenCheckedError, 
-            и чтобы tooltip отображался у всех компонентов при наведении 
+            чтобы tooltip отображался у всех компонентов при наведении,
+            а флаг, чтобы не markForCheck не вызывался бесконечно
         */
-        setTimeout(() => {
-            this.cd.markForCheck();
-        }, 10);
+
+        if (!this.isViewCheckedOnce) {
+            setTimeout(() => this.cd.markForCheck(), 200);
+            this.isViewCheckedOnce = true;
+        }
     }
 
     /** Изначальный проход по дереву (установление selected и прочее) */
