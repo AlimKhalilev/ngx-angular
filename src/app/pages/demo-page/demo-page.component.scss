@@ -1,5 +1,22 @@
-.demo {
-    background-color: var(--white);
+::ng-deep.demo {
+    display: flex;
+    min-height: calc(100vh - 18px);
+
+    // .demo__aside
+
+    &__aside {
+        background-color: var(--gray-25);
+        min-width: 250px;
+        max-width: 250px;
+    }
+
+    // .demo__container
+
+    &__container {
+        background-color: var(--white);
+        flex-grow: 1;
+        padding: 0 24px;
+    }
 
     // .demo__inner
 

@@ -14,12 +14,14 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     ]
 })
 export class NgxToggleComponent {
+    /** Статус неактивности объекта */
+	@Input() disabled!: boolean;
 
-	/** Статус неактивного чекбокса */
-	@Input() disabled: boolean | undefined;
+    /** Статус обязательного объекта */
+	@Input() required!: boolean;
 
 	/** Всплывающая подсказка чекбокса */
-	@Input() tooltip: string | undefined;
+	@Input() tooltip!: string;
 
     /** Содержит текущее значение (модель) чекбокса (также принимает props 'checked') */
     @Input('checked') model: boolean = false;

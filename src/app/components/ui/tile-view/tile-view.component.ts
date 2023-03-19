@@ -1,4 +1,4 @@
-import { AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { INgxContextMenu } from 'src/app/interfaces/context-menu/context-menu';
 import { IMenuItem } from 'src/app/interfaces/menu/menu-item';
 import { UtilsService } from 'src/app/services/utils.service';
@@ -9,16 +9,13 @@ import { UtilsService } from 'src/app/services/utils.service';
     styleUrls: ['./tile-view.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgxTileViewComponent implements OnInit, AfterViewChecked {
+export class NgxTileViewComponent implements OnInit, AfterViewInit {
     
     /** Ресурс данных для компонента tileView */
     @Input() dataSource!: IMenuItem[];
 
     /** Событие выбора элемента из списка */
     @Output() onSelect = new EventEmitter<IMenuItem>();
-
-    /** Флаг того, что шаблон компонента был проверен единожды */
-    isViewCheckedOnce: boolean = false;
 
     /** Список датасурса в один уровень */
     inlineDataSource: IMenuItem[] = [];
@@ -35,17 +32,13 @@ export class NgxTileViewComponent implements OnInit, AfterViewChecked {
         this.basicListInit(this.dataSource);
     }
 
-    ngAfterViewChecked(): void {
+    ngAfterViewInit(): void {
         /** 
             Для избежания Error: NG0100: ExpressionChangedAfterItHasBeenCheckedError, 
-            чтобы tooltip отображался у всех компонентов при наведении,
-            а флаг, чтобы не markForCheck не вызывался бесконечно
+            чтобы tooltip отображался у всех компонентов при наведении
         */
 
-        if (!this.isViewCheckedOnce) {
-            setTimeout(() => this.cd.markForCheck(), 200);
-            this.isViewCheckedOnce = true;
-        }
+        setTimeout(() => this.cd.markForCheck(), 100);
     }
 
     /** Изначальный проход по дереву (установление selected и прочее) */

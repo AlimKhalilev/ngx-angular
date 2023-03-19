@@ -8,7 +8,8 @@
             [(ngModel)]="value"
             (ngModelChange)="updateChanges()"
             [placeholder]="placeholder ? placeholder : ''"
-            [disabled]="disabled ? disabled : false"
+            [disabled]="disabled ? disabled : false" 
+            [required]="required ? required : false" 
         />
         <div class="ngx-textbox__content">
             <ng-container *ngIf="iconStart">

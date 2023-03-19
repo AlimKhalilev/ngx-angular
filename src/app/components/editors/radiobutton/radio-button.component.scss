@@ -28,4 +28,22 @@
         --border-color-focused: var(--teal-700);
         --border-color-disabled: var(--gray-350);
     }
+
+    // .ngx-checkbox__box
+
+    &__box {
+
+        // .ngx-checkbox__box--circle
+        
+        &--circle {
+            border-radius: 50%;
+
+            .ngx-checkbox__icon {
+                width: 12px;
+                height: 12px;
+                border-radius: inherit;
+                background-color: var(--icon-color);
+            }
+        }
+    }
 }

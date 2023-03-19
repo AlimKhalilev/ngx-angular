@@ -1,5 +1,6 @@
 <button
     class="ngx-list-item"
+    [class.ngx-list-item--active]="active"
     [disabled]="disabled ? disabled : false"
     [matTooltip]="tooltip ? tooltip : ''"
     [matTooltipDisabled]="!tooltip"

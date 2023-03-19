@@ -14,13 +14,16 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     ]
 })
 export class NgxTextBoxComponent implements ControlValueAccessor {
-    /** Статус неактивной кнопки */
+    /** Статус неактивности объекта */
 	@Input() disabled!: boolean;
 
-    /** Опциональная ширина кнопки */
+    /** Статус обязательного объекта */
+	@Input() required!: boolean;
+
+    /** Опциональная ширина */
 	@Input() width!: number;
 
-	/** Всплывающая подсказка кнопки */
+	/** Всплывающая подсказка */
 	@Input() tooltip!: string;
 
 	/** Placeholder input элемента */

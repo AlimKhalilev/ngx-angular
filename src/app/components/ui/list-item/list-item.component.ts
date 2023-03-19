@@ -15,6 +15,9 @@ export class NgxListItemComponent implements OnInit {
     /** Текст пункта списка */
     @Input() text: string = '';
 
+    /** Флаг активного пункта списка */
+    @Input() active: boolean = false;
+
     /** Краткое описание пункта списка */
     @Input() shortcut: string = '';
 

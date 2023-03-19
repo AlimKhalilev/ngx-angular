@@ -14,14 +14,17 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     ]
 })
 export class NgxCheckboxComponent {
-	/** Статус неопределенности чекбокса (в группе) (прим. 'Выбрать все') */
+    /** Статус неактивности объекта */
+	@Input() disabled!: boolean;
+
+    /** Статус обязательного объекта */
+	@Input() required!: boolean;
+
+    /** Статус неопределенности чекбокса (в группе) (прим. 'Выбрать все') */
 	@Input() indeterminate!: boolean;
 
-	/** Статус неактивного чекбокса */
-	@Input() disabled: boolean | undefined;
-
-	/** Всплывающая подсказка чекбокса */
-	@Input() tooltip: string | undefined;
+	/** Всплывающая подсказка */
+	@Input() tooltip!: string;
 
     /** Содержит текущее значение (модель) чекбокса (также принимает props 'checked') */
     @Input('checked') model: boolean = false;

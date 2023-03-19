@@ -1,0 +1,71 @@
+<div class="demo__item">
+    <h2 class="demo__title">Ngx TextBox</h2>
+    <div class="demo__content">
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox [(ngModel)]="textBoxValue"></ngx-textbox>
+            </div>
+            <div class="demo__col">
+                <p>Значение: {{ textBoxValue }}</p>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox disabled</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox [disabled]="true" [(ngModel)]="textBoxValue"></ngx-textbox>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox placeholder</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox placeholder="Введите текст"></ngx-textbox>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox custom width</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox [width]="350" [(ngModel)]="textBoxValue"></ngx-textbox>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox icon start</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox placeholder="Найти что-то" iconStart="ngx-search-20"></ngx-textbox>
+            </div>
+        </div>
+        
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox simple value</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox iconStart="ngx-search-20" value="Дефолтное значение"></ngx-textbox>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox custom button</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox btnIcon="ngx-arrow-right-16" (onBtnClick)="textBoxBtnClick()"></ngx-textbox>
+            </div>
+        </div>
+
+    </div>
+</div>

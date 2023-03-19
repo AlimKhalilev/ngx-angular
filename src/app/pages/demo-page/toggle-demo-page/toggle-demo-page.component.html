@@ -1,0 +1,43 @@
+<div class="demo__item">
+    <h2 class="demo__title">Ngx Toggle</h2>
+    <div class="demo__content">
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Toggle</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-toggle [(ngModel)]="toggleValue"></ngx-toggle>
+            </div>
+            <div class="demo__col">
+                {{ toggleValue }}
+            </div>
+        </div>
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Toggle with value</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-toggle [(ngModel)]="toggleValue">Уведомления</ngx-toggle>
+            </div>
+            <div class="demo__col">
+                {{ toggleValue }}
+            </div>
+        </div>
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Toggle with value checked disabled</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-toggle [checked]="true" [disabled]="true">Уведомления</ngx-toggle>
+            </div>
+        </div>
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Toggle with value unchecked disabled</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-toggle [checked]="false" [disabled]="true">Уведомления</ngx-toggle>
+            </div>
+        </div>
+    </div>
+</div>

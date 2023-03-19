@@ -8,6 +8,7 @@
         class="ngx-toggle__input visually-hidden" 
         type="checkbox" 
         [disabled]="disabled ? disabled : false" 
+        [required]="required ? required : false" 
         [(ngModel)]="model" 
         (ngModelChange)="updateChanges()"
     >

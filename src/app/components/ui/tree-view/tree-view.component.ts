@@ -1,4 +1,4 @@
-import { AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { slideToggleAnimation } from 'src/app/animations/slide-toggle.animation';
 import { IMenuItem } from 'src/app/interfaces/menu/menu-item';
 import { UtilsService } from 'src/app/services/utils.service';
@@ -10,7 +10,7 @@ import { UtilsService } from 'src/app/services/utils.service';
     animations: [slideToggleAnimation],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgxTreeViewComponent implements OnInit, AfterViewChecked {
+export class NgxTreeViewComponent implements OnInit, AfterViewInit {
     
     /** Ресурс данных для компонента treeView */
 	@Input() dataSource!: IMenuItem[];
@@ -20,9 +20,6 @@ export class NgxTreeViewComponent implements OnInit, AfterViewChecked {
 
     /** Событие выбора элемента из списка */
 	@Output() onSelect = new EventEmitter<IMenuItem>();
-
-    /** Флаг того, что шаблон компонента был проверен единожды */
-    isViewCheckedOnce: boolean = false;
 
     /** Список датасурса в один уровень */
     inlineDataSource: IMenuItem[] = [];
@@ -46,17 +43,13 @@ export class NgxTreeViewComponent implements OnInit, AfterViewChecked {
         //console.log(this.inlineDataSource);
     }
 
-    ngAfterViewChecked(): void {
+    ngAfterViewInit(): void {
         /** 
             Для избежания Error: NG0100: ExpressionChangedAfterItHasBeenCheckedError, 
-            чтобы tooltip отображался у всех компонентов при наведении,
-            а флаг, чтобы не markForCheck не вызывался бесконечно
+            чтобы tooltip отображался у всех компонентов при наведении
         */
 
-        if (!this.isViewCheckedOnce) {
-            setTimeout(() => this.cd.markForCheck(), 200);
-            this.isViewCheckedOnce = true;
-        }
+        setTimeout(() => this.cd.markForCheck(), 100);
     }
 
     private convertRecursiveListToInline(list: IMenuItem[], parent?: IMenuItem): void {

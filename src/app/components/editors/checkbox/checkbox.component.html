@@ -10,6 +10,7 @@
         [class.indeterminate]="indeterminate"
         type="checkbox" 
         [disabled]="disabled ? disabled : false" 
+        [required]="required ? required : false" 
         [(ngModel)]="model" 
         (ngModelChange)="updateChanges()"
     >

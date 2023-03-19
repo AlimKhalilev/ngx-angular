@@ -8,6 +8,7 @@
         class="ngx-checkbox__input visually-hidden"
         type="radio" 
         [disabled]="disabled ? disabled : false" 
+        [required]="required ? required : false"
         [value]="value"
         [(ngModel)]="model" 
         (ngModelChange)="updateChanges()"

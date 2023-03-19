@@ -1,0 +1,43 @@
+<div class="demo__item">
+    <h2 class="demo__title">Ngx Checkbox</h2>
+    <div class="demo__content">
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Checkbox</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-checkbox [(ngModel)]="checkBoxValue" [indeterminate]="isIndeterminate">Проверка</ngx-checkbox>
+            </div>
+            <div class="demo__col">
+                {{ checkBoxValue }}
+            </div>
+            <div class="demo__col">
+                <ngx-button type="primary" (onClick)="isIndeterminate = !isIndeterminate">indeterminate: {{ isIndeterminate }}</ngx-button>
+            </div>
+        </div>
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Checkbox disabled</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-checkbox [disabled]="true">Я выключен</ngx-checkbox>
+            </div>
+        </div>
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Checkbox disabled checked</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-checkbox [(ngModel)]="checkBoxDisabled" [disabled]="true">Я выключен и отмечен</ngx-checkbox>
+            </div>
+        </div>
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Checkbox checked basic value</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-checkbox [checked]="true">Я включен базово (не через модель)</ngx-checkbox>
+            </div>
+        </div>
+    </div>
+</div>

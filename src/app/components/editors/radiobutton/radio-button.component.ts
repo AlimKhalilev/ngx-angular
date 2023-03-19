@@ -14,15 +14,17 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     ]
 })
 export class NgxRadioButtonComponent {
+    /** Статус неактивности объекта */
+	@Input() disabled!: boolean;
+
+    /** Статус обязательного объекта */
+	@Input() required!: boolean;
 
     /** Значение текущей радио кнопки */
-	@Input() value: string | undefined;
-
-	/** Статус неактивного чекбокса */
-	@Input() disabled: boolean | undefined;
+	@Input() value!: string;
 
 	/** Всплывающая подсказка чекбокса */
-	@Input() tooltip: string | undefined;
+	@Input() tooltip!: string;
 
     /** Содержит текущее значение (модель) радиокнопки */
     model: string = '';

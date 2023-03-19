@@ -1,0 +1,29 @@
+<div class="demo__item">
+    <h2 class="demo__title">Ngx Tag</h2>
+    <div class="demo__content">
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Basic</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-tag>Tag</ngx-tag>
+            </div>
+        </div>
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Basic with close functionality</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-tag *ngIf="isTagShown" (onClose)="isTagShown = false;">Tag</ngx-tag>
+            </div>
+        </div>
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Basic text-overflow</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-tag>Tag with some one loooooong text</ngx-tag>
+            </div>
+        </div>
+    </div>
+</div>

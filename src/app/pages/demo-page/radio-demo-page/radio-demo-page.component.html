@@ -1,0 +1,50 @@
+<div class="demo__item">
+    <h2 class="demo__title">Ngx RadioButton</h2>
+    <div class="demo__content">
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">RadioButton</h3>
+            </div>
+            <div class="demo__col">
+                <ng-container *ngFor="let color of radioButtonList">
+                    <ngx-radio-button [(ngModel)]="radioButtonValue" [value]="color">{{ color }}</ngx-radio-button>
+                </ng-container>
+            </div>
+            <div class="demo__col">
+                {{ radioButtonValue }}
+            </div>
+        </div>
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">RadioButton another</h3>
+            </div>
+            <div class="demo__col">
+                <ng-container *ngFor="let color of radioButtonNewList">
+                    <ngx-radio-button [(ngModel)]="radioButtonNewValue" [value]="color">{{ color }}</ngx-radio-button>
+                </ng-container>
+            </div>
+            <div class="demo__col">
+                {{ radioButtonNewValue }}
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">RadioButton disabled</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-radio-button [disabled]="true">Я выключен</ngx-radio-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">RadioButton disabled checked</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-radio-button [disabled]="true" [(ngModel)]="radioButtonValue" [value]="radioButtonValue">Я выключен и отмечен</ngx-radio-button>
+            </div>
+        </div>
+
+    </div>
+</div>

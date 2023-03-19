@@ -1,0 +1,234 @@
+<div class="demo__item">
+    <h2 class="demo__title">Ngx Buttons</h2>
+    <div class="demo__content">
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Icon Button</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button icon="ngx-search-20" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button icon="ngx-search-20" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Icon Border Button</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="secondary" icon="ngx-search-20" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="secondary" icon="ngx-search-20" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Icon+Text Button</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button icon="ngx-search-20" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button icon="ngx-search-20" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Text Button</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Text Color Button</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="text-color" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="text-color" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Text Base Color Button</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="primary" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="primary" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Danger Color Button</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="danger" (onClick)="buttonClicked()">Delete</ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="danger" [disabled]="true" (onClick)="buttonClicked()">Delete</ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Icon+Text Color Button</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="primary" icon="ngx-search-20" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="primary" icon="ngx-search-20" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Icon+Text Color Button Width</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="primary" [width]="200"  icon="ngx-search-20" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="primary" [width]="200" icon="ngx-search-20" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Border Button</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="secondary" tooltip="Подсказка" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="secondary" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Icon Button Small</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="small" icon="ngx-star-16" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="small" icon="ngx-star-16" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Icon Colored Button Small</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="small" icon="ngx-star-fill-16" iconColor="teal-700" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="small" icon="ngx-star-fill-16" iconColor="teal-700" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Icon Button Small Close</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="small-close" icon="ngx-dismiss-16" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="small-close" icon="ngx-dismiss-16" [disabled]="true" (onClick)="buttonClicked()">
+                </ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Icon Button Tile</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="tile" icon="ngx-close-20" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="tile" icon="ngx-close-20" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Icon Button Tile Close</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="tile-close" icon="ngx-close-20" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="tile-close" icon="ngx-close-20" [disabled]="true" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Icon Reverse Button</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button icon="ngx-chevron-20" [iconReverse]="true" (onClick)="buttonClicked()"> </ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button icon="ngx-chevron-20" [iconReverse]="true" [disabled]="true" (onClick)="buttonClicked()">
+                </ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Icon+Text Button with chevron</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button icon="ngx-search-20" [chevron]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button icon="ngx-search-20" [chevron]="true" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Text Button with chevron</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button [chevron]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button [chevron]="true" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Border Button  with chevron</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="secondary" [chevron]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+            <div class="demo__col">
+                <ngx-button type="secondary" [chevron]="true" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+        </div>
+    </div>
+</div>
