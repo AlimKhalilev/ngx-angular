@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { INgxContextMenu } from 'src/app/interfaces/context-menu/context-menu';
 
 @Component({
-  selector: 'app-dropdown-demo-page',
-  templateUrl: './dropdown-demo-page.component.html',
-  styleUrls: ['./dropdown-demo-page.component.scss']
+    selector: 'app-dropdown-demo-page',
+    templateUrl: './dropdown-demo-page.component.html',
+    styleUrls: ['./dropdown-demo-page.component.scss']
 })
 export class DropdownDemoPageComponent {
     dropdownClickStatus: boolean = false;
@@ -35,12 +35,12 @@ export class DropdownDemoPageComponent {
             children: [
                 {
                     text: 'Заглушка 4 - 1',
-                    icon: 'ngx-copy-20',
+                    icon: 'ngx-copy-20'
                 },
                 {
                     text: 'Заглушка 4 - 2',
-                    icon: 'ngx-add-circle-20',
-                },
+                    icon: 'ngx-add-circle-20'
+                }
             ]
         }
     ];

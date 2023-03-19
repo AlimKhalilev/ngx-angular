@@ -31,6 +31,10 @@ body {
     white-space: nowrap;
 }
 
+.lazy-transition {
+    --transition: 0.3s ease-in-out;
+}
+
 mat-icon.mat-icon {
     display: flex;
     min-width: 16px;

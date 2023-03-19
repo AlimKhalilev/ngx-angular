@@ -5,7 +5,9 @@
     // .demo__aside
 
     &__aside {
+        position: relative;
         background-color: var(--gray-25);
+        box-shadow: var(--shadow-demo-aside);
         min-width: 250px;
         max-width: 250px;
     }

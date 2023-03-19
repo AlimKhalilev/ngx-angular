@@ -1,4 +1,10 @@
-<div class="ngx-textbox" [matTooltip]="tooltip ? tooltip : ''" [matTooltipDisabled]="!tooltip" [style.width.px]="width ? width : null">
+<div 
+    class="ngx-textbox" 
+    [matTooltip]="tooltip ? tooltip : ''" 
+    [matTooltipDisabled]="!tooltip" 
+    [style.width.px]="width ? width : null"
+    lazyTransition
+>
     <div class="ngx-textbox__container">
         <input
             class="ngx-textbox__input font-basic"

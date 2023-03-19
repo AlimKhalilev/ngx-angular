@@ -46,6 +46,5 @@ export class NgxButtonComponent implements OnInit {
 	ngOnInit(): void {
 		this.hostClassName.push("ngx-button--" + this.type);
 	}
-
 }
 

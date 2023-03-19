@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-radio-demo-page',
-  templateUrl: './radio-demo-page.component.html',
-  styleUrls: ['./radio-demo-page.component.scss']
+    selector: 'app-radio-demo-page',
+    templateUrl: './radio-demo-page.component.html',
+    styleUrls: ['./radio-demo-page.component.scss']
 })
 export class RadioDemoPageComponent {
     radioButtonValue: string = '';

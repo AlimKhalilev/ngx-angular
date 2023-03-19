@@ -25,7 +25,6 @@
     --chevron-color-disabled: var(--gray-350);
 
     --outline-color: transparent;
-    --transition: 0.3s ease-in-out;
 
     font-family: "Segoe UI", sans-serif;
     height: 40px;
@@ -172,8 +171,8 @@
         --text-color: var(--text-color-pressed);
     }
 
-    // focus
-    &:focus:not(:active) {
+    // focus with keyboard
+    &:focus-visible {
         --outline-color: var(--gray-600);
     }
 

@@ -5,6 +5,7 @@ import { NgModule } from "@angular/core";
 import { NgxButtonModule } from '../../ui/button/button.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import { LazyTransitionDirectiveModule } from 'src/app/directives/lazy-transition.directive';
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
         FormsModule,
         MatTooltipModule,
         MatIconModule,
-        NgxButtonModule
+        NgxButtonModule,
+        LazyTransitionDirectiveModule
     ],
     declarations: [NgxTextBoxComponent],
     exports: [NgxTextBoxComponent]

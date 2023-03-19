@@ -1,4 +1,4 @@
-import { Directive, HostListener, Input } from '@angular/core';
+import { Directive, HostListener, Input, NgModule } from '@angular/core';
 import { MatMenuPanel, _MatMenuTriggerBase } from '@angular/material/menu';
 import { fromEvent, merge } from 'rxjs';
 
@@ -11,7 +11,7 @@ import { fromEvent, merge } from 'rxjs';
     },
     exportAs: 'matContextMenuTrigger'
 })
-export class MatContextMenuTrigger extends _MatMenuTriggerBase {
+export class ContextMenuDirective extends _MatMenuTriggerBase {
     // Duplicate the code for the matMenuTriggerFor binding
     // using a new property and the public menu accessors.
     @Input('matContextMenuTriggerFor')
@@ -95,3 +95,10 @@ export class MatContextMenuTrigger extends _MatMenuTriggerBase {
         return super.ngOnDestroy();
     }
 }
+
+@NgModule({
+	imports: [],
+	declarations: [ContextMenuDirective],
+	exports: [ContextMenuDirective],
+})
+export class ContextMenuDirectiveModule {}

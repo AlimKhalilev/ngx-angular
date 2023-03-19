@@ -61,8 +61,8 @@
             }
         }
 
-        // focus
-        &:focus:not(:active) {
+        // focus with keyboard
+        &:focus-visible {
             ~.ngx-toggle__container {
                 --outline-color: var(--gray-600);
             }
