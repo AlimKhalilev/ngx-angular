@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPortfolio, PortfolioService } from 'src/app/services/portfolio.service';
+import { IPortfolio } from 'src/app/interfaces/portfolio/portfolio';
+import { PortfolioService } from 'src/app/services/portfolio.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,6 +12,9 @@ export class HomePageComponent {
     works$: Observable<IPortfolio[]>;
 
     constructor(private portfolioService: PortfolioService) {
-        this.works$ = this.portfolioService.getAll();
+        this.works$ = this.portfolioService.getAll()
+        this.works$.subscribe(e => {
+            console.log(e);
+        })
     }
 }

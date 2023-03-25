@@ -1,4 +1,4 @@
 export const environment = {
-    production: false,
+    production: true,
     serverEndpoint: 'https://thechampguess.ru/api/wp-json/rest',
 };

@@ -3,6 +3,7 @@
     // .portfolio-card__header
 
     &__header {
+        margin-bottom: 12px;
     }
 
     // .portfolio-card__title
@@ -13,12 +14,26 @@
     // .portfolio-card__link
 
     &__link {
+        color: var(--link);
+        text-decoration: none;
+        transition: 0.3s ease-in-out;
+        border-bottom: 1px solid transparent;
 
+        &:hover {
+            border-bottom-color: var(--link);
+        }
     }
 
     // .portfolio-card__body
 
     &__body {
+    }
+
+    // .portfolio-card__picture
+
+    &__picture {
+        display: flex;
+        margin-bottom: 16px;
     }
 
     // .portfolio-card__img

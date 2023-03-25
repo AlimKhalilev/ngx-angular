@@ -1,16 +1,16 @@
 <div class="portfolio-card">
     <div class="portfolio-card__header">
         <h3 class="portfolio-card__title">
-            <a class="portfolio-card__link" [href]="data.link" target="_blank">{{ data.name }}</a>
+            <a class="portfolio-card__link font-head-18" [href]="data.link" target="_blank">{{ data.name }}</a>
         </h3>
-        <span>{{ data.addDateTimestamp | date: 'dd.MM.yyyy' }}</span>
+        <span class="font-basic">{{ data.date }}</span>
     </div>
 
     <div class="portfolio-card__body">
-        <picture>
-            <source [srcset]="data.imgMinWebp" type="image/webp" />
-            <img class="portfolio-card__img" [src]="data.imgMin" />
+        <picture class="portfolio-card__picture">
+            <source [srcset]="data.pictureWebpMin" type="image/webp" />
+            <img class="portfolio-card__img" [src]="data.picturePngMin" />
         </picture>
-        <p class="portfolio-card__description">{{ data.description }}</p>
+        <p class="portfolio-card__description font-basic">{{ data.description }}</p>
     </div>
 </div>
