@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
@@ -14,7 +14,7 @@ import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
         }
     ]
 })
-export class NgxTextBoxComponent implements ControlValueAccessor {
+export class NgxTextBoxComponent implements ControlValueAccessor, OnInit {
     /** Статус неактивности объекта */
     @Input() disabled!: boolean;
 
@@ -42,6 +42,12 @@ export class NgxTextBoxComponent implements ControlValueAccessor {
     /** Иконка для кастомной кнопки */
     @Input() btnIcon!: string;
 
+    /** Флаг инпута с изменением типа (type = password/text) */
+    @Input() passwordSwitch: boolean = false;
+
+    /** Флаг наличия ошибки в поле */
+    @Input() hasError: boolean = false;
+
     /** Событие клика на кастомную кнопку */
     @Output() onBtnClick = new EventEmitter();
 
@@ -57,10 +63,21 @@ export class NgxTextBoxComponent implements ControlValueAccessor {
     /** Подписка на изменение значения модели */
     modelChanged$ = new Subject<string>();
 
+    /** Текущая иконка кнопки переключения типа инпута (type = password/text) */
+    passwordSwitchIcon: string = '';
+
     constructor() {
         this.modelChanged$.pipe(debounceTime(this.debounce), distinctUntilChanged()).subscribe((value: string) => {
             this.updateModel(value);
         });
+    }
+
+    ngOnInit(): void {
+        // Если передан флаг переключателя пароля -> подготавливаем данные под него
+        if (this.passwordSwitch) {
+            this.type = 'password';
+            this.passwordSwitchIcon = 'ngx-eye-off-16';
+        }
     }
 
     /** Метод, который вызывается при обновлении модели */
@@ -91,5 +108,10 @@ export class NgxTextBoxComponent implements ControlValueAccessor {
      */
     registerOnTouched(fn: any): void {
         this.onTouched = fn;
+    }
+
+    toggleTypePassword() {
+        this.type = this.type === 'text' ? 'password' : 'text';
+        this.passwordSwitchIcon = this.type === 'text' ? 'ngx-eye-16' : 'ngx-eye-off-16';
     }
 }

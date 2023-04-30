@@ -60,11 +60,6 @@
             }
         }
 
-        // disabled
-        &:disabled, &:disabled ~ .ngx-textbox__content {
-            --bg-color: var(--bg-color-disabled);
-        }
-
         // когда поле не disabled, в фокусе и когда оно не пустое - показываем кнопку очистки
         &:focus, &.inputNotEmpty {
             &:not(:disabled) {
@@ -77,6 +72,22 @@
 
         &.inputHasIcon {
             padding-left: 38px;
+        }
+
+        &.hasError {
+            --border-color: var(--alert-red);
+
+            &:not(:disabled) {
+                ~ .ngx-textbox__content {
+                    --line-color: var(--alert-red);
+                }
+            }
+        }
+
+        // disabled
+        &:disabled, &:disabled ~ .ngx-textbox__content {
+            --border-color: rgba(0, 0, 0, 0.059);
+            --bg-color: var(--bg-color-disabled);
         }
 
     }

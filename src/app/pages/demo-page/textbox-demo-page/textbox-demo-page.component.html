@@ -63,7 +63,34 @@
                 <h3 class="demo__fieldTitle">TextBox custom button</h3>
             </div>
             <div class="demo__col">
-                <ngx-textbox btnIcon="ngx-arrow-right-16" (onBtnClick)="textBoxBtnClick()"></ngx-textbox>
+                <ngx-textbox btnIcon="ngx-arrow-right-16" (onBtnClick)="textBoxBtnClick()" value="Что-то"></ngx-textbox>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox password switcher</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox [passwordSwitch]="true" value="oldpassword"></ngx-textbox>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox has error</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox [hasError]="true" value="Что-то не то"></ngx-textbox>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox has error disabled</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox [hasError]="true" value="Что-то не то выкл" [disabled]="true"></ngx-textbox>
             </div>
         </div>
 

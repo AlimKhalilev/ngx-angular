@@ -10,6 +10,7 @@
             class="ngx-textbox__input font-basic"
             [class.inputNotEmpty]="model !== ''"
             [class.inputHasIcon]="iconStart"
+            [class.hasError]="hasError"
             [type]="type"
             [(ngModel)]="model"
             (ngModelChange)="modelChanged$.next($event)"
@@ -21,11 +22,15 @@
             <ng-container *ngIf="iconStart">
                 <mat-icon class="ngx-textbox__icon icon-20" [svgIcon]="iconStart"></mat-icon>
             </ng-container>
+
+            <ng-container *ngIf="!btnIcon && !passwordSwitch">
+                <ngx-button class="ngx-textbox__action ngx-textbox__action--clear" type="small" icon="ngx-dismiss-16" (onClick)="updateModel('')"></ngx-button>
+            </ng-container>
             <ng-container *ngIf="btnIcon">
                 <ngx-button class="ngx-textbox__action" type="small" [icon]="btnIcon" (onClick)="onBtnClick.emit()"></ngx-button>
             </ng-container>
-            <ng-container *ngIf="!btnIcon">
-                <ngx-button class="ngx-textbox__action ngx-textbox__action--clear" type="small" icon="ngx-dismiss-16" (onClick)="updateModel('')"></ngx-button>
+            <ng-container *ngIf="passwordSwitch">
+                <ngx-button class="ngx-textbox__action" type="small" [icon]="passwordSwitchIcon" (onClick)="toggleTypePassword()"></ngx-button>
             </ng-container>
 
             <div class="ngx-textbox__line"></div>

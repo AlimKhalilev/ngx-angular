@@ -27,6 +27,8 @@ export class CustomIconService {
             'ngx-chevron-double-16',
             'ngx-clipboard-link-16',
             'ngx-dismiss-16',
+            'ngx-eye-16',
+            'ngx-eye-off-16',
             'ngx-star-16',
             'ngx-star-fill-16',
 
