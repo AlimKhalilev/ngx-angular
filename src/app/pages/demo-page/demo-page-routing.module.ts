@@ -6,7 +6,7 @@ import { CheckboxDemoPageComponent } from './checkbox-demo-page/checkbox-demo-pa
 import { DemoPageComponent } from './demo-page.component';
 import { DropdownDemoPageComponent } from './dropdown-demo-page/dropdown-demo-page.component';
 import { ListItemDemoPageComponent } from './list-item-demo-page/list-item-demo-page.component';
-import { RadioDemoPageComponent } from './radio-demo-page/radio-demo-page.component';
+import { RadioGroupDemoPageComponent } from './radio-group-demo-page/radio-group-demo-page.component';
 import { TabsDemoPageComponent } from './tabs-demo-page/tabs-demo-page.component';
 import { TagDemoPageComponent } from './tag-demo-page/tag-demo-page.component';
 import { TextboxDemoPageComponent } from './textbox-demo-page/textbox-demo-page.component';
@@ -22,7 +22,7 @@ export const demoRoutes: Routes = [
     { path: 'dropdown', component: DropdownDemoPageComponent },
     { path: 'textbox', component: TextboxDemoPageComponent },
     { path: 'checkbox', component: CheckboxDemoPageComponent },
-    { path: 'radio', component: RadioDemoPageComponent },
+    { path: 'radio', component: RadioGroupDemoPageComponent },
     { path: 'toggle', component: ToggleDemoPageComponent },
     { path: 'accordion', component: AccordionDemoPageComponent },
     { path: 'tree-view', component: TreeViewDemoPageComponent },

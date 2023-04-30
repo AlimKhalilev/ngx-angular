@@ -6,10 +6,10 @@
                 <h3 class="demo__fieldTitle">TextBox</h3>
             </div>
             <div class="demo__col">
-                <ngx-textbox [(ngModel)]="textBoxValue"></ngx-textbox>
+                <ngx-textbox [(ngModel)]="textBoxValueBase" (ngModelChange)="textBoxValueBaseChanged($event)"></ngx-textbox>
             </div>
             <div class="demo__col">
-                <p>Значение: {{ textBoxValue }}</p>
+                <p>Значение: {{ textBoxValueBase }}</p>
             </div>
         </div>
 

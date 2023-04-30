@@ -6,7 +6,7 @@
                 <h3 class="demo__fieldTitle">Checkbox</h3>
             </div>
             <div class="demo__col">
-                <ngx-checkbox [(ngModel)]="checkBoxValue" [indeterminate]="isIndeterminate">Проверка</ngx-checkbox>
+                <ngx-checkbox [(ngModel)]="checkBoxValue" (ngModelChange)="checkBoxValueChange($event)" [indeterminate]="isIndeterminate">Проверка</ngx-checkbox>
             </div>
             <div class="demo__col">
                 {{ checkBoxValue }}

@@ -8,11 +8,11 @@
     <div class="ngx-textbox__container">
         <input
             class="ngx-textbox__input font-basic"
-            [class.inputNotEmpty]="value !== ''"
+            [class.inputNotEmpty]="model !== ''"
             [class.inputHasIcon]="iconStart"
             [type]="type"
-            [(ngModel)]="value"
-            (ngModelChange)="updateChanges()"
+            [(ngModel)]="model"
+            (ngModelChange)="modelChanged$.next($event)"
             [placeholder]="placeholder ? placeholder : ''"
             [disabled]="disabled ? disabled : false" 
             [required]="required ? required : false" 
@@ -25,7 +25,7 @@
                 <ngx-button class="ngx-textbox__action" type="small" [icon]="btnIcon" (onClick)="onBtnClick.emit()"></ngx-button>
             </ng-container>
             <ng-container *ngIf="!btnIcon">
-                <ngx-button class="ngx-textbox__action ngx-textbox__action--clear" type="small" icon="ngx-dismiss-16" (onClick)="writeValue('')"></ngx-button>
+                <ngx-button class="ngx-textbox__action ngx-textbox__action--clear" type="small" icon="ngx-dismiss-16" (onClick)="updateModel('')"></ngx-button>
             </ng-container>
 
             <div class="ngx-textbox__line"></div>

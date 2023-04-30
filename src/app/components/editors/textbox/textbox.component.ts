@@ -1,5 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
 @Component({
     selector: 'ngx-textbox',
@@ -15,34 +16,37 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class NgxTextBoxComponent implements ControlValueAccessor {
     /** Статус неактивности объекта */
-	@Input() disabled!: boolean;
+    @Input() disabled!: boolean;
 
     /** Статус обязательного объекта */
-	@Input() required!: boolean;
+    @Input() required!: boolean;
 
     /** Опциональная ширина */
-	@Input() width!: number;
+    @Input() width!: number;
 
-	/** Всплывающая подсказка */
-	@Input() tooltip!: string;
+    /** Всплывающая подсказка */
+    @Input() tooltip!: string;
 
-	/** Placeholder input элемента */
-	@Input() placeholder!: string;
+    /** Placeholder input элемента */
+    @Input() placeholder!: string;
 
-	/** Type input элемента */
-	@Input() type: 'text' | 'email' | 'number' | 'tel' | 'search' | 'url' = 'text';
+    /** Type input элемента */
+    @Input() type: 'text' | 'email' | 'number' | 'tel' | 'search' | 'url' | 'password' = 'text';
 
-	/** Опциональная иконка в начале инпута */
-	@Input() iconStart!: string;
+    /** Задержка в мс для изменения модели инпута */
+    @Input() debounce: number = 50;
+
+    /** Опциональная иконка в начале инпута */
+    @Input() iconStart!: string;
 
     /** Иконка для кастомной кнопки */
-	@Input() btnIcon!: string;
+    @Input() btnIcon!: string;
 
     /** Событие клика на кастомную кнопку */
-	@Output() onBtnClick = new EventEmitter();
+    @Output() onBtnClick = new EventEmitter();
 
-    /** Содержит текущее значение поля (работает как ngModel, а также как и props) */
-    @Input() value: string = '';
+    /** Содержит текущее значение (модель) инпута (также принимает props 'value') */
+    @Input('value') model: string = '';
 
     /** Вызывается, когда модель была изменена */
     onChange: (_: any) => void = (_: any) => {};
@@ -50,20 +54,27 @@ export class NgxTextBoxComponent implements ControlValueAccessor {
     /** Вызывается, когда модель была затронута */
     onTouched: () => void = () => {};
 
-    constructor() {}
+    /** Подписка на изменение значения модели */
+    modelChanged$ = new Subject<string>();
+
+    constructor() {
+        this.modelChanged$.pipe(debounceTime(this.debounce), distinctUntilChanged()).subscribe((value: string) => {
+            this.updateModel(value);
+        });
+    }
 
     /** Метод, который вызывается при обновлении модели */
-    updateChanges() {
-        this.onChange(this.value);
+    updateModel(model: string) { 
+        this.model = model;
+        this.onChange(this.model);
     }
 
     /**
-     * Записывает изначальное значение в поле.
+     * Записывает значение в модель из UI.
      * @param value значение
      */
     writeValue(value: string): void {
-        this.value = value;
-        this.onChange(this.value);
+        this.model = value;
     }
 
     /**

@@ -38,11 +38,12 @@ export class NgxCheckboxComponent {
     constructor() {}
 
     /** Метод, который вызывается при обновлении модели */
-    updateChanges() {
+    updateModel(model: boolean) { 
         // если статус неопределенности в момент изменения чекбокса - вырубаем этот статус
         if (this.indeterminate) {
             this.indeterminate = false;
         }
+        this.model = model;
         this.onChange(this.model);
     }
 
@@ -52,7 +53,6 @@ export class NgxCheckboxComponent {
      */
     writeValue(model: boolean): void {
         this.model = model;
-        this.onChange(this.model);
     }
 
     /**

@@ -12,7 +12,7 @@
         [disabled]="disabled ? disabled : false" 
         [required]="required ? required : false" 
         [(ngModel)]="model" 
-        (ngModelChange)="updateChanges()"
+        (ngModelChange)="updateModel($event)"
     >
     <div class="ngx-checkbox__container">
         <div class="ngx-checkbox__box">

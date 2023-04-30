@@ -20,7 +20,7 @@ export class NgxToggleComponent {
     /** Статус обязательного объекта */
 	@Input() required!: boolean;
 
-	/** Всплывающая подсказка чекбокса */
+	/** Всплывающая подсказка */
 	@Input() tooltip!: string;
 
     /** Содержит текущее значение (модель) чекбокса (также принимает props 'checked') */
@@ -35,7 +35,8 @@ export class NgxToggleComponent {
     constructor() {}
 
     /** Метод, который вызывается при обновлении модели */
-    updateChanges() {
+    updateModel(model: boolean) {
+        this.model = model;
         this.onChange(this.model);
     }
 
@@ -45,7 +46,6 @@ export class NgxToggleComponent {
      */
     writeValue(model: boolean): void {
         this.model = model;
-        this.onChange(this.model);
     }
 
     /**

@@ -16,7 +16,7 @@ import { DropdownDemoPageComponent } from './dropdown-demo-page/dropdown-demo-pa
 import { TextboxDemoPageComponent } from './textbox-demo-page/textbox-demo-page.component';
 import { CheckboxDemoPageComponent } from './checkbox-demo-page/checkbox-demo-page.component';
 import { ToggleDemoPageComponent } from './toggle-demo-page/toggle-demo-page.component';
-import { RadioDemoPageComponent } from './radio-demo-page/radio-demo-page.component';
+import { RadioGroupDemoPageComponent } from './radio-group-demo-page/radio-group-demo-page.component';
 import { TreeViewDemoPageComponent } from './tree-view-demo-page/tree-view-demo-page.component';
 import { AccordionDemoPageComponent } from './accordion-demo-page/accordion-demo-page.component';
 import { TileViewDemoPageComponent } from './tile-view-demo-page/tile-view-demo-page.component';
@@ -32,7 +32,7 @@ import { TileViewDemoPageComponent } from './tile-view-demo-page/tile-view-demo-
         TextboxDemoPageComponent,
         CheckboxDemoPageComponent,
         ToggleDemoPageComponent,
-        RadioDemoPageComponent,
+        RadioGroupDemoPageComponent,
         TreeViewDemoPageComponent,
         TileViewDemoPageComponent,
         AccordionDemoPageComponent

@@ -9,4 +9,8 @@ export class CheckboxDemoPageComponent {
     checkBoxDisabled: boolean = true;
     checkBoxValue: boolean = false;
     isIndeterminate: boolean = true;
+
+    checkBoxValueChange(state: boolean) {
+        console.log(state);
+    }
 }
