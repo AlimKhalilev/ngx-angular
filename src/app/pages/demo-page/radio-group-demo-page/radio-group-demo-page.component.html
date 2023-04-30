@@ -1,48 +1,47 @@
 <div class="demo__item">
-    <h2 class="demo__title">Ngx RadioButton</h2>
+    <h2 class="demo__title">Ngx RadioGroup</h2>
     <div class="demo__content">
+
         <div class="demo__row">
             <div class="demo__col demo__col--field">
-                <h3 class="demo__fieldTitle">RadioButton</h3>
+                <h3 class="demo__fieldTitle">RadioGroup basic</h3>
             </div>
             <div class="demo__col">
-                <ng-container *ngFor="let color of radioButtonList">
-                    <ngx-radio-button [(ngModel)]="radioButtonValue" [value]="color">{{ color }}</ngx-radio-button>
-                </ng-container>
+                <ngx-radio-group>
+                    <ngx-radio-button value="1" [checked]="true">Первый</ngx-radio-button>
+                    <ngx-radio-button value="2">Второй</ngx-radio-button>
+                    <ngx-radio-button value="3">Третий</ngx-radio-button>
+                    <ngx-radio-button value="4" [disabled]="true">Четвертый</ngx-radio-button>
+                    <ngx-radio-button value="5" tooltip="Тултип радиокнопки">Пятый</ngx-radio-button>
+                </ngx-radio-group>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">RadioGroup with model</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-radio-group [(ngModel)]="radioButtonValue" (ngModelChange)="radioButtonValueChanged($event)">
+                    <ngx-radio-button *ngFor="let color of radioButtonList" [value]="color">{{ color }}</ngx-radio-button>
+                </ngx-radio-group>
             </div>
             <div class="demo__col">
                 {{ radioButtonValue }}
             </div>
         </div>
+
         <div class="demo__row">
             <div class="demo__col demo__col--field">
-                <h3 class="demo__fieldTitle">RadioButton another</h3>
+                <h3 class="demo__fieldTitle">RadioGroup with model another</h3>
             </div>
             <div class="demo__col">
-                <ng-container *ngFor="let color of radioButtonNewList">
-                    <ngx-radio-button [(ngModel)]="radioButtonNewValue" [value]="color">{{ color }}</ngx-radio-button>
-                </ng-container>
+                <ngx-radio-group [(ngModel)]="radioButtonNewValue">
+                    <ngx-radio-button *ngFor="let color of radioButtonNewList" [value]="color">{{ color }}</ngx-radio-button>
+                </ngx-radio-group>
             </div>
             <div class="demo__col">
                 {{ radioButtonNewValue }}
-            </div>
-        </div>
-
-        <div class="demo__row">
-            <div class="demo__col demo__col--field">
-                <h3 class="demo__fieldTitle">RadioButton disabled</h3>
-            </div>
-            <div class="demo__col">
-                <ngx-radio-button [disabled]="true">Я выключен</ngx-radio-button>
-            </div>
-        </div>
-
-        <div class="demo__row">
-            <div class="demo__col demo__col--field">
-                <h3 class="demo__fieldTitle">RadioButton disabled checked</h3>
-            </div>
-            <div class="demo__col">
-                <ngx-radio-button [disabled]="true" [(ngModel)]="radioButtonValue" [value]="radioButtonValue">Я выключен и отмечен</ngx-radio-button>
             </div>
         </div>
 

@@ -11,4 +11,8 @@ export class RadioGroupDemoPageComponent {
 
     radioButtonNewValue: string = '';
     radioButtonNewList: string[] = ['blue', 'yellow', 'red'];
+
+    radioButtonValueChanged(value: string) {
+        console.log(value);
+    }
 }

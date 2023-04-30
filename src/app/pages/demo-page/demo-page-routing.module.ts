@@ -22,7 +22,7 @@ export const demoRoutes: Routes = [
     { path: 'dropdown', component: DropdownDemoPageComponent },
     { path: 'textbox', component: TextboxDemoPageComponent },
     { path: 'checkbox', component: CheckboxDemoPageComponent },
-    { path: 'radio', component: RadioGroupDemoPageComponent },
+    { path: 'radio-group', component: RadioGroupDemoPageComponent },
     { path: 'toggle', component: ToggleDemoPageComponent },
     { path: 'accordion', component: AccordionDemoPageComponent },
     { path: 'tree-view', component: TreeViewDemoPageComponent },

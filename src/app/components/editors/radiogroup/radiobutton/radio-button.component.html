@@ -1,6 +1,6 @@
 <label 
     class="ngx-checkbox"
-    [class.ngx-checkbox--checked]="model === value"
+    [class.ngx-checkbox--checked]="model ? model === value : checked"
     [matTooltip]="tooltip ? tooltip : ''"
     [matTooltipDisabled]="!tooltip"
 >
@@ -10,12 +10,14 @@
         [disabled]="disabled ? disabled : false" 
         [required]="required ? required : false"
         [value]="value"
-        [(ngModel)]="model" 
-        (ngModelChange)="updateChanges()"
+        (change)="onChange($event)"
+        [checked]="model ? model === value : checked"
+        [name]="name"
+        [id]="id"
     >
     <div class="ngx-checkbox__container">
         <div class="ngx-checkbox__box ngx-checkbox__box--circle">
-            <div class="ngx-checkbox__icon" [class.visible]="model === value"></div>
+            <div class="ngx-checkbox__icon" [class.visible]="model ? model === value : checked"></div>
         </div>
         <span class="ngx-checkbox__text font-basic">
             <ng-content></ng-content>
