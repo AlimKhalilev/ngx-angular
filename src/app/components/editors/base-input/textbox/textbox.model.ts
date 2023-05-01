@@ -6,8 +6,7 @@ export enum NgxTextBoxType {
     TEL = 'tel',
     SEARCH = 'search',
     URL = 'url',
-    PASSWORD = 'password',
-    TEXTAREA = 'textarea'
+    PASSWORD = 'password'
 }
 
 /** Список иконов для типа ngx-textbox password (иконки закрытого и открытого глазика) */

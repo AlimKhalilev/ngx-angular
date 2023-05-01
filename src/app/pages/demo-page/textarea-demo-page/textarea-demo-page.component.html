@@ -1,0 +1,45 @@
+<div class="demo__item">
+    <h2 class="demo__title">Ngx TextArea</h2>
+    <div class="demo__content">
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextArea</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textarea [(ngModel)]="textAreaValue" (ngModelChange)="textAreaValueChanged($event)"></ngx-textarea>
+            </div>
+            <div class="demo__col">
+                <p>Значение: {{ textAreaValue }}</p>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextArea rows</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textarea [rows]="5" value="Textarea с большим количеством строк"></ngx-textarea>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextArea rows autoresize</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textarea [maxRows]="3" [autoresize]="true" value="Textarea с autoresize"></ngx-textarea>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextArea rows autoresize minRows</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textarea [minRows]="2" [maxRows]="5" [autoresize]="true" value="Textarea с autoresize"></ngx-textarea>
+            </div>
+        </div>
+
+    </div>
+</div>

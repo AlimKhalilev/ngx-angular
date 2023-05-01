@@ -1,0 +1,42 @@
+<div 
+    class="ngx-base-input" 
+    [matTooltip]="tooltip ? tooltip : ''" 
+    [matTooltipDisabled]="!tooltip" 
+    [style.width.px]="width ? width : null"
+    lazyTransition
+>
+    <label *ngIf="label" [for]="id" class="ngx-base-input__label font-label">{{ label }}</label>
+    <div class="ngx-base-input__container">
+        <input
+            class="ngx-base-input__input font-basic"
+            [class.inputNotEmpty]="model !== ''"
+            [class.inputHasIcon]="iconStart"
+            [class.hasError]="errorMsg"
+            [type]="type"
+            [id]="id"
+            [(ngModel)]="model"
+            (ngModelChange)="modelChanged$.next($event)"
+            [placeholder]="placeholder ? placeholder : ''"
+            [disabled]="disabled ? disabled : false" 
+            [required]="required ? required : false" 
+        />
+        <div class="ngx-base-input__content">
+            <ng-container *ngIf="iconStart">
+                <mat-icon class="ngx-base-input__icon icon-20" [svgIcon]="iconStart"></mat-icon>
+            </ng-container>
+
+            <ng-container *ngIf="!btnIcon && !passwordSwitch">
+                <ngx-button class="ngx-base-input__action ngx-base-input__action--clear" type="small" icon="ngx-dismiss-16" (onClick)="updateModel('')"></ngx-button>
+            </ng-container>
+            <ng-container *ngIf="btnIcon">
+                <ngx-button class="ngx-base-input__action" type="small" [icon]="btnIcon" (onClick)="onBtnClick.emit()"></ngx-button>
+            </ng-container>
+            <ng-container *ngIf="passwordSwitch">
+                <ngx-button class="ngx-base-input__action" type="small" [icon]="passwordSwitchIcon" (onClick)="switchTypePassword()"></ngx-button>
+            </ng-container>
+
+            <div class="ngx-base-input__line"></div>
+        </div>
+    </div>
+    <span *ngIf="errorMsg" class="ngx-base-input__error font-label">{{ errorMsg }}</span>
+</div>

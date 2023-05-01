@@ -13,6 +13,7 @@ import { TextboxDemoPageComponent } from './textbox-demo-page/textbox-demo-page.
 import { TileViewDemoPageComponent } from './tile-view-demo-page/tile-view-demo-page.component';
 import { ToggleDemoPageComponent } from './toggle-demo-page/toggle-demo-page.component';
 import { TreeViewDemoPageComponent } from './tree-view-demo-page/tree-view-demo-page.component';
+import { TextAreaDemoPageComponent } from './textarea-demo-page/textarea-demo-page.component';
 
 export const demoRoutes: Routes = [
     { path: 'tabs', component: TabsDemoPageComponent },
@@ -21,6 +22,7 @@ export const demoRoutes: Routes = [
     { path: 'list-item', component: ListItemDemoPageComponent },
     { path: 'dropdown', component: DropdownDemoPageComponent },
     { path: 'textbox', component: TextboxDemoPageComponent },
+    { path: 'textarea', component: TextAreaDemoPageComponent },
     { path: 'checkbox', component: CheckboxDemoPageComponent },
     { path: 'radio-group', component: RadioGroupDemoPageComponent },
     { path: 'toggle', component: ToggleDemoPageComponent },

@@ -20,6 +20,7 @@ import { RadioGroupDemoPageComponent } from './radio-group-demo-page/radio-group
 import { TreeViewDemoPageComponent } from './tree-view-demo-page/tree-view-demo-page.component';
 import { AccordionDemoPageComponent } from './accordion-demo-page/accordion-demo-page.component';
 import { TileViewDemoPageComponent } from './tile-view-demo-page/tile-view-demo-page.component';
+import { TextAreaDemoPageComponent } from './textarea-demo-page/textarea-demo-page.component';
 
 @NgModule({
     declarations: [
@@ -35,9 +36,12 @@ import { TileViewDemoPageComponent } from './tile-view-demo-page/tile-view-demo-
         RadioGroupDemoPageComponent,
         TreeViewDemoPageComponent,
         TileViewDemoPageComponent,
-        AccordionDemoPageComponent
+        AccordionDemoPageComponent,
+        TextAreaDemoPageComponent
     ],
     imports: [CommonModule, DemoPageRoutingModule, FormsModule, EditorsModule, UiModule, MatMenuModule],
-    exports: []
+    exports: [
+    TextAreaDemoPageComponent
+  ]
 })
 export class DemoPageModule {}

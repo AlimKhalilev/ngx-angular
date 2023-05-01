@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgxTextBoxType } from 'src/app/components/editors/textbox/textbox.model';
+import { NgxTextBoxType } from 'src/app/components/editors/base-input/textbox/textbox.model';
 
 @Component({
     selector: 'app-textbox-demo-page',

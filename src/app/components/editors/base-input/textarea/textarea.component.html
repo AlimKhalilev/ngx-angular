@@ -1,0 +1,41 @@
+<div 
+    class="ngx-base-input" 
+    [matTooltip]="tooltip ? tooltip : ''" 
+    [matTooltipDisabled]="!tooltip" 
+    [style.width.px]="width ? width : null"
+    lazyTransition
+>
+    <label *ngIf="label" [for]="id" class="ngx-base-input__label font-label">{{ label }}</label>
+    <div class="ngx-base-input__container">
+        <textarea
+            class="ngx-base-input__input ngx-base-input__input--textarea font-basic"
+            [class.inputNotEmpty]="model !== ''"
+            [class.inputHasIcon]="iconStart"
+            [class.hasError]="errorMsg"
+            [class.autoresize]="autoresize"
+            [id]="id"
+            [rows]="rows"
+            [attr.data-minrows]="minRows"
+            [attr.data-maxrows]="maxRows"
+            [(ngModel)]="model"
+            (ngModelChange)="modelChanged$.next($event)"
+            [placeholder]="placeholder ? placeholder : ''"
+            [disabled]="disabled ? disabled : false" 
+            [required]="required ? required : false"
+            [textareaAutoresize]="autoresize"
+        ></textarea>
+        <div class="ngx-base-input__content">
+
+            <ng-container *ngIf="iconStart">
+                <mat-icon class="ngx-base-input__icon icon-20" [svgIcon]="iconStart"></mat-icon>
+            </ng-container>
+
+            <ng-container>
+                <ngx-button class="ngx-base-input__action ngx-base-input__action--clear" type="small" icon="ngx-dismiss-16" (onClick)="clearField()"></ngx-button>
+            </ng-container>
+
+            <div class="ngx-base-input__line"></div>
+        </div>
+    </div>
+    <span *ngIf="errorMsg" class="ngx-base-input__error font-label">{{ errorMsg }}</span>
+</div>
