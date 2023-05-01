@@ -1,4 +1,8 @@
 .ngx-textbox {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
     --bg-color: var(--white);
     --bg-color-hover: var(--gray-25);
     --bg-color-disabled: var(--gray-100);
@@ -26,6 +30,7 @@
     // .ngx-textbox__container
 
     &__container {
+        display: flex;
         position: relative;
         border-radius: 4px;
         overflow: hidden;
@@ -43,6 +48,17 @@
         outline: none;
         transition: var(--transition);
         width: 100%;
+
+        // .ngx-textbox__input--textarea
+
+        &--textarea {
+            resize: none;
+
+            &.autoresize {
+                transition: unset;
+                padding: 7px 38px 7px 12px;
+            }
+        }
 
         // когда поле не пустое
         &.inputNotEmpty, &.inputNotEmpty ~ .ngx-textbox__content {
@@ -97,9 +113,10 @@
     &__action {
         position: absolute;
         right: 12px;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 5px;
         transition: var(--transition);
+        //top: 50%;
+        //transform: translateY(-50%);
 
         // .ngx-textbox__action--clear
 
@@ -130,5 +147,17 @@
         transform: translateY(-50%);
         transition: var(--transition);
         color: var(--text-color);
+    }
+
+    // .ngx-textbox__label
+
+    &__label {
+        color: var(--gray-450);
+    }
+
+    // .ngx-textbox__error
+
+    &__error {
+        color: var(--alert-red);
     }
 }

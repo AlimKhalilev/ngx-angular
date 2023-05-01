@@ -5,35 +5,57 @@
     [style.width.px]="width ? width : null"
     lazyTransition
 >
+    <label *ngIf="label" [for]="id" class="ngx-textbox__label font-label">{{ label }}</label>
     <div class="ngx-textbox__container">
         <input
+            *ngIf="type !== ngxTextBoxType.TEXTAREA"
             class="ngx-textbox__input font-basic"
             [class.inputNotEmpty]="model !== ''"
             [class.inputHasIcon]="iconStart"
-            [class.hasError]="hasError"
+            [class.hasError]="errorMsg"
             [type]="type"
+            [id]="id"
             [(ngModel)]="model"
             (ngModelChange)="modelChanged$.next($event)"
             [placeholder]="placeholder ? placeholder : ''"
             [disabled]="disabled ? disabled : false" 
             [required]="required ? required : false" 
         />
+        <textarea
+            *ngIf="type === ngxTextBoxType.TEXTAREA"
+            class="ngx-textbox__input ngx-textbox__input--textarea font-basic"
+            [class.inputNotEmpty]="model !== ''"
+            [class.inputHasIcon]="iconStart"
+            [class.hasError]="errorMsg"
+            [class.autoresize]="autoresize"
+            [id]="id"
+            [rows]="rows"
+            [attr.data-minrows]="minRows"
+            [attr.data-maxrows]="maxRows"
+            [(ngModel)]="model"
+            (ngModelChange)="modelChanged$.next($event)"
+            [placeholder]="placeholder ? placeholder : ''"
+            [disabled]="disabled ? disabled : false" 
+            [required]="required ? required : false"
+            [textareaAutoresize]="autoresize"
+        ></textarea>
         <div class="ngx-textbox__content">
             <ng-container *ngIf="iconStart">
                 <mat-icon class="ngx-textbox__icon icon-20" [svgIcon]="iconStart"></mat-icon>
             </ng-container>
 
             <ng-container *ngIf="!btnIcon && !passwordSwitch">
-                <ngx-button class="ngx-textbox__action ngx-textbox__action--clear" type="small" icon="ngx-dismiss-16" (onClick)="updateModel('')"></ngx-button>
+                <ngx-button class="ngx-textbox__action ngx-textbox__action--clear" type="small" icon="ngx-dismiss-16" (onClick)="clearField()"></ngx-button>
             </ng-container>
             <ng-container *ngIf="btnIcon">
                 <ngx-button class="ngx-textbox__action" type="small" [icon]="btnIcon" (onClick)="onBtnClick.emit()"></ngx-button>
             </ng-container>
             <ng-container *ngIf="passwordSwitch">
-                <ngx-button class="ngx-textbox__action" type="small" [icon]="passwordSwitchIcon" (onClick)="toggleTypePassword()"></ngx-button>
+                <ngx-button class="ngx-textbox__action" type="small" [icon]="passwordSwitchIcon" (onClick)="switchTypePassword()"></ngx-button>
             </ng-container>
 
             <div class="ngx-textbox__line"></div>
         </div>
     </div>
+    <span *ngIf="errorMsg" class="ngx-textbox__error font-label">{{ errorMsg }}</span>
 </div>

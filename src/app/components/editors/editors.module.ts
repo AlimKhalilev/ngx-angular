@@ -6,7 +6,6 @@ import { NgxToggleModule } from './toggle/toggle.module';
 import { NgxRadioGroupModule } from './radiogroup/radiogroup.module';
 
 @NgModule({
-    declarations: [],
     imports: [CommonModule],
     exports: [NgxTextBoxModule, NgxCheckboxModule, NgxRadioGroupModule, NgxToggleModule]
 })

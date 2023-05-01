@@ -6,6 +6,7 @@ import { NgxButtonModule } from '../../ui/button/button.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { LazyTransitionDirectiveModule } from 'src/app/directives/lazy-transition.directive';
+import { TextareaAutoresizeDirectiveModule } from 'src/app/directives/textarea-autoresize.directive';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { LazyTransitionDirectiveModule } from 'src/app/directives/lazy-transitio
         MatTooltipModule,
         MatIconModule,
         NgxButtonModule,
-        LazyTransitionDirectiveModule
+        LazyTransitionDirectiveModule,
+        TextareaAutoresizeDirectiveModule
     ],
     declarations: [NgxTextBoxComponent],
     exports: [NgxTextBoxComponent]

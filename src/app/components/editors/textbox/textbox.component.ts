@@ -1,6 +1,7 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
+import { NgxTextBoxType, NgxTextBoxTypePasswordIcon } from './textbox.model';
 
 @Component({
     selector: 'ngx-textbox',
@@ -15,44 +16,68 @@ import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
     ]
 })
 export class NgxTextBoxComponent implements ControlValueAccessor, OnInit {
+    /** Ссылка на Enum типов инпута для использования в шаблоне */
+    ngxTextBoxType = NgxTextBoxType;
+
+    /** Уникальный идентификатор для назначения ключей инпутов */
+    private static uniqueId: number = 0;
+
     /** Статус неактивности объекта */
-    @Input() disabled!: boolean;
+    @Input() disabled: boolean = false;
 
     /** Статус обязательного объекта */
-    @Input() required!: boolean;
+    @Input() required: boolean = false;
 
     /** Опциональная ширина */
-    @Input() width!: number;
+    @Input() width: number = 0;
 
     /** Всплывающая подсказка */
-    @Input() tooltip!: string;
+    @Input() tooltip: string = '';
 
     /** Placeholder input элемента */
-    @Input() placeholder!: string;
+    @Input() placeholder: string = '';
+
+    /** Текст ошибки поля */
+    @Input() errorMsg: string = '';
+
+    /** Поле id для инпута */
+    @Input() id: string = 'ngx-textbox-' + NgxTextBoxComponent.uniqueId++;
+
+    /** Подпись инпута */
+    @Input() label: string = '';
 
     /** Type input элемента */
-    @Input() type: 'text' | 'email' | 'number' | 'tel' | 'search' | 'url' | 'password' = 'text';
+    @Input() type: NgxTextBoxType = NgxTextBoxType.TEXT;
 
     /** Задержка в мс для изменения модели инпута */
     @Input() debounce: number = 50;
 
     /** Опциональная иконка в начале инпута */
-    @Input() iconStart!: string;
+    @Input() iconStart: string = '';
 
     /** Иконка для кастомной кнопки */
-    @Input() btnIcon!: string;
+    @Input() btnIcon: string = '';
 
     /** Флаг инпута с изменением типа (type = password/text) */
     @Input() passwordSwitch: boolean = false;
 
-    /** Флаг наличия ошибки в поле */
-    @Input() hasError: boolean = false;
+    /** Количество строк (рядов) (для type = textarea) */
+    @Input() rows: number = 2;
 
-    /** Событие клика на кастомную кнопку */
-    @Output() onBtnClick = new EventEmitter();
+    /** Минимальное количество строк при autoresize (рядов) (для type = textarea) */
+    @Input() minRows: number = 1;
+
+    /** Максимальное количество строк при autoresize (рядов) (для type = textarea) */
+    @Input() maxRows: number = 2;
+
+    /** Флаг возможности autoresize (для type = textarea) */
+    @Input() autoresize: boolean = false;
 
     /** Содержит текущее значение (модель) инпута (также принимает props 'value') */
     @Input('value') model: string = '';
+
+    /** Событие клика на кастомную кнопку */
+    @Output() onBtnClick = new EventEmitter();
 
     /** Вызывается, когда модель была изменена */
     onChange: (_: any) => void = (_: any) => {};
@@ -66,6 +91,9 @@ export class NgxTextBoxComponent implements ControlValueAccessor, OnInit {
     /** Текущая иконка кнопки переключения типа инпута (type = password/text) */
     passwordSwitchIcon: string = '';
 
+    /** Ссылка на DOM Element инпута */
+    inputElement: Element | null = null;
+
     constructor() {
         this.modelChanged$.pipe(debounceTime(this.debounce), distinctUntilChanged()).subscribe((value: string) => {
             this.updateModel(value);
@@ -75,13 +103,13 @@ export class NgxTextBoxComponent implements ControlValueAccessor, OnInit {
     ngOnInit(): void {
         // Если передан флаг переключателя пароля -> подготавливаем данные под него
         if (this.passwordSwitch) {
-            this.type = 'password';
-            this.passwordSwitchIcon = 'ngx-eye-off-16';
+            this.type = NgxTextBoxType.PASSWORD;
+            this.passwordSwitchIcon = NgxTextBoxTypePasswordIcon.EYE_OFF;
         }
     }
 
     /** Метод, который вызывается при обновлении модели */
-    updateModel(model: string) { 
+    updateModel(model: string) {
         this.model = model;
         this.onChange(this.model);
     }
@@ -110,8 +138,25 @@ export class NgxTextBoxComponent implements ControlValueAccessor, OnInit {
         this.onTouched = fn;
     }
 
-    toggleTypePassword() {
-        this.type = this.type === 'text' ? 'password' : 'text';
-        this.passwordSwitchIcon = this.type === 'text' ? 'ngx-eye-16' : 'ngx-eye-off-16';
+    /** Изменить type поля инпута (password / text) */
+    public switchTypePassword() {
+        this.type = this.type === NgxTextBoxType.TEXT ? NgxTextBoxType.PASSWORD : NgxTextBoxType.TEXT;
+        this.passwordSwitchIcon = this.type === NgxTextBoxType.TEXT ? NgxTextBoxTypePasswordIcon.EYE : NgxTextBoxTypePasswordIcon.EYE_OFF;
+    }
+
+    /** Очистка поля ввода по клику на крестик */
+    public clearField() {
+        this.updateModel('');
+        if (this.type === NgxTextBoxType.TEXTAREA && this.autoresize) {
+            this.emitElementInputEvent();
+        }
+    }
+
+    /** Эмитация события :input у элемента (для срабатывания autoresize textarea) */
+    private emitElementInputEvent() {
+        if (this.inputElement === null) {
+            this.inputElement = document.querySelector(`#${this.id}`);
+        }
+        setTimeout(() => this.inputElement?.dispatchEvent(new Event('input')), 0);
     }
 }

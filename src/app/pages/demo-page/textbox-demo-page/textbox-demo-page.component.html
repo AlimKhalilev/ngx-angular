@@ -69,6 +69,15 @@
 
         <div class="demo__row">
             <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox with label</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox label="Label" value="Что-то"></ngx-textbox>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
                 <h3 class="demo__fieldTitle">TextBox password switcher</h3>
             </div>
             <div class="demo__col">
@@ -81,7 +90,7 @@
                 <h3 class="demo__fieldTitle">TextBox has error</h3>
             </div>
             <div class="demo__col">
-                <ngx-textbox [hasError]="true" value="Что-то не то"></ngx-textbox>
+                <ngx-textbox errorMsg="Text error" value="Что-то не то"></ngx-textbox>
             </div>
         </div>
 
@@ -90,7 +99,43 @@
                 <h3 class="demo__fieldTitle">TextBox has error disabled</h3>
             </div>
             <div class="demo__col">
-                <ngx-textbox [hasError]="true" value="Что-то не то выкл" [disabled]="true"></ngx-textbox>
+                <ngx-textbox errorMsg="Text error" value="Что-то не то выкл" [disabled]="true"></ngx-textbox>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox type textarea</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox [type]="ngxTextBoxType.TEXTAREA" value="textarea"></ngx-textbox>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox type textarea rows</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox [type]="ngxTextBoxType.TEXTAREA" [rows]="5" value="Textarea с большим количеством строк"></ngx-textbox>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox type textarea rows autoresize</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox [type]="ngxTextBoxType.TEXTAREA" [maxRows]="3" [autoresize]="true" value="Textarea с autoresize"></ngx-textbox>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox type textarea rows autoresize minRows</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox [type]="ngxTextBoxType.TEXTAREA" [minRows]="2" [maxRows]="5" [autoresize]="true" value="Textarea с autoresize"></ngx-textbox>
             </div>
         </div>
 

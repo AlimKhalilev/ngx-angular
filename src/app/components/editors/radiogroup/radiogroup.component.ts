@@ -20,6 +20,7 @@ export class NgxRadioGroupComponent implements AfterContentInit {
     /** Ссылка на список шаблонов радиокнопок */
     @ContentChildren(NgxRadioButtonComponent) radioButtons!: QueryList<NgxRadioButtonComponent>;
 
+    /** Уникальный идентификатор для назначения ключей радиокнопок */
     private static uniqueId: number = 0;
 
     /** Содержит текущее значение (модель) радиогруппы (также принимает props 'value') */
