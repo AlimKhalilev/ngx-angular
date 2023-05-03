@@ -32,6 +32,9 @@ export class NgxButtonComponent implements OnInit {
     /** Флаг перевернутой стрелки (шеврона) */
 	@Input() chevronReverse: boolean = false;
 
+    /** Флаг блочной кнопки (ширина растягивается на весь блок) */
+	@Input() expand: boolean = false;
+
 	/** Всплывающая подсказка кнопки */
 	@Input() tooltip: string = '';
 

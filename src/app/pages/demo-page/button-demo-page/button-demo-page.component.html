@@ -111,6 +111,18 @@
 
         <div class="demo__row">
             <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">Icon+Text Color Button Expand</h3>
+            </div>
+            <div class="demo__col" style="width: 250px;">
+                <ngx-button type="primary" icon="ngx-search-20" [expand]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+            <div class="demo__col" style="width: 250px;">
+                <ngx-button type="primary" icon="ngx-search-20" [expand]="true" [disabled]="true" (onClick)="buttonClicked()">Action</ngx-button>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
                 <h3 class="demo__fieldTitle">Border Button</h3>
             </div>
             <div class="demo__col">

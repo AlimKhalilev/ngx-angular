@@ -4,12 +4,11 @@
     [disabled]="disabled ? disabled : false"
     [matTooltip]="tooltip ? tooltip : ''"
     [matTooltipDisabled]="!tooltip"
+    [style.width]="width ? width + 'px' : expand ? '100%' : null"
     lazyTransition
 >
-    <!-- отнимаем 6 так как есть внешний невидимый отступ -->
     <div
         class="ngx-button__container"
-        [style.width.px]="width ? width - 6 : null"
         [class.ngx-button__container--iconOnly]="icon && !textRef.hasChildNodes()"
     >
         <div class="ngx-button__content">

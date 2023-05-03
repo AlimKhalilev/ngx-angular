@@ -39,16 +39,16 @@
 	// .demo__content
 
 	&__content {
-		display: flex;
-		flex-direction: column;
-		gap: 6px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
 	}
 
 	// .demo__row
 
 	&__row {
 		display: flex;
-		align-items: center;
+		flex-direction: column;
 		gap: 8px;
 
 		&--wrap {
@@ -60,9 +60,7 @@
 
 	&__col {
 		&--field {
-			margin-right: 20px;
-			padding-right: 20px;
-			border-right: 1px solid var(--gray-300);
+            margin-bottom: 4px;
 		}
 
 		&--max-width {
@@ -77,9 +75,10 @@
 	// .demo__fieldTitle
 
 	&__fieldTitle {
-		font-size: 16px;
+        font-size: 14px;
         font-weight: 400;
-    	margin: 0;
+        text-decoration: underline;
+        margin: 0;
 	}
 
     	// .demo__title
