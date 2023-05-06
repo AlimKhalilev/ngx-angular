@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 
 @Component({
 	selector: 'ngx-button',
@@ -7,6 +7,11 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxButtonComponent implements OnInit {
+    /** Биндим свойство display для host элемента (если expand -> block) */
+    @HostBinding('style.display')
+    get styleDisplay(): string {
+        return this.expand ? 'block' : 'inline-block';
+    }
 
 	/** Тип кнопки (по дефолту text) */
 	@Input() type: 'text' | 'text-color' | 'secondary' | 'primary' | 'danger' | 'small' | 'small-close' | 'tile' | 'tile-close' = 'text';
