@@ -1,8 +1,10 @@
 <main class="demo">
     <aside class="demo__aside">
-        <ng-container *ngFor="let route of demoRoutes; let index = index">
-            <ngx-list-item [active]="isCurrentRoute(route.path)" [text]="route.path ?? ''" [routerLink]="route.path"></ngx-list-item>
-        </ng-container>
+        <div class="demo__menu">
+            <ng-container *ngFor="let route of demoRoutes; let index = index">
+                <ngx-list-item [active]="isCurrentRoute(route.path)" [text]="route.path ?? ''" [routerLink]="route.path"></ngx-list-item>
+            </ng-container>
+        </div>
     </aside>
     <section class="demo__container">
         <router-outlet></router-outlet>

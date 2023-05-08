@@ -5,7 +5,7 @@ import { IMenuItem } from 'src/app/interfaces/menu/menu-item';
 @Component({
     selector: 'app-tree-view-demo-page',
     templateUrl: './tree-view-demo-page.component.html',
-    styleUrls: ['./tree-view-demo-page.component.scss']
+    styleUrls: ['./tree-view-demo-page.component.scss', '../demo-page.component.scss']
 })
 export class TreeViewDemoPageComponent {
     @ViewChild('treeViewRef') treeViewRef!: NgxTreeViewComponent;

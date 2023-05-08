@@ -1,4 +1,4 @@
-::ng-deep.demo {
+.demo {
     display: flex;
     min-height: calc(100vh - 18px);
 
@@ -10,6 +10,13 @@
         box-shadow: var(--shadow-demo-aside);
         min-width: 250px;
         max-width: 250px;
+    }
+
+    // .demo__menu
+
+    &__menu {
+        position: sticky;
+        top: 0px;
     }
 
     // .demo__container
@@ -30,11 +37,12 @@
     // .demo__item
 
     &__item {
+        padding: 16px 0;
+
         &:not(:last-child) {
             margin-bottom: 24px;
         }
     }
-
     
 	// .demo__content
 

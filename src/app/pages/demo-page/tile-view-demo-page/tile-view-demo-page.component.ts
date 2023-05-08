@@ -4,7 +4,7 @@ import { IMenuItem } from 'src/app/interfaces/menu/menu-item';
 @Component({
     selector: 'app-tile-view-demo-page',
     templateUrl: './tile-view-demo-page.component.html',
-    styleUrls: ['./tile-view-demo-page.component.scss']
+    styleUrls: ['./tile-view-demo-page.component.scss', '../demo-page.component.scss']
 })
 export class TileViewDemoPageComponent {
     treeViewDataSourceTile: IMenuItem[] = [

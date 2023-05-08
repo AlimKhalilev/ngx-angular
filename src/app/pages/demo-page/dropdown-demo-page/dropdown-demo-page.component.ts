@@ -4,7 +4,7 @@ import { INgxContextMenu } from 'src/app/interfaces/context-menu/context-menu';
 @Component({
     selector: 'app-dropdown-demo-page',
     templateUrl: './dropdown-demo-page.component.html',
-    styleUrls: ['./dropdown-demo-page.component.scss']
+    styleUrls: ['./dropdown-demo-page.component.scss', '../demo-page.component.scss']
 })
 export class DropdownDemoPageComponent {
     dropdownClickStatus: boolean = false;
