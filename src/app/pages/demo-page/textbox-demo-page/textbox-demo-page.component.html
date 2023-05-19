@@ -42,6 +42,15 @@
 
         <div class="demo__row">
             <div class="demo__col demo__col--field">
+                <h3 class="demo__fieldTitle">TextBox with mask</h3>
+            </div>
+            <div class="demo__col">
+                <ngx-textbox [mask]="{ mask: '+7 (999) 999-99-99', len: 18, type:'num' }"></ngx-textbox>
+            </div>
+        </div>
+
+        <div class="demo__row">
+            <div class="demo__col demo__col--field">
                 <h3 class="demo__fieldTitle">TextBox icon start</h3>
             </div>
             <div class="demo__col">
@@ -100,15 +109,6 @@
             </div>
             <div class="demo__col">
                 <ngx-textbox errorMsg="Text error" value="Что-то не то выкл" [disabled]="true"></ngx-textbox>
-            </div>
-        </div>
-
-        <div class="demo__row">
-            <div class="demo__col demo__col--field">
-                <h3 class="demo__fieldTitle">TextBox with mask</h3>
-            </div>
-            <div class="demo__col">
-                <ngx-textbox [mask]="{mask: '+7 (999) 999-99-99', len: 18, userCaracters: false, type:'num'}"></ngx-textbox>
             </div>
         </div>
     </div>

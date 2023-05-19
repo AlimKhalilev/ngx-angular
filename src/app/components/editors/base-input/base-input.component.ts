@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { InputMaskModel } from 'src/app/directives/input-mask.directive';
 
 /** Базовый компонент для инпутов с полем ввода и textarea */
 @Component({
@@ -27,7 +28,7 @@ export class NgxBaseInputComponent implements ControlValueAccessor {
     @Input() placeholder: string = '';
 
     /** Объект маски поля ввода */
-    @Input() mask: {} = {};
+    @Input() mask: InputMaskModel = {};
 
     /** Текст ошибки поля */
     @Input() errorMsg: string = '';

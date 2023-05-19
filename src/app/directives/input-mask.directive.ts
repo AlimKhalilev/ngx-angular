@@ -462,13 +462,26 @@ export class InputMaskDirective implements OnInit {
                 boleanoMascara = boleanoMascara || mask.charAt(i) === ',' || mask.charAt(i) === '*' || mask.charAt(i) === '+';
                 boleanoMascara = boleanoMascara || mask.charAt(i) === '@' || mask.charAt(i) === '#' || mask.charAt(i) === ':';
                 boleanoMascara = boleanoMascara || mask.charAt(i) === '$' || mask.charAt(i) === '&' || mask.charAt(i) === '%';
+                if (mask.charAt(i) === '7') {
+                    //NovoValorCampo = '7';
+                }
+
                 if (boleanoMascara) {
+                    console.log('added', mask.charAt(i));
+                    
                     NovoValorCampo += mask.charAt(i);
                     TamanhoMascara++;
                 } else {
-                    NovoValorCampo += campoSoNumeros.charAt(posicaoCampo);
+                    if (Number(mask.charAt(i)) === 9) {
+                        NovoValorCampo += campoSoNumeros.charAt(posicaoCampo);
+                    }
+                    else {
+                        NovoValorCampo += mask.charAt(i);
+                    }
                     posicaoCampo++;
                 }
+
+
             }
         }
         return NovoValorCampo;
