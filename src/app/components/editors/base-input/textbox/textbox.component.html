@@ -16,6 +16,7 @@
             [id]="id"
             [(ngModel)]="model"
             (ngModelChange)="modelChanged$.next($event)"
+            [inputmask]="mask"
             [placeholder]="placeholder ? placeholder : ''"
             [disabled]="disabled ? disabled : false" 
             [required]="required ? required : false" 

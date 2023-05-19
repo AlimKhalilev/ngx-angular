@@ -7,6 +7,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxButtonModule } from 'src/app/components/ui/button/button.module';
 import { LazyTransitionDirectiveModule } from 'src/app/directives/lazy-transition.directive';
 import { TextareaAutoresizeDirectiveModule } from 'src/app/directives/textarea-autoresize.directive';
+import { InputMaskDirectiveModule } from 'src/app/directives/input-mask.directive';
 
 @NgModule({
     declarations: [NgxTextAreaComponent],
@@ -17,6 +18,7 @@ import { TextareaAutoresizeDirectiveModule } from 'src/app/directives/textarea-a
         MatIconModule,
         NgxButtonModule,
         LazyTransitionDirectiveModule,
+        InputMaskDirectiveModule,
         TextareaAutoresizeDirectiveModule
     ],
     exports: [NgxTextAreaComponent]

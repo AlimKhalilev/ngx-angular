@@ -26,6 +26,9 @@ export class NgxBaseInputComponent implements ControlValueAccessor {
     /** Placeholder input элемента */
     @Input() placeholder: string = '';
 
+    /** Объект маски поля ввода */
+    @Input() mask: {} = {};
+
     /** Текст ошибки поля */
     @Input() errorMsg: string = '';
 

@@ -6,6 +6,7 @@ import { NgxButtonModule } from '../../../ui/button/button.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { LazyTransitionDirectiveModule } from 'src/app/directives/lazy-transition.directive';
+import { InputMaskDirectiveModule } from 'src/app/directives/input-mask.directive';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { LazyTransitionDirectiveModule } from 'src/app/directives/lazy-transitio
         MatTooltipModule,
         MatIconModule,
         NgxButtonModule,
-        LazyTransitionDirectiveModule
+        LazyTransitionDirectiveModule,
+        InputMaskDirectiveModule
     ],
     declarations: [NgxTextBoxComponent],
     exports: [NgxTextBoxComponent]
