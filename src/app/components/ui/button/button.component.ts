@@ -29,7 +29,7 @@ export class NgxButtonComponent implements OnInit {
 	@Input() disabled: boolean = false;
 
 	/** Опциональная ширина кнопки */
-	@Input() width!: number;
+	@Input() width: number | undefined = undefined;
 
     /** Флаг кнопки с стрелкой (шевроном) */
 	@Input() chevron: boolean = false;

@@ -4,20 +4,20 @@ import { Subject } from 'rxjs';
 @Component({
 	selector: 'ngx-radio-button',
 	templateUrl: './radio-button.component.html',
-	styleUrls: ["../../checkbox/checkbox.component.scss", "./radio-button.component.scss"]
+	styleUrls: ["../../base-checkbox/checkbox/checkbox.component.scss", "./radio-button.component.scss"]
 })
 export class NgxRadioButtonComponent {
     /** Статус неактивности объекта */
-	@Input() disabled!: boolean;
+	@Input() disabled: boolean = false;
 
     /** Статус обязательного объекта */
-	@Input() required!: boolean;
+	@Input() required: boolean = false;
 
     /** Значение текущей радио кнопки */
-	@Input() value!: string;
+	@Input() value: string = '';
 
 	/** Всплывающая подсказка чекбокса */
-	@Input() tooltip!: string;
+	@Input() tooltip: string = '';
 
     /** Содержит текущее значение (модель) радиокнопки */
     @Input() model: string = '';

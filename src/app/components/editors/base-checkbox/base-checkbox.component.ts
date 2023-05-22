@@ -1,27 +1,23 @@
-import { Component, forwardRef, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input } from "@angular/core";
+import { ControlValueAccessor } from "@angular/forms";
 
+/** Базовый компонент для компонентов checkbox и toggle */
 @Component({
-    selector: 'ngx-toggle',
-    templateUrl: './toggle.component.html',
-    styleUrls: ['./toggle.component.scss'],
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => NgxToggleComponent),
-            multi: true
-        }
-    ]
+    selector: 'ngx-base-checkbox',
+    template: ''
 })
-export class NgxToggleComponent {
-    /** Статус неактивности объекта */
-	@Input() disabled!: boolean;
+export class NgxBaseCheckboxComponent implements ControlValueAccessor {
+    /** Подпись инпута */
+    @Input() label: string = '';
 
     /** Статус обязательного объекта */
-	@Input() required!: boolean;
+    @Input() required: boolean = false;
 
-	/** Всплывающая подсказка */
-	@Input() tooltip!: string;
+    /** Статус неактивности объекта */
+    @Input() disabled: boolean = false;
+
+    /** Всплывающая подсказка */
+    @Input() tooltip: string = '';
 
     /** Содержит текущее значение (модель) чекбокса (также принимает props 'checked') */
     @Input('checked') model: boolean = false;
@@ -63,5 +59,4 @@ export class NgxToggleComponent {
     registerOnTouched(fn: any): void {
         this.onTouched = fn;
     }
-
 }

@@ -12,17 +12,20 @@ export class NgxBaseInputComponent implements ControlValueAccessor {
     /** Уникальный идентификатор для назначения ключей инпутов */
     private static uniqueId: number = 0;
 
-    /** Статус неактивности объекта */
-    @Input() disabled: boolean = false;
+    /** Подпись инпута */
+    @Input() label: string = '';
 
     /** Статус обязательного объекта */
     @Input() required: boolean = false;
 
-    /** Опциональная ширина */
-    @Input() width: number = 0;
+    /** Статус неактивности объекта */
+    @Input() disabled: boolean = false;
 
     /** Всплывающая подсказка */
     @Input() tooltip: string = '';
+
+    /** Опциональная ширина */
+    @Input() width: number = 0;
 
     /** Placeholder input элемента */
     @Input() placeholder: string = '';
@@ -35,9 +38,6 @@ export class NgxBaseInputComponent implements ControlValueAccessor {
 
     /** Поле id для инпута */
     @Input() id: string = 'ngx-base-input-' + NgxBaseInputComponent.uniqueId++;
-
-    /** Подпись инпута */
-    @Input() label: string = '';
 
     /** Задержка в мс для изменения модели инпута */
     @Input() debounce: number = 50;

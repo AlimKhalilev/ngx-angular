@@ -23,14 +23,20 @@ export class NgxRadioGroupComponent implements AfterContentInit {
     /** Уникальный идентификатор для назначения ключей радиокнопок */
     private static uniqueId: number = 0;
 
-    /** Содержит текущее значение (модель) радиогруппы (также принимает props 'value') */
-    @Input('value') model: string = '';
+    /** Подпись инпута */
+    @Input() label: string = '';
+
+    /** Статус обязательного объекта */
+    @Input() required: boolean = false;
 
     /** Поле name для радиокнопки */
     @Input() name: string = 'ngx-radio-group-' + NgxRadioGroupComponent.uniqueId++;
 
     /** Поле id для радиокнопки */
     @Input() id: string = '';
+    
+    /** Содержит текущее значение (модель) радиогруппы (также принимает props 'value') */
+    @Input('value') model: string = '';
 
     constructor() {}
 

@@ -1,6 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { NgxBaseInputComponent } from '../base-input.component';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
     selector: 'ngx-textarea',
@@ -14,7 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         }
     ]
 })
-export class NgxTextAreaComponent extends NgxBaseInputComponent implements ControlValueAccessor {
+export class NgxTextAreaComponent extends NgxBaseInputComponent {
     /** Количество строк (рядов) (для type = textarea) */
     @Input() rows: number = 1;
 

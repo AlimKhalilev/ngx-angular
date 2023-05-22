@@ -1,5 +1,5 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgxTextBoxType, NgxTextBoxTypePasswordIcon } from './textbox.model';
 import { NgxBaseInputComponent } from '../base-input.component';
 
@@ -15,7 +15,7 @@ import { NgxBaseInputComponent } from '../base-input.component';
         }
     ]
 })
-export class NgxTextBoxComponent extends NgxBaseInputComponent implements ControlValueAccessor, OnInit {
+export class NgxTextBoxComponent extends NgxBaseInputComponent implements OnInit {
     /** Ссылка на Enum типов инпута для использования в шаблоне */
     ngxTextBoxType = NgxTextBoxType;
 
