@@ -33,13 +33,17 @@ export class InputMaskDirective implements OnInit {
      */
     @HostListener('keyup', ['$event'])
     inputKeyup(event: any): void {
-        const value: string = this.returnValue(event.target.value);
-        this.setValueInFormControl(value);
+        if (this.inputmask.mask) {
+            const value: string = this.returnValue(event.target.value);
+            this.setValueInFormControl(value);
+        }
     }
     @HostListener('ngModelChange', ['$event']) onNgModelChange(e: any) {
-        const value: string = this.returnValue(e);
-        if (value) {
-            this.setValueInFormControl(value, false);
+        if (this.inputmask.mask) {
+            const value: string = this.returnValue(e);
+            if (value) {
+                this.setValueInFormControl(value, false);
+            }
         }
     }
 
@@ -52,6 +56,10 @@ export class InputMaskDirective implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        if (!this.inputmask.mask) {
+            return;
+        }
+        
         if (!this.inputmask.type) {
             this.inputmask.type = 'all';
         }
@@ -203,8 +211,6 @@ export class InputMaskDirective implements OnInit {
                 formValue = formValue.replace(/\d/gi, '');
             }
             if (this.inputmask.type === 'num') {
-                console.log(value);
-                
                 formValue = formValue.replace(/\D/gi, '');
             }
 
@@ -462,13 +468,8 @@ export class InputMaskDirective implements OnInit {
                 boleanoMascara = boleanoMascara || mask.charAt(i) === ',' || mask.charAt(i) === '*' || mask.charAt(i) === '+';
                 boleanoMascara = boleanoMascara || mask.charAt(i) === '@' || mask.charAt(i) === '#' || mask.charAt(i) === ':';
                 boleanoMascara = boleanoMascara || mask.charAt(i) === '$' || mask.charAt(i) === '&' || mask.charAt(i) === '%';
-                if (mask.charAt(i) === '7') {
-                    //NovoValorCampo = '7';
-                }
 
                 if (boleanoMascara) {
-                    console.log('added', mask.charAt(i));
-                    
                     NovoValorCampo += mask.charAt(i);
                     TamanhoMascara++;
                 } else {
