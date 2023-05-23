@@ -1,16 +1,5 @@
-/** Список возможных типов компонента ngx-textbox */
-export enum NgxTextBoxType {
-    TEXT = 'text',
-    EMAIL = 'email',
-    NUMBER = 'number',
-    TEL = 'tel',
-    SEARCH = 'search',
-    URL = 'url',
-    PASSWORD = 'password'
-}
+/** Типы textbox инпута */
+export type NgxTextBoxType = 'text' | 'email' | 'number' | 'tel' | 'search' | 'url' | 'password';
 
 /** Список иконов для типа ngx-textbox password (иконки закрытого и открытого глазика) */
-export enum NgxTextBoxTypePasswordIcon {
-    EYE = 'ngx-eye-16',
-    EYE_OFF = 'ngx-eye-off-16'
-}
+export type NgxTextBoxPasswordIcon = 'ngx-eye-16' | 'ngx-eye-off-16';

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { NgxTextBoxType, NgxTextBoxTypePasswordIcon } from './textbox.model';
 import { NgxBaseInputComponent } from '../base-input.component';
+import { NgxTextBoxPasswordIcon, NgxTextBoxType } from './textbox.model';
 
 @Component({
     selector: 'ngx-textbox',
@@ -16,11 +16,8 @@ import { NgxBaseInputComponent } from '../base-input.component';
     ]
 })
 export class NgxTextBoxComponent extends NgxBaseInputComponent implements OnInit {
-    /** Ссылка на Enum типов инпута для использования в шаблоне */
-    ngxTextBoxType = NgxTextBoxType;
-
     /** Type input элемента */
-    @Input() type: NgxTextBoxType = NgxTextBoxType.TEXT;
+    @Input() type: NgxTextBoxType = 'text';
 
     /** Иконка для кастомной кнопки */
     @Input() btnIcon: string = '';
@@ -32,7 +29,7 @@ export class NgxTextBoxComponent extends NgxBaseInputComponent implements OnInit
     @Output() onBtnClick = new EventEmitter();
 
     /** Текущая иконка кнопки переключения типа инпута (type = password/text) */
-    passwordSwitchIcon: string = '';
+    passwordSwitchIcon: NgxTextBoxPasswordIcon = 'ngx-eye-16';
 
     constructor() {
         super();
@@ -41,14 +38,14 @@ export class NgxTextBoxComponent extends NgxBaseInputComponent implements OnInit
     ngOnInit(): void {
         // Если передан флаг переключателя пароля -> подготавливаем данные под него
         if (this.passwordSwitch) {
-            this.type = NgxTextBoxType.PASSWORD;
-            this.passwordSwitchIcon = NgxTextBoxTypePasswordIcon.EYE_OFF;
+            this.type = 'password';
+            this.passwordSwitchIcon = 'ngx-eye-off-16';
         }
     }
 
     /** Изменить type поля инпута (password / text) */
     public switchTypePassword() {
-        this.type = this.type === NgxTextBoxType.TEXT ? NgxTextBoxType.PASSWORD : NgxTextBoxType.TEXT;
-        this.passwordSwitchIcon = this.type === NgxTextBoxType.TEXT ? NgxTextBoxTypePasswordIcon.EYE : NgxTextBoxTypePasswordIcon.EYE_OFF;
+        this.type = this.type === 'text' ? 'password' : 'text';
+        this.passwordSwitchIcon = this.type === 'text' ? 'ngx-eye-16' : 'ngx-eye-off-16';
     }
 }
