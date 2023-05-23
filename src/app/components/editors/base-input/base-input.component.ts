@@ -24,6 +24,9 @@ export class NgxBaseInputComponent implements ControlValueAccessor {
     /** Всплывающая подсказка */
     @Input() tooltip: string = '';
 
+    /** Текст ошибки поля */
+    @Input() error: string = '';
+
     /** Опциональная ширина */
     @Input() width: number = 0;
 
@@ -32,9 +35,6 @@ export class NgxBaseInputComponent implements ControlValueAccessor {
 
     /** Объект маски поля ввода */
     @Input() mask: InputMaskModel = {};
-
-    /** Текст ошибки поля */
-    @Input() errorMsg: string = '';
 
     /** Поле id для инпута */
     @Input() id: string = 'ngx-base-input-' + NgxBaseInputComponent.uniqueId++;

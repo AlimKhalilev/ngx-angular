@@ -11,7 +11,7 @@
             class="ngx-base-input__input font-basic"
             [class.inputNotEmpty]="model !== ''"
             [class.inputHasIcon]="iconStart"
-            [class.hasError]="errorMsg"
+            [class.hasError]="error"
             [type]="type"
             [id]="id"
             [(ngModel)]="model"
@@ -39,5 +39,5 @@
             <div class="ngx-base-input__line"></div>
         </div>
     </div>
-    <span *ngIf="errorMsg" class="ngx-base-input__error font-label">{{ errorMsg }}</span>
+    <span *ngIf="error" class="ngx-base-input__error font-label">{{ error }}</span>
 </div>
