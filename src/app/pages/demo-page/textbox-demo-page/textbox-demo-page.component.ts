@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class TextboxDemoPageComponent {
     textBoxValue: string = 'Тест';
     textBoxValueBase: string = 'Значение';
+    textBoxPhone: string = '';
 
     textBoxBtnClick() {
         console.log('кликнули в текстинпуте');
